@@ -8,7 +8,12 @@ module.exports = [
             gender: "", // F/M/Other
             age: 18, // should we put an age limit on this app
             politicalScore: 0,
-            personalScore: "", // not sure yet how to quantify this
+            personalScore: {
+                outdoorsArray: ["camping"],
+                homeArray: ["cooking", "gardening"],
+                sportsArray: [],
+                musicArray: ["pop", "country", "metal"]
+            },
             politics: {
                 question1: "", // R/D <- might be easier to code answers as numbers (essentially binary except for question 17) and calculate scores using those numbers rather than using % of answers
                 question2: "",

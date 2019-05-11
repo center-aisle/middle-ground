@@ -1,4 +1,13 @@
 /***************************
+ * Need code to capture information from front end 
+ *****************************/
+
+
+
+
+
+
+/***************************
  * Political calculations and machinations
  **************************/
 
@@ -51,13 +60,37 @@ allUsers.forEach(currentValue => {
 
 const personalQuestions = require("./personalQuestions");
 
-let outsideSelects = [];
+let outdoorsSelects = [];
+let outdoorsMatches = [];
 let homeSelects = [];
+let homeMatches = [];
 let sportsSelects = [];
+let sportsMatches = [];
 let musicSelects = [];
+let musicMatches = [];
+let found = false;
+
+// turn true/false into arrays of true choices
+// go through each array independently? or all at once? first would be simpler
+// 
 
 allUsers.forEach(currentValue => {
-
+    found = currentUser.outdoorSelects.some(choice => currentValue.outdoorSelects.includes(choice)); // returns boolean
+    // if found is true then find which ones are the same
+    if (found) {
+        outdoorsMatches = currentUser.outdoorSelects.filter(function(selected) {
+            return !currentValue.includes(selected); // removes activities in currentValue's array that don't match with currentUser's array
+        });
+    };
 });
 
-// const found = currentUser.some(r=> arr2.includes(r))
+allUsers.forEach(currentValue => {
+    found = currentUser.homeSelects.some(choice => currentValue.homeSelects.includes(choice));
+});
+allUsers.forEach(currentValue => {
+    found = currentUser.sportsSelects.some(choice => currentValue.sportsSelects.includes(choice));
+});
+allUsers.forEach(currentValue => {
+    found = currentUser.musicSelects.some(choice => currentValue.musicSelects.includes(choice));
+});
+
