@@ -1,5 +1,6 @@
 /***************************
  * Need code to capture information from front end 
+ * I guess this means this is front end javascript
  *****************************/
 
 
