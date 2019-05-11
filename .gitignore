@@ -25,3 +25,4 @@ yarn-error.log*
 
 desktop.ini
 node_modules
+.env
