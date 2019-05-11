@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function wrapper() {
+function Wrapper() {
   return (
     <div className="main-container">
       
@@ -9,4 +9,4 @@ function wrapper() {
   );
 }
 
-export default wrapper;
+export default Wrapper;

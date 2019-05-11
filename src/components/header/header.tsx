@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function header() {
+function Header() {
   return (
     <div className="main-container">
       
@@ -9,4 +9,4 @@ function header() {
   );
 }
 
-export default header;
+export default Header;
