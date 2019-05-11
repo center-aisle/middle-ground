@@ -2,15 +2,17 @@
  * Political calculations and machinations
  **************************/
 
-const politicalquestions = require("./politicalquestions");
+const politicalQuestions = require("./politicalQuestions");
+const allUsersArray = require("./allUsersArray");
 
 let scoreD = 0;
 let scoreParty = 0;
 const numQuestions = 17;
 let politicalType = "";
 let politicalScore = 0;
-let user = "";
-let allUsersArray = [];
+let currentUser = {};
+let allUsers = [];
+let matchingPoliticalUsers = [];
 
 let scoreDoverQ = (scoreD + scoreParty)/numQuestions;
 
@@ -34,15 +36,28 @@ if ( scoreDoverQ <= 0.125 ) {
     console.log(err);
 };
 
+// finding users with matching inverse political score
+allUsers.forEach(currentValue => {
+    if (currentValue.politicalScore === -(currentUser.politicalScore)) {
+        matchingPoliticalUsers.push(currentValue);
+    }
+});
+
 
 
 /***************************
  * Personal calculations and machinations
  **************************/
 
-const personalquestions = require("./personalquestions");
+const personalQuestions = require("./personalQuestions");
 
-let outsideScore = 0;
-let homeScore = 0;
-let sportsScore = 0;
-let musicScore = 0;
+let outsideSelects = [];
+let homeSelects = [];
+let sportsSelects = [];
+let musicSelects = [];
+
+allUsers.forEach(currentValue => {
+
+});
+
+// const found = currentUser.some(r=> arr2.includes(r))
