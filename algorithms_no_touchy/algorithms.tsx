@@ -41,7 +41,7 @@ if ( scoreDoverQ <= 0.125 ) {
     politicalType = "core conservative";
     politicalScore = 2;
 } else {
-    const err = new Error("error with political calculations");
+    const err = new Error("CATHERINE!!! Error with political calculations!");
     console.log(err);
 };
 
@@ -71,8 +71,6 @@ let musicMatches = [];
 let found = false;
 
 // turn true/false into arrays of true choices
-// go through each array independently? or all at once? first would be simpler
-// 
 
 allUsers.forEach(currentValue => {
     found = currentUser.outdoorSelects.some(choice => currentValue.outdoorSelects.includes(choice)); // returns boolean
@@ -81,16 +79,42 @@ allUsers.forEach(currentValue => {
         outdoorsMatches = currentUser.outdoorSelects.filter(function(selected) {
             return !currentValue.includes(selected); // removes activities in currentValue's array that don't match with currentUser's array
         });
+    } else {
+        outdoorsMatches.length = 0;
     };
+    return outdoorsMatches;
 });
-
 allUsers.forEach(currentValue => {
     found = currentUser.homeSelects.some(choice => currentValue.homeSelects.includes(choice));
+    if (found) {
+        homeMatches = currentUser.homeSelects.filter(function(selected) {
+            return !currentValue.includes(selected); // removes activities in currentValue's array that don't match with currentUser's array
+        });
+    } else {
+        homeMatches.length = 0;
+    };
+    return homeMatches;
 });
 allUsers.forEach(currentValue => {
     found = currentUser.sportsSelects.some(choice => currentValue.sportsSelects.includes(choice));
+    if (found) {
+        sportsMatches = currentUser.sportsSelects.filter(function(selected) {
+            return !currentValue.includes(selected); // removes activities in currentValue's array that don't match with currentUser's array
+        });
+    } else {
+        sportsMatches.length = 0;
+    };
+    return sportsMatches;
 });
 allUsers.forEach(currentValue => {
     found = currentUser.musicSelects.some(choice => currentValue.musicSelects.includes(choice));
+    if (found) {
+        musicMatches = currentUser.musicSelects.filter(function(selected) {
+            return !currentValue.includes(selected); // removes activities in currentValue's array that don't match with currentUser's array
+        });
+    } else {
+        musicMatches.length = 0;
+    };
+    return musicMatches;
 });
 
