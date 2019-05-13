@@ -1,6 +1,8 @@
 /***************************
- * Need code to capture information from front end 
+ * Need code to capture information from front end and send to db
  * I guess this means this is front end javascript
+ * I guess this means this is gonna go inside one of the components
+ * and answers are gonna be part of state
  *****************************/
 
 
