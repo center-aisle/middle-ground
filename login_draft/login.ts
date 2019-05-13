@@ -11,7 +11,9 @@ const crypto = require("crypto"),
     cookieParser = require("cookie-parser"),
     errorHandler = require("errorhandler"),
     methodOverride = require("method-override");
-let test = { status: "new" };
+let test = {
+    status: "new"
+};
 
 const app = express();
 
