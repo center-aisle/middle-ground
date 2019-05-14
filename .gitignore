@@ -14,6 +14,7 @@ node_modules
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -24,5 +25,3 @@ yarn-debug.log*
 yarn-error.log*
 
 desktop.ini
-node_modules
-.env
