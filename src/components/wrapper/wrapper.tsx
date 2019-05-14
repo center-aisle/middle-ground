@@ -1,12 +1,13 @@
 import React from "react";
+import "./style.css";
 
-
-function Wrapper() {
+function Wrapper(props: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLElement> & React.HTMLAttributes<HTMLElement>) {
+  
   return (
-    <div className="main-container">
-      
+    <div className="container-fluid text-center">
+      <main className="wrapper" {...props} />
     </div>
   );
-}
+};
 
 export default Wrapper;

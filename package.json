@@ -28,8 +28,7 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "typescript": "3.4.5",
-    "webpack": "^4.31.0"
+    "typescript": "3.4.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^4.3.3",
     "awesome-typescript-loader": "^5.2.1",
     "source-map-loader": "^0.2.4"
   }
