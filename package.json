@@ -20,7 +20,7 @@
     "http": "0.0.0",
     "method-override": "^3.0.0",
     "mongo": "^0.1.0",
-    "mongoose": "^5.5.7",
+    "mongoose": "^5.5.8",
     "path": "^0.12.7",
     "querystring": "^0.2.0",
     "react": "^16.8.6",
@@ -28,7 +28,8 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "webpack": "^4.31.0"
+    "webpack": "^4.31.0",
+    "typescript": "3.4.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -54,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^4.3.3",
     "awesome-typescript-loader": "^5.2.1",
     "source-map-loader": "^0.2.4",
     "tslint": "^5.16.0",
