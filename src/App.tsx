@@ -6,12 +6,12 @@ import './App.css';
 
 const App: React.FC = () => {
   return (
-    <div className="">
+    <div className=''>
       <Nav/>
       <Body/>
       <Footer/>
     </div>
   );
-}
+};
 
 export default App;

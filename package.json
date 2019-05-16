@@ -28,14 +28,16 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "typescript": "3.4.5",
     "webpack": "^4.31.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "fix": "tslint --fix --project ."
+
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,6 +56,8 @@
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
-    "source-map-loader": "^0.2.4"
+    "source-map-loader": "^0.2.4",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
   }
 }
