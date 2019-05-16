@@ -7,8 +7,6 @@ import Frenemy from "./pages/frenemy";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import NoMatch from "./pages/404";
-
-
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Nav from './components/nav/nav';
