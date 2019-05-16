@@ -36,7 +36,7 @@ const options = {
     },
     app: app
 };
-const oidc = require("../index").oidc(options);
+const oidc = require("openid-connect").oidc(options);
 
 
 // all environments
@@ -44,11 +44,11 @@ app.set("port", process.env.PORT || 3001);
 // app.use(logger("dev"));
 app.use(bodyParser());
 app.use(methodOverride());
-app.use(cookieParser("Some Secret!!!"));
+app.use(cookieParser("deodorant"));
 app.use(expressSession({ 
     store: new rs({ 
         host: "127.0.0.1", port: 6379
-    }), secret: "Some Secret!!!"
+    }), secret: "deodorant"
 }));
 // app.use(app.router);
 
@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
 //Login form (use email as user name)
 app.get("/user/login", (req, res, next) => {
     const head = "<head><title>Login</title></head>";
-    const inputs = "<input type='text' name='email' placeholder='Enter Email'/><input type='password' name='password' placeholder='Enter Password'/>";
+    const inputs = "<input type='text' name='email' placeholder='Enter email'/><input type='password' name='password' placeholder='Enter password'/>";
     const error = req.session.error ? "<div>" + req.session.error + "</div>" : "";
     const body = "<body><h1>Login</h1><form method='POST'>" + inputs + "<input type='submit'/></form>" + error;
     res.send("<html>" + head + body + "</html>");
