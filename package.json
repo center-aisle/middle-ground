@@ -37,7 +37,6 @@
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "fix": "tslint --fix --project ."
-
   },
   "eslintConfig": {
     "extends": "react-app"
