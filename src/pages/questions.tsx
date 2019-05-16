@@ -1,16 +1,27 @@
+
+import LikertScale from 'likert-react';
 import React from 'react';
+import { render } from 'react-dom';
+
+const root = document.getElementById('app');
+
+document.addEventListener('DOMContentLoaded', () => {
+  const reviews = [
+    { question: 'Code is readable' },
+    { question: 'Tests are comprehensive' },
+    { question: 'Webpack is configured well' }
+  ];
+  const onClick = (q, n) => console.info('question: ' + q + ' answer: ' + n);
+  render(
+    <LikertScale
+      reviews={reviews}
+      onClick={onClick}
+    />, root)
+});
+
 
 function Questions() {
   return (
-<<<<<<< Updated upstream
-    <div className='main-container'>
-
-    </div>
-  );
-}
-
-export default Wrapper;
-=======
     
 <div className="row">
 <div className="col s12 m5">
@@ -33,4 +44,3 @@ export default Wrapper;
 }
 
 export default Questions;
->>>>>>> Stashed changes
