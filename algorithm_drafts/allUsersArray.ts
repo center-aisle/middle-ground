@@ -1,4 +1,5 @@
-// might make this a constructor
+// wait for nicole to make models
+// this is a sketch of what one person's data looks like
 
 module.exports = [
     {

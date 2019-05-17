@@ -3,7 +3,7 @@ const express = require("express");
 
 var mongoose = require("mongoose");
 const path = require("path");
-// var routes = require("./routes"); uncomment out when apiroutes file is complete
+var routes = require("./routes");// uncomment out when apiroutes file is complete
 
 //Initalize express
 const app = express();
@@ -15,12 +15,12 @@ app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("/build"));
+  app.use(express.static("build"));
 };
 
 // Add routes, both API and view
-// app.use(routes); uncomment out when there is more on apiroutes.tsx
-//app.use(express.startic("public"));
+app.use(routes); // uncomment out when there is more on apiroutes.tsx
+app.use(express.static("public"));
 
 // If no API routes are hit, send the React app
 app.use("/", function(req, res) {
