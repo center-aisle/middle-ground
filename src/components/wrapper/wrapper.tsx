@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
+import './style.css';
 
+function Wrapper(props: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLElement> & React.HTMLAttributes<HTMLElement>) {
 
-function Wrapper() {
   return (
-    <div className="main-container">
-      
+    <div className='container-fluid text-center'>
+      <main className='wrapper' {...props} />
     </div>
   );
 }
