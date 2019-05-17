@@ -20,3 +20,12 @@ passport.use(new OpenIDStrategy({
         done(err, user);
     });
 }));
+
+routes.post("/auth/openid", passport.authenticate("openid"));
+
+routes.get("/auth/openid/return",
+	passport.authenticate("openid", {
+		successRedirect: "/user",
+		failureRedirect: "/" 
+	})
+);

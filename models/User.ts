@@ -8,22 +8,28 @@ const Schema = mongoose.Schema;
 
 //Uses the Schema constructor, create a new UserSchema object
 const userSchema = new Schema ({
-    name: {
+    firstName: {
         type: String,
         trim: true,
-        required: "Name is Required"
+        required: true
     },
+    lastName: {
+        type: String,
+        trim: true,
+        required: true
+    }
     bio: {
         type: String,
-        trim: true
+        trim: true,
+        required: false
     },
     gender: {
         type: Boolean,
-        required: "Gender is Required"
+        required: true
     },
     age: {
         type: Number,
-        required: "Age is Required"
+        required: true
     }
 //political score: number;
 //personal: string;
