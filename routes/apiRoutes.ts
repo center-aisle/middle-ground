@@ -1,5 +1,6 @@
 var routes = require("express").Router();
 const controller = require("../controllers");
+const passport = require("passport");
 
 
 //routes.get("/", )
@@ -8,18 +9,17 @@ const controller = require("../controllers");
 routes.post("/submit", function(req, res) {
     // Create a new user using req.body
     User.create(req.body)
-      .then(function(dbUser) {
-        // If saved successfully, send the the new User document to the client
-        res.json(dbUser);
-      })
-      .catch(function(err) {
-        // If an error occurs, send the error to the client
-        res.json(err);
-      });
-  });
+    	.then(function(dbUser) {
+    	// If saved successfully, send the the new User document to the client
+    	res.json(dbUser);
+    }).catch(function(err) {
+    // If an error occurs, send the error to the client
+    	res.json(err);
+    });
+});
 
 //app.get("/", function(req, res) {
-    //res.send("This is a test");
+	//res.send("This is a test");
 //});
 
 /****************************************************
@@ -27,7 +27,14 @@ routes.post("/submit", function(req, res) {
  * DON'T TOUCH IF YOUR NAME IS NOT CATHERINE
  ******************************************************/
 
+routes.post("/auth/openid", passport.authenticate("openid"));
 
+routes.get("/auth/openid/return",
+	passport.authenticate("openid", {
+		successRedirect: "/user",
+		failureRedirect: "/" 
+	})
+);
 
 
 module.exports = routes;

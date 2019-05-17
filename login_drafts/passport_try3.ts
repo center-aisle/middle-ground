@@ -1,4 +1,4 @@
-const passport = require("passport"),
+var passport = require("passport"),
     OpenIDStrategy = require("passport-openid").Strategy,
     util = require("util"),
     User = require("../models");
@@ -10,7 +10,7 @@ passport.use(new OpenIDStrategy({
     profile: true
 
 }, (identifier, profile, done) => {
-    
+
     User.findOrCreate({
         openId: identifier,
         firstName: profile.givenName,

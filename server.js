@@ -29,12 +29,6 @@ app.use("/", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
-/*****************************
- * LOGIN STUFF
- * NO TOUCHY
- ******************************/
-
-app.post("/auth/openid", passport.authenticate("openid"));
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/users");
