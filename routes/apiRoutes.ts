@@ -1,9 +1,11 @@
 var routes = require("express").Router();
+const controller = require("../controllers");
+
 
 //routes.get("/", )
 
 // Route to post our form submission to mongoDB via mongoose
-app.post("/submit", function(req, res) {
+routes.post("/submit", function(req, res) {
     // Create a new user using req.body
     User.create(req.body)
       .then(function(dbUser) {
@@ -19,6 +21,13 @@ app.post("/submit", function(req, res) {
 //app.get("/", function(req, res) {
     //res.send("This is a test");
 //});
+
+/****************************************************
+ * LOGIN STUFF BELOW
+ * DON'T TOUCH IF YOUR NAME IS NOT CATHERINE
+ ******************************************************/
+
+
 
 
 module.exports = routes;

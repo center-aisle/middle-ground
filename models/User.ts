@@ -23,7 +23,7 @@ const userSchema = new Schema ({
     },
     age: {
         type: Number,
-        required: "Age is Require"
+        required: "Age is Required"
     }
 //political score: number;
 //personal: string;
@@ -32,4 +32,4 @@ const userSchema = new Schema ({
 
 const User = mongoose.model("User", userSchema);
 
-//module.exports = User;
+module.exports = User;

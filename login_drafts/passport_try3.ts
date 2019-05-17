@@ -4,11 +4,18 @@ const passport = require("passport"),
     User = require("../models");
 
 passport.use(new OpenIDStrategy({
+
     returnURL: "https://bipartisan.herokuapp.com/user/auth",
-    realm: "https://bipartisan.herokuapp.com/"
-}, (identifier, done) => {
+    realm: "https://bipartisan.herokuapp.com/",
+    profile: true
+
+}, (identifier, profile, done) => {
+    
     User.findOrCreate({
-        openId: identifier
+        openId: identifier,
+        firstName: profile.givenName,
+        lastName: profile.familyName,
+        email: profile.emails[0].value
     }, (err, user) => {
         done(err, user);
     });
