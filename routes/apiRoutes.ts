@@ -44,7 +44,9 @@ passport.use(new OpenIDStrategy({
         lastName: profile.familyName,
         email: profile.emails[0].value
     }, (err, user) => {
+
         done(err, user);
+        
     });
 }));
 
