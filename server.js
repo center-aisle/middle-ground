@@ -2,7 +2,7 @@ require("dotenv").config();
 var express = require("express"),
     mongoose = require("mongoose"),
     path = require("path");
-    // var routes = require("./routes"); //uncomment out when apiroutes file is complete
+    var routes = require("./routes"); //uncomment out when apiroutes file is complete
 
 const passport = require("passport"),
     OpenIDStrategy = require("passport-openid").Strategy,
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "production") {
 }
 ;
 // Add routes, both API and view
-// app.use(routes); // uncomment out when there is more on apiroutes.tsx
+app.use(routes); // uncomment out when there is more on apiroutes.ts
 app.use(express.static("public"));
 // If no API routes are hit, send the React app
 app.use("/", function (req, res) {
