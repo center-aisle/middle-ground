@@ -1,7 +1,7 @@
-import { boolean } from "@oclif/parser/lib/flags";
+// import { boolean } from "@oclif/parser/lib/flags";
 
 //import Mongoose from "mongoose"; problems with using const on this page and another one. maybe change to let for a solution?
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 //Save a reference to the Schema constructor
 const Schema = mongoose.Schema;
@@ -17,7 +17,7 @@ const userSchema = new Schema ({
         type: String,
         trim: true,
         required: true
-    }
+    },
     bio: {
         type: String,
         trim: true,
@@ -36,6 +36,6 @@ const userSchema = new Schema ({
 //other user database imputs more specifically?
 });
 
-const User = mongoose.model("User", userSchema);
+var User = mongoose.model("User", userSchema);
 
 module.exports = User;
