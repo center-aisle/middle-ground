@@ -24,10 +24,12 @@ let scoreD = 0,
     politicalType = "",
     politicalScore = 0,
     currentUser = {},
-    allUsers = [],  //: User[] 
+    allUsers = [],
     matchingPoliticalUsers = [];
 
 let scoreDoverQ = (scoreD + scoreParty)/numQuestions;
+// let scoreR = numQuestions - scoreD;
+// let scoreRoverQ = (scoreR + scoreParty)/numQuestions;
 
 if ( scoreDoverQ <= 0.125 ) {
     politicalType = "solid liberal";
@@ -64,7 +66,7 @@ allUsers.forEach(currentValue => {
 
 const personalQuestions = require("./personalQuestions");
 
-let outdoorsSelects = [],
+let outdoorsSelects = [], // <- array associated with each user
     outdoorsMatches = [],
     homeSelects = [],
     homeMatches = [],
@@ -80,7 +82,7 @@ allUsers.forEach(currentValue => {
     found = currentUser.outdoorSelects.some(choice => currentValue.outdoorSelects.includes(choice)); // returns boolean
     // if found is true then find which ones are the same
     if (found) {
-        outdoorsMatches = currentUser.outdoorSelects.filter(function(selected) {
+        outdoorsMatches = currentUser.outdoorSelects.filter(selected => {
             return !currentValue.includes(selected); // removes activities in currentValue's array that don't match with currentUser's array
         });
     } else {
@@ -91,7 +93,7 @@ allUsers.forEach(currentValue => {
 allUsers.forEach(currentValue => {
     found = currentUser.homeSelects.some(choice => currentValue.homeSelects.includes(choice));
     if (found) {
-        homeMatches = currentUser.homeSelects.filter(function(selected) {
+        homeMatches = currentUser.homeSelects.filter(selected => {
             return !currentValue.includes(selected); // removes activities in currentValue's array that don't match with currentUser's array
         });
     } else {
@@ -102,7 +104,7 @@ allUsers.forEach(currentValue => {
 allUsers.forEach(currentValue => {
     found = currentUser.sportsSelects.some(choice => currentValue.sportsSelects.includes(choice));
     if (found) {
-        sportsMatches = currentUser.sportsSelects.filter(function(selected) {
+        sportsMatches = currentUser.sportsSelects.filter(selected => {
             return !currentValue.includes(selected); // removes activities in currentValue's array that don't match with currentUser's array
         });
     } else {
@@ -113,7 +115,7 @@ allUsers.forEach(currentValue => {
 allUsers.forEach(currentValue => {
     found = currentUser.musicSelects.some(choice => currentValue.musicSelects.includes(choice));
     if (found) {
-        musicMatches = currentUser.musicSelects.filter(function(selected) {
+        musicMatches = currentUser.musicSelects.filter(selected => {
             return !currentValue.includes(selected); // removes activities in currentValue's array that don't match with currentUser's array
         });
     } else {
