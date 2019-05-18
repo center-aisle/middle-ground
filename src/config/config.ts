@@ -1,9 +1,9 @@
-const passport = require("passport"),
-    OpenIDStrategy = require("passport-openid").Strategy;
+import passport from "passport";
+import { Strategy as OpenIDStrategy } from "passport-openid";
     
-var controller = require("../controllers"),
-    User = require("../models"),
-    routes = require("express").Router();
+import controller from "../controllers";
+import User from "../models";
+import { Router as routes } from "express";
 
 
 passport.use(new OpenIDStrategy({
@@ -18,7 +18,10 @@ passport.use(new OpenIDStrategy({
         emails: { 
             value: any;
         }[];
-    }, done: (arg0: any, arg1: any) => void) => {
+    }, done: (
+        arg0: any,
+        arg1: any
+    ) => void) => {
 
         User.findOrCreate({
             openId: identifier,
@@ -38,5 +41,3 @@ routes.get("/auth/openid/return",
 		failureRedirect: "/" 
 	})
 );
-
-exports = { passport, routes };

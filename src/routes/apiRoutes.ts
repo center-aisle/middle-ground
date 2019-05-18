@@ -1,6 +1,6 @@
-var controller = require("../controllers"),
-    User = require("../models"),
-    routes = require("express").Router();
+import controller from "../controllers";
+import User from "../models";
+import {Router as routes} from "express";
 
 
 // routes.get(function(req, res) {

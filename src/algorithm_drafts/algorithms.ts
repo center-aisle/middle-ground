@@ -15,17 +15,17 @@
 /***************************
  * Political calculations and machinations
  **************************/
-const politicalQuestions = require("./politicalQuestions");
-const allUsersArray = require("./allUsersArray");
+import politicalQuestions from "./politicalQuestions";
+import allUsersArray from "./allUsersArray";
 
-let scoreD = 0;
-let scoreParty = 0;
 const numQuestions = 17;
-let politicalType = "";
-let politicalScore = 0;
-let currentUser = {};
-let allUsers= [];  //: User[] 
-let matchingPoliticalUsers = [];
+let scoreD = 0,
+    scoreParty = 0,
+    politicalType = "",
+    politicalScore = 0,
+    currentUser = {},
+    allUsers = [],  //: User[] 
+    matchingPoliticalUsers = [];
 
 let scoreDoverQ = (scoreD + scoreParty)/numQuestions;
 
@@ -64,15 +64,15 @@ allUsers.forEach(currentValue => {
 
 const personalQuestions = require("./personalQuestions");
 
-let outdoorsSelects = [];
-let outdoorsMatches = [];
-let homeSelects = [];
-let homeMatches = [];
-let sportsSelects = [];
-let sportsMatches = [];
-let musicSelects = [];
-let musicMatches = [];
-let found = false;
+let outdoorsSelects = [],
+    outdoorsMatches = [],
+    homeSelects = [],
+    homeMatches = [],
+    sportsSelects = [],
+    sportsMatches = [],
+    musicSelects = [],
+    musicMatches = [],
+    found = false;
 
 // turn true/false into arrays of true choices
 
