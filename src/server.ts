@@ -16,10 +16,10 @@ if (process.env.NODE_ENV === "production") {
 };
 
 app.use(routes);
-app.use(express.static("public"));
+app.use(express.static("build/public"));
 
 app.use("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "/public/index.html"));
+    res.sendFile(path.join(__dirname, "build/public/index.html"));
 });
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/users");

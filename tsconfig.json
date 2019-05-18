@@ -24,6 +24,7 @@
 	],
 	"exclude": [
 		"node_modules",
-		"src/server.ts"
+		"src/server.ts",
+		"src/config/config.ts"
 	]
 }
