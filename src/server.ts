@@ -1,12 +1,11 @@
 require("dotenv").config();
-var express = require("express"),
-    mongoose = require("mongoose"),
-    path = require("path");
-
+const express = require("express"),
+    path = require("path"),
+    mongoose = require("mongoose");
 var routes = require("./routes"); //uncomment out when apiroutes file is complete
 
 //Initalize express
-var app = express(),
+const app = express(),
     PORT = process.env.PORT || 3001;
 
 //Middleware Parses request Body as JSON

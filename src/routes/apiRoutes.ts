@@ -1,13 +1,15 @@
 const controller = require("../controllers"),
-    routes = require("express").Router(),
 	passport = require("passport"),
-    OpenIDStrategy = require("passport-openid").Strategy,
-    User = require("../models");
+    OpenIDStrategy = require("passport-openid").Strategy;
+
+var User = require("../models");
+
+var routes = require("express").Router();
 
 
-app.get("/", function(req, res) {
-	res.send("This is a test");
-});
+// routes.get(function(req, res) {
+// 	res.send("This is a test");
+// });
 
 /****************************************************
  * LOGIN STUFF BELOW
@@ -20,14 +22,14 @@ passport.use(new OpenIDStrategy({
     realm: "https://bipartisan.herokuapp.com/",
     profile: true
 
-}, (identifier, profile, done) => {
+}, (identifier: any, profile: { givenName: any; familyName: any; emails: { value: any; }[]; }, done: (arg0: any, arg1: any) => void) => {
 
     User.findOrCreate({
         openId: identifier,
         firstName: profile.givenName,
         lastName: profile.familyName,
         email: profile.emails[0].value
-    }, (err, user) => {
+    }, (err: any, user: any) => {
 
         done(err, user);
         
