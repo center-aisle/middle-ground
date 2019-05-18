@@ -2,11 +2,8 @@ require("dotenv").config();
 var express = require("express"),
     mongoose = require("mongoose"),
     path = require("path");
-    var routes = require("./routes"); //uncomment out when apiroutes file is complete
 
-const passport = require("passport"),
-    OpenIDStrategy = require("passport-openid").Strategy,
-    util = require("util");
+var routes = require("./routes"); //uncomment out when apiroutes file is complete
 
 //Initalize express
 var app = express(),
@@ -19,8 +16,8 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("build"));
-}
-;
+};
+
 // Add routes, both API and view
 app.use(routes); // uncomment out when there is more on apiroutes.ts
 app.use(express.static("public"));

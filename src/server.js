@@ -1,15 +1,13 @@
 require("dotenv").config();
-var express = require("express"),
+const express = require("express"),
     mongoose = require("mongoose"),
     path = require("path");
-    var routes = require("./routes"); //uncomment out when apiroutes file is complete
 
-const passport = require("passport"),
-    OpenIDStrategy = require("passport-openid").Strategy,
-    util = require("util");
+const routes = require("./routes/apiRoutes"); //uncomment out when apiroutes file is complete
+
 
 //Initalize express
-var app = express(),
+const app = express(),
     PORT = process.env.PORT || 3001;
 
 //Middleware Parses request Body as JSON
