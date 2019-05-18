@@ -1,8 +1,12 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
 /node_modules/
+/node_modules
+<<<<<<< HEAD
+/node_modules/
+=======
+<<<<<<< HEAD
+ds.store
+=======
+>>>>>>> master
 node_modules
 /.pnp
 .pnp.js
@@ -27,3 +31,4 @@ yarn-debug.log*
 yarn-error.log*
 
 desktop.ini
+>>>>>>> 60e8ca81092c9d730ad8db7f13491de904e48756
