@@ -25,6 +25,10 @@
 	"exclude": [
 		"node_modules",
 		"src/server.ts",
-		"src/config/config.ts"
+		"src/config/config.ts",
+		"src/controllers/usersController.ts",
+		"src/models/User.ts",
+		"src/scripts/seedsDB.tsx",
+		"src/scripts/seedsDB.ts"
 	]
 }
