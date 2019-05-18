@@ -1,3 +1,5 @@
+//import User from "../src/components/models/user";
+
 /***************************
  * Need code to capture information from front end and send to db
  * I guess this means this is front end javascript
@@ -6,14 +8,13 @@
  *****************************/
 
 
-
+// TODO: Determine if this is being run on front or back end
 
 
 
 /***************************
  * Political calculations and machinations
  **************************/
-
 const politicalQuestions = require("./politicalQuestions");
 const allUsersArray = require("./allUsersArray");
 
@@ -23,7 +24,7 @@ const numQuestions = 17;
 let politicalType = "";
 let politicalScore = 0;
 let currentUser = {};
-let allUsers = [];
+let allUsers= [];  //: User[] 
 let matchingPoliticalUsers = [];
 
 let scoreDoverQ = (scoreD + scoreParty)/numQuestions;
