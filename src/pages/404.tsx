@@ -18,6 +18,7 @@ function NoMatch(): any {
                     🙄
                   </span>
                 </h1>
+                <p>The Frenemy you're looking for doesn't exist!</p>
             </div>
             
             <div className='card-action'>
