@@ -1,4 +1,4 @@
-import User from "../src/components/models/user";
+//import User from "../src/components/models/user";
 
 /***************************
  * Need code to capture information from front end and send to db
@@ -24,7 +24,7 @@ const numQuestions = 17;
 let politicalType = "";
 let politicalScore = 0;
 let currentUser = {};
-let allUsers: User[] = [];
+let allUsers= [];  //: User[] 
 let matchingPoliticalUsers = [];
 
 let scoreDoverQ = (scoreD + scoreParty)/numQuestions;
