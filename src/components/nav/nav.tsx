@@ -9,8 +9,8 @@ function Nav() {
     <ul id='nav-mobile' className='left hide-on-med-and-down'>
       <li><a href='/user'>User Account</a></li>
       <li><a href='badges.html'>Find Friends</a></li>
-      <li><a href='collapsible.html'>About</a></li>
-      <li><a href='collapsible.html'>Contact</a></li>
+      <li><a href='/about'>About</a></li>
+      <li><a href='/contact'>Contact</a></li>
 
     </ul>
   </div>
