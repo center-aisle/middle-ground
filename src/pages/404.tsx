@@ -1,6 +1,6 @@
 import React from "react";
 
-function NoMatch() {
+function NoMatch(): any {
   return (
 
     <div className="container">

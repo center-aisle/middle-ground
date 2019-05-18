@@ -20,3 +20,15 @@ function Nav() {
 }
 
 export default Nav;
+
+
+// // In YourComponent.js
+// ...
+// import { NavHashLink as NavLink } from 'react-router-hash-link';
+// ...
+// // Use it just like a RRv4 <NavLink> (see RRv4 api for details):
+// <NavLink
+//   to="/some/path#with-hash-fragment"
+//   activeClassName="selected"
+//   // etc...
+// >Link to Hash Fragment</NavLink>
