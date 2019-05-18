@@ -3,7 +3,7 @@ import express from "express";
 import path from "path";
 import mongoose from "mongoose";
 
-const routes = require("./routes");
+const routes = require("./routes/apiRoutes.ts");
 
 const app = express(),
     PORT = process.env.PORT || 3001;
