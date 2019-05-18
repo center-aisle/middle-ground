@@ -1,9 +1,9 @@
-require("dotenv").config();
-const express = require("express"),
-    path = require("path"),
-    mongoose = require("mongoose");
+import {config} from "dotenv";
+import express from "express";
+import path from "path";
+import mongoose from "mongoose";
 
-var routes = require("./routes");
+const routes = require("./routes/apiRoutes.ts");
 
 const app = express(),
     PORT = process.env.PORT || 3001;

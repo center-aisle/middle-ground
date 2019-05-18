@@ -1,5 +1,3 @@
-// import { boolean } from "@oclif/parser/lib/flags";
-
 //import Mongoose from "mongoose"; problems with using const on this page and another one. maybe change to let for a solution?
 const mongoose = require("mongoose");
 
