@@ -3,7 +3,7 @@ import React from 'react';
 function Wrapper() {
   return (
     <div className='main-container'>
-      <div className="jumbotron jumbotron-fluid" id="jumbotronIndex">
+      <div className="jumbotron jumbotron-fluid center" id="jumbotronIndex">
         <div className="container">
           <h1 className="display-4 text-center">ABOUT US</h1>
         </div>
@@ -18,11 +18,11 @@ function Wrapper() {
               and Javascript. It’s been a blast working on this project and I’ve been throughly enjoying the
               backend development process. If you are looking for a new backend developer to join your team,
               organization or project feel free to let me know via LinkedIn.</p>
-            <a href="mailto:bryanrkelley14@gmail.com"><i className="fas fa-envelope fa-2x" title="Email Bryan Kelley"></i></a>
+            <a href="mailto:bryanrkelley14@gmail.com" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light">E-mail<i className="material-icons left" title="Email Bryan Kelley">mail</i></button></a>
 
-            <a href="https://github.com/bryanrkelley" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light">Github<i className="material-icons right" title="Bryan's Github">github</i></button></a>
+            <a href="https://github.com/bryanrkelley" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light inDuration">Github<i className="material-icons left" title="Bryan's Github">code</i></button></a>
 
-            <a href="https://www.linkedin.com/in/bryanrkelley14/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin fa-2x" title="Bryan's LinkedIn"></i></a>
+            <a href="https://www.linkedin.com/in/bryanrkelley14/" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light">LinkedIn<i className="material-icons left" title="Bryan's LinkedIn">people</i></button></a>
           </div>
         </div>
 
@@ -30,9 +30,11 @@ function Wrapper() {
           <div className="feature">
             <h3>Nicole White</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia at blanditiis quos nisi soluta eaque officiis? Assumenda reiciendis mollitia, quos earum veritatis at quidem. Reiciendis incidunt ipsa minima alias?</p>
-            <a href="mailto:gibbons.lacey@gmail.com"><i className="fas fa-envelope fa-2x" title="Email Lacey Gibbons"></i></a>
-            <a href="https://github.com/lulu-gibbons" target="_blank" rel="noopener noreferrer"><i className="fab fa-github fa-2x" title="Lacey's Github"></i></a>
-            <a href="https://www.linkedin.com/in/lacey-gibbons-webdev/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin fa-2x" title="Lacey's LinkedIn"></i></a>
+            <a href="mailto:nicoleewhitee@gmail.com" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light">E-mail<i className="material-icons left" title="Email Nicole White">mail</i></button></a>
+
+            <a href="https://github.com/NW91" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light inDuration">Github<i className="material-icons left" title="Nicole's Github">code</i></button></a>
+
+            <a href="https://www.linkedin.com/in/nwhite22/" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light">LinkedIn<i className="material-icons left" title="Nicole's LinkedIn">people</i></button></a>
           </div>
         </div>
       </div>
@@ -42,19 +44,23 @@ function Wrapper() {
           <div className="feature">
             <h3>Naomi Woodruff</h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio magni saepe animi rem perspiciatis voluptatem molestias possimus soluta adipisci necessitatibus dolore, nobis doloremque totam quae asperiores nulla nemo officiis aliquid.</p>
-            <a href="mailto:tochwat@gmail.com"><i className="fas fa-envelope fa-2x" title="Email Tad Ochwat"></i></a>
-            <a href="https://github.com/tochwat" target="_blank" rel="noopener noreferrer"><i className="fab fa-github fa-2x" title="Tad's Github"></i></a>
-            <a href="https://www.linkedin.com/in/ochwat/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin fa-2x" title="Tad's LinkedIn"></i></a>
+            <a href="mailto:naomi.woodruff@gmail.com" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light">E-mail<i className="material-icons left" title="Email Naomi Woodruff">mail</i></button></a>
+
+            <a href="https://github.com/naywood" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light inDuration">Github<i className="material-icons left" title="Naomi's Github">code</i></button></a>
+
+            <a href="https://www.linkedin.com/in/naomi-woodruff-162450173/" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light">LinkedIn<i className="material-icons left" title="Naomi's LinkedIn">people</i></button></a>
           </div>
         </div>
 
         <div className="col-md-5" id="person">
           <div className="feature">
             <h3>Catherine Pham</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto harum expedita, necessitatibus ab nostrum aut mollitia fuga dolor quos fugiat! Exercitationem odit provident ipsa obcaecati ea tempore reiciendis error. Laborum!</p>
-            <a href="mailto:benvaagen24@gmail.com"><i className="fas fa-envelope fa-2x" title="Email Benjamin Vaagen"></i></a>
-            <a href="https://github.com/benvaagen" target="_blank" rel="noopener noreferrer"><i className="fab fa-github fa-2x" title="Ben's Github"></i></a>
-            <a href="https://www.linkedin.com/in/benjamin-vaagen-7b0178174/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin fa-2x" title="Ben's LinkedIn"></i></a>
+            <p>general blurb about me</p>
+            <a href="mailto:cpham.cww@gmail.com" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light">E-mail<i className="material-icons left" title="Email Catherine Pham">mail</i></button></a>
+
+            <a href="https://github.com/CrypticWoodWhite" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light inDuration">Github<i className="material-icons left" title="Catherine's Github">code</i></button></a>
+
+            <a href="https://www.linkedin.com/in/catherinephamcww/" target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light">LinkedIn<i className="material-icons left" title="Catherine's LinkedIn">people</i></button></a>
           </div>
         </div>
       </div>
