@@ -1,7 +1,9 @@
 import "dotenv";
 import express from "express";
+import session from "express-session";
 import path from "path";
 import mongoose from "mongoose";
+import passport from "passport";
 
 import routes from "./routes/apiRoutes";
 import login from "./config/config";
@@ -17,6 +19,9 @@ if (process.env.NODE_ENV === "production") {
 };
 
 app.use(routes);
+app.use(session({ secret: "deodorize armpits" }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use("/user", login);
 app.use(express.static("build/public"));
 

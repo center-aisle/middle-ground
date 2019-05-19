@@ -16,12 +16,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    // @ts-ignore "noEmit": false,
     "jsx": "preserve",
     "outDir": "dist",
     "rootDir": "src",
     "sourceMap": true,
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "noEmit": true
   },
   "include": [
     "src/*"

@@ -1,15 +1,16 @@
 import passport from "passport";
-import { Strategy as OpenIDStrategy } from "passport-openid";
+import { Strategy as OpenIDConnectStrategy } from "passport-openidconnect";
+import "mongoose";
+import "mongoose-findorcreate";
     
 import "../controllers";
 import User from "../models/User";
-// import { Router as router } from "express";
 import express from "express";
 const router = express.Router();
 
 const login = () => {
 
-    passport.use(new OpenIDStrategy({
+    passport.use(new OpenIDConnectStrategy({
         returnURL: "https://bipartisan.herokuapp.com/user",
         realm: "https://bipartisan.herokuapp.com/",
         profile: true
@@ -36,7 +37,7 @@ const login = () => {
             });
     }));
 
-    router.post("/auth/openid", passport.authenticate("openid"));
+    router.post("/auth/openid", passport.authenticate("openidconnect"));
 
     router.get("/auth/openid/return",
         passport.authenticate("openid", {

@@ -1,11 +1,15 @@
-//import Mongoose from "mongoose"; problems with using const on this page and another one. maybe change to let for a solution?
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import findOrCreate from "mongoose-findorcreate"; // need this for passport/login
 
 //Save a reference to the Schema constructor
 const Schema = mongoose.Schema;
 
 //Uses the Schema constructor, create a new UserSchema object
 const userSchema = new Schema ({
+    openId: {
+        type: String,
+        required: true
+    },
     firstName: {
         type: String,
         trim: true,
@@ -31,8 +35,10 @@ const userSchema = new Schema ({
     }
 //political score: number;
 //personal: string;
-//other user database imputs more specifically?
+//other user database imputs more specifically? ---->> see allUsersArray file in algorithm_drafts
 });
+
+userSchema.plugin(findOrCreate);
 
 const User = mongoose.model("User", userSchema);
 
