@@ -1,11 +1,11 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
 import findOrCreate from "mongoose-findorcreate"; // need this for passport/login
 
 //Save a reference to the Schema constructor
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
 //Uses the Schema constructor, create a new UserSchema object
-const userSchema = new Schema ({
+const userSchema = new Schema({
     openId: {
         type: String,
         required: true
@@ -16,6 +16,11 @@ const userSchema = new Schema ({
         required: true
     },
     lastName: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    email: {
         type: String,
         trim: true,
         required: true
@@ -38,8 +43,8 @@ const userSchema = new Schema ({
 //other user database imputs more specifically? ---->> see allUsersArray file in algorithm_drafts
 });
 
-userSchema.plugin(findOrCreate);
+userSchema.plugin(findOrCreate); // why is this not working
 
-const User = mongoose.model("User", userSchema);
+const User = model("User", userSchema);
 
 export default User;

@@ -1,7 +1,5 @@
 import passport from "passport";
 import { Strategy as OpenIDConnectStrategy } from "passport-openidconnect";
-import "mongoose";
-import "mongoose-findorcreate";
     
 import "../controllers";
 import User from "../models/User";
@@ -25,16 +23,16 @@ const login = () => {
         }, done: (
             arg0: any,
             arg1: any
-        ) => void) => {
-
-            User.findOrCreate({
-                openId: identifier,
-                firstName: profile.givenName,
-                lastName: profile.familyName,
-                email: profile.emails[0].value // takes first email if there's more than one
-            }, (err: any, user: any) => {
-                done(err, user);
-            });
+        ) => void
+    ) => {
+        User.findOne({ // why is the plugin findOrCreate not working
+            openId: identifier,
+            firstName: profile.givenName,
+            lastName: profile.familyName,
+            email: profile.emails[0].value // takes first email if there's more than one
+        }, (err: any, user: any) => {
+            done(err, user);
+        });
     }));
 
     router.post("/auth/openid", passport.authenticate("openidconnect"));
@@ -44,6 +42,28 @@ const login = () => {
             successRedirect: "/user",
             failureRedirect: "/" 
         })
+    );
+
+    passport.serializeUser((
+        user: any,
+        done: (
+            arg0: any,
+            arg1: any
+        ) => void) => {
+            done(null, user.id);
+        }
+    );
+      
+    passport.deserializeUser((
+        id: any,
+        done: (
+            arg0: any,
+            arg1: any
+        ) => void) => {
+            User.findById(id, (err: any, user: any) => {
+            done(err, user);
+            });
+        }
     );
 }
 

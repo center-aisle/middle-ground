@@ -18,11 +18,11 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("build"));
 };
 
-app.use(routes);
 app.use(session({ secret: "deodorize armpits" }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/user", login);
+app.use("/user", login); // not sure if this line is necessary?
+app.use(routes);
 app.use(express.static("build/public"));
 
 app.get("/", (req, res) => {
