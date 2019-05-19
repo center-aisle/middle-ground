@@ -1,3 +1,1 @@
-const db = require("../models/User.ts");
-
-// exports = db;
+export default require("../models/User.ts");
