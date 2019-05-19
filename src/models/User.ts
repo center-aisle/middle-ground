@@ -34,6 +34,6 @@ const userSchema = new Schema ({
 //other user database imputs more specifically?
 });
 
-var User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+export default User;

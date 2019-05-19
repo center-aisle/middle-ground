@@ -3,7 +3,9 @@ import { Strategy as OpenIDStrategy } from "passport-openid";
     
 import "../controllers";
 import User from "../models/User";
-import { Router as router } from "express";
+// import { Router as router } from "express";
+import express from "express";
+const router = express.Router();
 
 const login = () => {
 
@@ -44,4 +46,4 @@ const login = () => {
     );
 }
 
-export = login;
+export default login;

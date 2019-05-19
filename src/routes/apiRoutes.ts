@@ -1,6 +1,7 @@
 // import controller from "../controllers/usersController.ts";
 import User from "../models/User.ts";
-import { Router as routes } from "express";
+import express from "express";
+const routes = express.Router();
 import "mongoose";
 
 // Route to post our form submission to mongoDB via mongoose
