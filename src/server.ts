@@ -1,9 +1,12 @@
-import {config} from "dotenv";
+import "dotenv";
 import express from "express";
+import session from "express-session";
 import path from "path";
 import mongoose from "mongoose";
+import passport from "passport";
 
-const routes = require("./routes/apiRoutes.ts");
+import routes from "./routes/apiRoutes";
+import login from "./config/config";
 
 const app = express(),
     PORT = process.env.PORT || 3001;
@@ -15,10 +18,14 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("build"));
 };
 
+app.use(session({ secret: "deodorize armpits" }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use("/user", login); // not sure if this line is necessary?
 app.use(routes);
 app.use(express.static("build/public"));
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "build/public/index.html"));
 });
 
