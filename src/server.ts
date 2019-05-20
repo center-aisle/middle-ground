@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import passport from "passport";
 
 import routes from "./routes/apiRoutes";
-import login from "./config/config";
+import { pass, router } from "./config/config";
 
 const app = express(),
     PORT = process.env.PORT || 3001;
@@ -21,7 +21,8 @@ if (process.env.NODE_ENV === "production") {
 app.use(session({ secret: "deodorize armpits" }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/user", login); // not sure if this line is necessary?
+app.use(pass); // not sure if this line is necessary?
+app.use(router); // not sure if this line is necessary?
 app.use(routes);
 app.use(express.static("build/public"));
 
