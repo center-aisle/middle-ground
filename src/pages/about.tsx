@@ -4,7 +4,6 @@ function Wrapper() {
   return (
     <div className='main-container'>
 
-
     </div>
   );
 }
