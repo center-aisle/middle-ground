@@ -1,26 +1,27 @@
 import React from 'react';
+import {Button} from 'react-materialize';
+// import './nav.css';
 
 function Nav() {
   return (
 
-  <nav>
-  <div className='nav-wrapper purple lighten-2'>
-    <a href='/' className='brand-logo right'>Political Middle</a>
-    <ul id='nav-mobile' className='left hide-on-med-and-down'>
-      <li><a href='/user'>User Account</a></li>
-      <li><a href='badges.html'>Find Friends</a></li>
-      <li><a href='/about'>About</a></li>
-      <li><a href='/contact'>Contact</a></li>
-
-    </ul>
-  </div>
-</nav>
-
+<Button
+  floating
+  fab={{direction: 'bottom'}}
+  icon="edit"
+  className="red"
+  large
+  style={{top: '50px'}}
+>
+<Button floating icon="insert_chart" className="red" />
+<Button floating icon="format_quote" className="yellow darken-1" />
+<Button floating icon="publish" className="green" />
+<Button floating icon="attach_file" className="blue" />
+</Button>
   );
 }
 
 export default Nav;
-
 
 // // In YourComponent.js
 // ...

@@ -1,8 +1,8 @@
 // import controller from "../controllers/usersController.ts";
-import User from "../models/User.ts";
-import express from "express";
+import User from '../models/User.ts';
+import express from 'express';
 const routes = express.Router();
-import "mongoose";
+import 'mongoose';
 
 routes.get("/submit", function (req, res) {
     res.render("hello world")
@@ -13,7 +13,7 @@ routes.post("/submit", function (req, res) {
 });
 
 // Route to post our form submission to mongoDB via mongoose
-routes.put("/submit", function(req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) {
+routes.put('/submit', function(req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) {
     // Create a new user using req.body
     User.update(req.body)
       .then(function(dbUser: any) {
