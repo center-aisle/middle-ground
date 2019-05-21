@@ -5,17 +5,17 @@ const personalScoreSchema = new Schema ({
     outdoors: [{
         type: String,
         required: true,
-        default: false
+        ref: "outdoorsSchema"
     }],
     home: [{
         type: String,
         required: true,
-        default: false
+        ref: "homeSchema"
     }],
     sports: [{
         type: String,
         required: true,
-        default: false
+        ref: "sportSchema"
     }],
     music: [{
         type: Schema.Types.ObjectId,
