@@ -1,5 +1,5 @@
 import React from 'react';
-import {Carousel, Row,CardPanel, Col} from 'react-materialize'
+import {Carousel, Row,CardPanel, Col} from 'react-materialize';
 
 function Questions1() {
   
