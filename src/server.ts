@@ -3,10 +3,10 @@ import express from "express";
 import session from "express-session";
 import path from "path";
 import mongoose from "mongoose";
-import Passport from "passport";
+// import Passport from "passport";
 import { session as MongoStore } from "connect-mongo";
 import routes from "./routes/apiRoutes";
-import passportStrategy from "./config/passportStrategy";
+import Passport from "./config/passportStrategy";
 
 const app = express(),
     PORT = process.env.PORT || 3001;
@@ -31,7 +31,6 @@ app.use(Passport.session());
 
 // routes
 // check these
-app.use(passportStrategy); // not sure if this line is necessary?
 app.use(routes);
 
 // get home page
