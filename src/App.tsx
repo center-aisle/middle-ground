@@ -12,6 +12,7 @@ import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Nav from './components/nav/nav';
 import Body from './components/body/body';
+import Questions1 from "./pages/questions"
 import Wrapper from './components/wrapper/wrapper';
 import './App.css';
 
@@ -23,7 +24,7 @@ const App: React.FC = () => {
           <Nav/>
           <Header/>
           <Body/>
-
+          <Questions1/>
           <Switch>
             {/* https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path */}
             <Route exact path='/' component={Splash} />
