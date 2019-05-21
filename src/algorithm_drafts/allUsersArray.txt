@@ -4,6 +4,7 @@
 module.exports = [
     {
         person1: {
+            openID: "",
             name: "",
             bio: "",
             gender: "", // F/M/Other
@@ -39,8 +40,12 @@ module.exports = [
                     outdoors: {
                         hiking: false,
                         camping: false,
-                        climbing: false,
-                        fishingHunting: false,
+                        rockclimbing: false,
+                        bouldering: false,
+                        fishing: false,
+                        hunting: false,
+                        kayaking: false,
+                        paintballing: false,
                         other: false
                     }
                 },
@@ -48,6 +53,10 @@ module.exports = [
                     home: {
                         reading: false,
                         cooking: false,
+                        baking: false,
+                        knitting: false,
+                        sewing: false,
+                        boardgames: false,
                         gardening: false,
                         DIYHomeProjects: false,
                         other: false
@@ -62,6 +71,7 @@ module.exports = [
                         iceHockey: false,
                         running: false,
                         swimming: false,
+                        polo: false,
                         cycling: false,
                         other: false
                     }
