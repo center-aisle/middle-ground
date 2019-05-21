@@ -4,6 +4,14 @@ import express from 'express';
 const routes = express.Router();
 import 'mongoose';
 
+routes.get("/submit", function (req, res) {
+    res.render("hello world")
+});
+
+routes.post("/submit", function (req, res) {
+  User.create(req.body)
+});
+
 // Route to post our form submission to mongoDB via mongoose
 routes.put('/submit', function(req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) {
     // Create a new user using req.body
