@@ -24,10 +24,8 @@ routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (a
 
 
 /*********************************
- * 
  * USER AUTHENTICATION BELOW
  * DO NOT TOUCH
- * 
  ***********************************/ 
 
 
