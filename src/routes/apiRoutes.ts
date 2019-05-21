@@ -31,7 +31,9 @@ routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (a
  ***********************************/ 
 
 
-routes.post("/auth/openid", Passport.authenticate("openidconnect", {scope: "openidconnect profile"}));
+routes.post("/auth/openid", Passport.authenticate("openidconnect",
+	{scope: "openidconnect profile"}
+));
 
 routes.get("/auth/openid/return",
 	Passport.authenticate("openidconnect", {
@@ -47,11 +49,13 @@ routes.get("/auth/openid/return",
 routes.get("/user/account",
 	ensureLoggedIn("/user"),
 	(req, res) => {
+		console.log("USER: ", req.user);
 		res.render("/user/account", { user: req.user });
 	}
 );
 
 routes.get("/logout", function (req, res) {
+	console.log("SESSION: ", req.session);
 	req.session.destroy(() => res.redirect("/"));
 });
 

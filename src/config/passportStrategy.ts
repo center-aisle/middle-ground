@@ -36,6 +36,7 @@ Passport.serializeUser((
         arg0: any,
         arg1: any
     ) => void) => {
+        console.log("SERIALIZED USER: ", user.id);
         done(null, user.id);
     }
 );
@@ -47,6 +48,7 @@ Passport.deserializeUser((
         arg1: any
     ) => void) => {
         User.findById(id, (err: any, user: any) => {
+            console.log("DESERIALIZED USER: ", user);
             done(err, user);
         });
     }
