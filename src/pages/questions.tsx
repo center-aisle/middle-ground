@@ -1,5 +1,5 @@
 import React from 'react';
-import Carousel from 'react-materialize'
+import {Carousel} from 'react-materialize'
 
 function Questions1() {
   return (
