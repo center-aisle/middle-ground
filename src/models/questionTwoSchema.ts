@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-    const questionOneSchema = new Schema ({
+    const questionTwoSchema = new Schema ({
         answerD: {
             type: Boolean,
             required: true,
@@ -11,8 +11,8 @@ const Schema = mongoose.Schema;
             type: Boolean,
             required: true,
             default: false
-        },
+        }
     });
 
-const QuestionOne = mongoose.model("QuestionOne", questionOneSchema)
-export default QuestionOne;
+const QuestionTwo = mongoose.model("QuestionTwo", questionTwoSchema)
+export default QuestionTwo;
