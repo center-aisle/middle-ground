@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import Passport from "passport";
 import { session as MongoStore } from "connect-mongo";
 import routes from "./routes/apiRoutes";
-import { Passport as passportStrategy} from "./config/passportStrategy";
+import passportStrategy from "./config/passportStrategy";
 
 const app = express(),
     PORT = process.env.PORT || 3001;

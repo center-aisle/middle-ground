@@ -53,7 +53,7 @@ routes.get("/user/account",
 	}
 );
 
-routes.get("/logout", function (req, res) {
+routes.get("/logout", (req, res) => {
 	console.log("SESSION: ", req.session);
 	req.session.destroy(() => res.redirect("/"));
 });

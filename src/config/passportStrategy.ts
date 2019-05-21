@@ -1,8 +1,8 @@
-import Passport from "passport";
+import {Passport as passportStrategy} from "passport";
 import Strategy from "passport-openidconnect";
 import User from "../models/User";
 
-Passport.use(new Strategy({
+passportStrategy.use(new Strategy({
     returnURL: "https://bipartisan.herokuapp.com/user/account",
     realm: "https://bipartisan.herokuapp.com/",
     profile: true,
@@ -28,7 +28,7 @@ Passport.use(new Strategy({
     });
 }));
 
-Passport.serializeUser((
+passportStrategy.serializeUser((
     user: any,
     done: (
         arg0: any,
@@ -39,7 +39,7 @@ Passport.serializeUser((
     }
 );
 
-Passport.deserializeUser((
+passportStrategy.deserializeUser((
     id: any,
     done: (
         arg0: any,
@@ -52,4 +52,4 @@ Passport.deserializeUser((
     }
 );
 
-export default Passport;
+export default passportStrategy;
