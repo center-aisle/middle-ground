@@ -1,35 +1,35 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "outDir": "dist",
-    "rootDir": "src",
-    "sourceMap": true,
-    "baseUrl": "src",
-    "noEmit": true
-  },
-  "include": [
-    "src/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "store": {
-    "url": "mongodb://localhost/users"
-  }
+	"compilerOptions": {
+		"target": "es6",
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"outDir": "dist",
+		"rootDir": "src",
+		"sourceMap": true,
+		"baseUrl": "src",
+		"noEmit": true
+	},
+	"include": [
+		"src/*"
+	],
+	"exclude": [
+		"node_modules"
+	],
+	"store": {
+		"url": "mongodb://localhost/users"
+	}
 }
