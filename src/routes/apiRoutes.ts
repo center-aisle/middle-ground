@@ -1,11 +1,13 @@
 // import controller from "../controllers/usersController.ts";
 import "mongoose";
 import User from "../models/User";
+import Passport from "passport";
+import ensureLoggedIn from "connect-ensure-login";
 import express from "express";
 const routes = express.Router();
 
 
-// Route to post our form submission to mongoDB via mongoose
+// Route to post (update) our form submission to mongoDB via mongoose
 routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) => {
 	// update a user using req.body
 	User.updateOne(req.body) // --->> there's a problem here
@@ -19,19 +21,38 @@ routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (a
 		});
 });
 
-routes.post("/auth/openid", (req, res) => {
-	User.findOrCreate({
-		openId: req.body.openId,
-		firstName: req.body.firstName,
-		lastName: req.body.lastName,
-		email: req.body.email
-	}, (err, user) => {
-		if (err) throw err;
-	}).then((dbUser: any) => {
-		res.json(dbUser);
-	}).catch((err: any) => {
-		if (err) throw err;
-	});
+
+
+/*********************************
+ * 
+ * USER AUTHENTICATION BELOW
+ * DO NOT TOUCH
+ * 
+ ***********************************/ 
+
+
+routes.post("/auth/openid", Passport.authenticate("openidconnect", {scope: "openidconnect profile"}));
+
+routes.get("/auth/openid/return",
+	Passport.authenticate("openidconnect", {
+			session: true,
+			failureRedirect: "/user" 
+		}).then( (req: any,
+			res: { redirect: (arg0: string) => void; }
+		) => {
+			res.redirect("/user/account");
+		})
+);
+
+routes.get("/user/account",
+	ensureLoggedIn("/user"),
+	(req, res) => {
+		res.render("/user/account", { user: req.user });
+	}
+);
+
+routes.get("/logout", function (req, res) {
+	req.session.destroy(() => res.redirect("/"));
 });
 
 export default routes;
