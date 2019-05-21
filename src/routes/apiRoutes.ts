@@ -7,19 +7,8 @@ import express from "express";
 const routes = express.Router();
 
 
-// Route to post (update) our form submission to mongoDB via mongoose
-// routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) => {
-// 	// update a user using req.body
-// 	User.updateOne(req.body) // --->> there's a problem here
-// 		.then((dbUser: any) => {
-// 			// If saved successfully, send the the new User document to the client
-// 			res.json(dbUser);
-// 		})
-// 		.catch((err: any) => {
-// 			// If an error occurs, send the error to the client
-// 			if (err) throw err;
-// 		});
-// });
+// need a .get route
+// .put route to update user info with questionnaire answers
 
 
 
@@ -65,9 +54,9 @@ export default routes;
  * 
  * /user (real page)
  * /user/account (real page)
- * /logout
- * /submit
- * /auth/openidconnect
- * /auth/openidconnect/return
+ * /logout (redirect to home page)
+ * /submit (stays on /user/account page)
+ * /auth/openidconnect (post)
+ * /auth/openidconnect/return (redirects to /user/account page)
  * 
  *******************************/
