@@ -23,7 +23,6 @@ function Nav() {
 
 export default Nav;
 
-
 // // In YourComponent.js
 // ...
 // import { NavHashLink as NavLink } from 'react-router-hash-link';

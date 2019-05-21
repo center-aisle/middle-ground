@@ -5,6 +5,7 @@ function Wrapper() {
   return (
     <div className='main-container'>
       <Login/>
+      <p>This is the account</p>
     </div>
   );
 }
