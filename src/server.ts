@@ -40,8 +40,8 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "build/public/index.html"));
 });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/users");
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/users');
 
 app.listen(PORT, () => {
-    console.log("\uD83C\uDF0E  ==> API Server now listening on PORT " + PORT + "!");
+    console.log('\uD83C\uDF0E  ==> API Server now listening on PORT ' + PORT + '!');
 });
