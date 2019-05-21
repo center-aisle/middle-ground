@@ -1,10 +1,8 @@
 import Passport from "passport";
-import { Strategy as OpenIDConnectStrategy } from "passport-openidconnect";
-    
-// import "../controllers";
+import Strategy from "passport-openidconnect";
 import User from "../models/User";
 
-Passport.use(new OpenIDConnectStrategy({
+Passport.use(new Strategy({
     returnURL: "https://bipartisan.herokuapp.com/user/account",
     realm: "https://bipartisan.herokuapp.com/",
     profile: true,

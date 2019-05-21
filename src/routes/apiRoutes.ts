@@ -31,17 +31,18 @@ routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (a
  ***********************************/ 
 
 
-routes.post("/auth/openid", Passport.authenticate("openidconnect",
+routes.post("/auth/openidconnect", Passport.authenticate("openidconnect",
 	{scope: "openidconnect profile"}
 ));
 
-routes.get("/auth/openid/return",
+routes.get("/auth/openidconnect/return",
 	Passport.authenticate("openidconnect", {
 			session: true,
 			failureRedirect: "/user" 
 		}).then( (req: any,
 			res: { redirect: (arg0: string) => void; }
 		) => {
+			console.log("SUCCESSFUL AUTHENTICATION NOW REDIRECTING");
 			res.redirect("/user/account");
 		})
 );
@@ -60,3 +61,15 @@ routes.get("/logout", function (req, res) {
 });
 
 export default routes;
+
+/*****************************
+ * ALL ROUTES LISTED HERE FOR REFERENCE
+ * 
+ * /user (real page)
+ * /user/account (real page)
+ * /logout
+ * /submit
+ * /auth/openidconnect
+ * /auth/openidconnect/return
+ * 
+ *******************************/

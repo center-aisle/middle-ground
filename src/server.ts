@@ -5,7 +5,6 @@ import path from "path";
 import mongoose from "mongoose";
 import Passport from "passport";
 import { session as MongoStore } from "connect-mongo";
-
 import routes from "./routes/apiRoutes";
 import { Passport as passportStrategy} from "./config/passportStrategy";
 
@@ -37,7 +36,7 @@ app.use(routes);
 
 // get home page
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "build/public/index.html"));
+    res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/users');
