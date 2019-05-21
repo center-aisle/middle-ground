@@ -2,6 +2,7 @@ import React from 'react';
 import {Carousel, Row,CardPanel, Col} from 'react-materialize'
 
 function Questions1() {
+  
   return (
     <div className= "container">
     <Carousel options={{fullWidth: true,indicators: true}} className="white-text center">
@@ -11,7 +12,7 @@ function Questions1() {
     </h2>
     <p>
     <Row>
-<Col m={6} s={12}>
+  <Col m={6} s={12}>
 <CardPanel className="teal">
 <span className="white-text">
 For a simpler card with less markup, try using a card panel which just has padding and a shadow effect
