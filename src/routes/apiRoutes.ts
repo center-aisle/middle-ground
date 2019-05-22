@@ -17,12 +17,11 @@ const routes = express.Router();
  * DO NOT TOUCH
  ***********************************/ 
 
+// does the authenticating on hit
+routes.post("/user/account", Passport.authenticate("openidconnect"));
 
-routes.post("/auth/openidconnect", Passport.authenticate("openidconnect",
-	{scope: "openidconnect profile"}
-));
-
-routes.get("/auth/openidconnect/return",
+// automatically redirects to /user/account if success else stay on /user page
+routes.get("/user/account",
 	Passport.authenticate("openidconnect", {
 			session: true,
 			failureRedirect: "/user" 
@@ -34,6 +33,7 @@ routes.get("/auth/openidconnect/return",
 		})
 );
 
+// ensures that user is authenticated to access /user/account page
 routes.get("/user/account",
 	ensureLoggedIn("/user"),
 	(req, res) => {
@@ -42,8 +42,10 @@ routes.get("/user/account",
 	}
 );
 
+// destroys session on logout and redirects to home page "/"
 routes.get("/logout", (req, res) => {
 	console.log("LOGGING OUT SESSION: ", req.session);
+	req.logout;
 	req.session.destroy(() => res.redirect("/"));
 });
 

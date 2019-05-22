@@ -7,10 +7,11 @@ function Login() {
             <div className='col s12 m7'>
                 <div className='card'>
                     <div className='card-content center'>
-                        <form action='/auth/openid' method='post'>
+                        <a href="/user/account">User account link</a>
+                        <form action='/auth/openidconnect' method='post'>
                             <div>
                                 <label>Log in using your email or create a new account using your email</label>
-                                <input type='text' name='openid_identifier'/>
+                                <input type='text' name='openidconnect_identifier'/>
                                 <br/>
                                 <input type='submit' value='Sign In'/>
                             </div>
