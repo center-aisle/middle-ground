@@ -7,8 +7,8 @@ import express from "express";
 const routes = express.Router();
 
 
-// need a .get route
-// .put route to update user info with questionnaire answers
+// need a .get route to retrieve user's info
+// need a .put route to update user info with questionnaire answers
 
 
 
@@ -50,7 +50,7 @@ routes.get("/logout", (req, res) => {
 export default routes;
 
 /*****************************
- * ALL ROUTES LISTED HERE FOR REFERENCE
+ * ALL LOGIN ROUTES LISTED HERE FOR REFERENCE
  * 
  * /user (real page)
  * /user/account (real page)
