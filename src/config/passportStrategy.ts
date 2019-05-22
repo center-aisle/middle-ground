@@ -11,13 +11,13 @@ Passport.use(new Strategy({
         client_id: process.env.OAUTH_ID,
         response_type: "code",
         scope: "openid profile email",
-        nonce: rn({min: 111111, max: 999999999999, integer: true}),
-        redirect_uri: https://bipartisan.herokuapp.com/user/account,
-        state: rn({min: 111111, max: 999999999999, integer: true}),
+        nonce: 24857924857,
+        redirect_uri: "https://bipartisan.herokuapp.com/user/account",
+        state: 93847593847593845,
         prompt: "select_account consent",
         display: "popup",
         login_hint: "sub",
-        openid.realm: "https://bipartisan.herokuapp.com/"
+        realm: "https://bipartisan.herokuapp.com/"
     }
 
     // client_id: process.env.OAUTH_ID,

@@ -8,14 +8,14 @@ function Login() {
                 <div className='card'>
                     <div className='card-content center'>
                         <a href="/user/account">User account link</a>
-                        <form action='/auth/openidconnect' method='post'>
+                        {/* <form action='/auth/openidconnect' method='post'>
                             <div>
                                 <label>Log in using your email or create a new account using your email</label>
                                 <input type='text' name='openidconnect_identifier'/>
                                 <br/>
                                 <input type='submit' value='Sign In'/>
                             </div>
-                        </form>
+                        </form> */}
                     </div>
 
                     <div className='card-action'>
