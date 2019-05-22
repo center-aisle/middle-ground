@@ -3,17 +3,17 @@ const Schema = mongoose.Schema;
 
 const personalScoreSchema = new Schema ({
     outdoors: [{
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
         ref: "outdoorsSchema"
     }],
     home: [{
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
         ref: "homeSchema"
     }],
     sports: [{
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
         ref: "sportSchema"
     }],
