@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import {Carousel} from 'react-materialize'
-=======
-import {Carousel, Row,CardPanel, Col} from 'react-materialize'
->>>>>>> master
+import {Carousel, Row,CardPanel, Col} from 'react-materialize';
 
 function Questions1() {
   

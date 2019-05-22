@@ -4,22 +4,23 @@ import User from "../models/User";
 import Passport from "passport";
 import ensureLoggedIn from "connect-ensure-login";
 import express from "express";
+import { forInStatement } from "@babel/types";
 const routes = express.Router();
 
-
+//FIXME: Commented out to work on frontend.  Uncomment Catherine/Nicole
 // Route to post (update) our form submission to mongoDB via mongoose
-routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) => {
-	// update a user using req.body
-	User.updateOne(req.body) // --->> there's a problem here
-		.then((dbUser: any) => {
-			// If saved successfully, send the the new User document to the client
-			res.json(dbUser);
-		})
-		.catch((err: any) => {
-			// If an error occurs, send the error to the client
-			if (err) throw err;
-		});
-});
+// routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) => {
+// 	// update a user using req.body
+// 	User.updateOne(req.body) // --->> there's a problem here
+// 		.then((dbUser: any) => {
+// 			// If saved successfully, send the the new User document to the client
+// 			res.json(dbUser);
+// 		})
+// 		.catch((err: any) => {
+// 			// If an error occurs, send the error to the client
+// 			if (err) throw err;
+// 		});
+// });
 
 
 
@@ -53,10 +54,11 @@ routes.get("/user/account",
 	}
 );
 
-routes.get("/logout", (req, res) => {
-	console.log("SESSION: ", req.session);
-	req.session.destroy(() => res.redirect("/"));
-});
+//FIXME: Recomment later
+// routes.get("/logout", (req, res) => {
+// 	console.log("SESSION: ", req.session);
+// 	req.session.destroy(() => res.redirect("/"));
+// });
 
 export default routes;
 
