@@ -3,7 +3,6 @@ import React from 'react';
 function Body() {
   return (
     <div className='container'>
-      <h2>Find your new best frenemy!</h2>
       <p>Answer some questions to find out where you fit on the political spectrum, and be</p>
 
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
@@ -32,7 +31,7 @@ function Body() {
   <br></br>
   <br></br>
 
-    </div>
+  </div>
 
   );
 }
