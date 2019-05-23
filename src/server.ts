@@ -30,7 +30,7 @@ app.use(Passport.initialize());
 app.use(Passport.session());
 
 // routes
-// check these
+// FIXME:check these
 app.use(routes);
 
 // get home page
