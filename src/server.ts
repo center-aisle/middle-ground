@@ -3,10 +3,9 @@ import express from "express";
 import session from "express-session";
 import path from "path";
 import mongoose from "mongoose";
-// import Passport from "passport";
 import { session as MongoStore } from "connect-mongo";
 import routes from "./routes/apiRoutes";
-import Passport from "./config/passportStrategy";
+// import Passport from "./config/passportStrategy";
 
 const app = express(),
     PORT = process.env.PORT || 3001;
@@ -21,13 +20,13 @@ app.use(express.static((path.join(__dirname, "public"))));
 
 // sessions
 app.use(session({
-    secret: "deodorize all my armpits",
+    secret: process.env.SESSION_SECRET,
     store: new MongoStore({ mongooseConnection: process.env.MONGODB_URI || "mongodb://localhost/users" }),
     resave: false,
     saveUninitialized: true
  }));
-app.use(Passport.initialize());
-app.use(Passport.session());
+// app.use(Passport.initialize());
+// app.use(Passport.session());
 
 // routes
 // FIXME:check these
