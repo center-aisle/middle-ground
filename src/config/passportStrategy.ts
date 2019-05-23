@@ -7,6 +7,7 @@ Passport.use(new Strategy({
     realm: "https://bipartisan.herokuapp.com/",
     profile: true,
     scope: "openidconnect profile"
+<<<<<<< HEAD
 // }, (
 //     identifier: any,
 //     profile: { 
@@ -26,6 +27,27 @@ Passport.use(new Strategy({
 //     // }, (err: any, user: any) => {
 //     //     done(err, user);
 //     // });
+=======
+}, (
+    identifier: any,
+    profile: { 
+        givenName: any;
+        familyName: any;
+        emails: { value: any; }[];
+    }, done: (
+        arg0: any,
+        arg1: any
+    ) => void
+) => { //FIXME: Recomment in
+    // User.findOrCreate({ // this method might be a problem
+    //     openId: identifier,
+    //     firstName: profile.givenName,
+    //     lastName: profile.familyName,
+    //     email: profile.emails[0].value // takes first email if there's more than one
+    // }, (err: any, user: any) => {
+    //     done(err, user);
+    // });
+>>>>>>> master
 }));
 
 Passport.serializeUser((
