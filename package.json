@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.1",
     "@types/jest": "24.0.12",
     "@types/mongoose": "^5.5.1",
@@ -35,8 +36,8 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "tsc",
+    "start": "concurrently --kill-others \"tsc -w\" \"nodemon dist/server.js\" \"react-scripts start",
+    "build": "tsc --noEmit false",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json",
@@ -60,6 +61,7 @@
   "devDependencies": {
     "@types/react-router-dom": "^4.3.3",
     "awesome-typescript-loader": "^5.2.1",
+    "concurrently": "^4.1.0",
     "source-map-loader": "^0.2.4",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5"
