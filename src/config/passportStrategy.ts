@@ -12,30 +12,12 @@ Passport.use(new Strategy({
         scope: "openid profile email",
         nonce: rn({min: 111111, max: 999999999, integer: true}),
         redirect_uri: "https://bipartisan.herokuapp.com/user/account",
-        state: rn({min: 111111, max: 999999999, integer: true}),
+        state: rn({min: 1111111, max: 9999999999, integer: true}),
         prompt: "select_account consent",
         display: "popup",
         login_hint: "sub",
         realm: "https://bipartisan.herokuapp.com/"
     }
-
-    // client_id: process.env.OAUTH_ID,
-    // response_type: "code",
-    // scope: "openid email profile",
-    // state: ,
-    // nonce: ,
-    // openid.realm: "https://bipartisan.herokuapp.com/",
-    // issuer: "https://accounts.google.com",
-    // redirect_uri: "https://bipartisan.herokuapp.com/user/account",    
-    // authorizationURL: "https://accounts.google.com/o/oauth2/v2/auth",
-    // tokenURL: "https://oauth2.googleapis.com/token",
-    // userInfoURL: "https://openidconnect.googleapis.com/v1/userinfo",
-    // clientID: process.env.OAUTH_ID,
-    // clientSecret: process.env.OAUTH_SECRET,
-    // profile: true,
-    // scope: "openid email profile",
-    // prompt: "select_account",
-    // nonce: 12345678910
 }, (
     openid: any,
     profile: { 
@@ -57,26 +39,17 @@ Passport.use(new Strategy({
         email: email // takes first email if there's more than one
     }, (err: any, user: any) => {
         if (err) { 
-            return done(err, user);
+            done(err, user);
         };
         if (!user) {
-          return done(null, false);
+            done(null, false);
         };
         if (!user.validPassword(password)) {
-          return done(null, false);
+            done(null, false);
         };
-        return done(null, user);
+        done(null, user);
    
     });
-//) => { //FIXME: Recomment in
-    // User.findOrCreate({ // this method might be a problem
-    //     openId: identifier,
-    //     firstName: profile.givenName,
-    //     lastName: profile.familyName,
-    //     email: profile.emails[0].value // takes first email if there's more than one
-    // }, (err: any, user: any) => {
-    //     done(err, user);
-    // });
 }));
 
 // start session

@@ -57,20 +57,12 @@ routes.get("/user/account",
 	}
 );
 
-<<<<<<< HEAD
 // destroys session on logout and redirects to home page "/"
 routes.get("/logout", (req, res) => {
 	console.log("LOGGING OUT SESSION: ", req.session);
 	req.logout;
 	req.session.destroy(() => res.redirect("/"));
 });
-=======
-//FIXME: Recomment later
-// routes.get("/logout", (req, res) => {
-// 	console.log("SESSION: ", req.session);
-// 	req.session.destroy(() => res.redirect("/"));
-// });
->>>>>>> fc6d12876627c1433798b6ead0aef132e905f3fa
 
 export default routes;
 
@@ -81,7 +73,7 @@ export default routes;
  * /user/account (real page)
  * /logout (redirect to home page)
  * /submit (stays on /user/account page)
- * /auth/openidconnect (post)
- * /auth/openidconnect/return (redirects to /user/account page)
+ * /auth/openidconnect (api endpoint for post)
+ * /auth/openidconnect/return (api endpoint that redirects to /user/account page)
  * 
  *******************************/
