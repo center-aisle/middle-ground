@@ -18,15 +18,15 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "dist")));
 };
-app.use(express.static((path.join(__dirname, "public"))));
+app.use(express.static((path.join(__dirname, "public"))));  
 
 // sessions
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    store: new MongoStore({ mongooseConnection: process.env.MONGODB_URI || "mongodb://localhost/users" }),
-    resave: false,
-    saveUninitialized: true
- }));
+// app.use(session({
+//     secret: process.env.SESSION_SECRET,
+//     store: new MongoStore({ mongooseConnection: process.env.MONGODB_URI || "mongodb://localhost/users" }),
+//     resave: false,
+//     saveUninitialized: true
+//  }));
 // app.use(Passport.initialize());
 // app.use(Passport.session());
 
