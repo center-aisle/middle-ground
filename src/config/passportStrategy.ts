@@ -3,7 +3,6 @@ import Passport from "passport";
 import Strategy from "openid-client";
 import rn from "random-number";
 import User from "../models/User";
-import { Code } from "bson";
 
 Passport.use(new Strategy({
     client: "https://accounts.google.com",
@@ -11,9 +10,9 @@ Passport.use(new Strategy({
         client_id: process.env.OAUTH_ID,
         response_type: "code",
         scope: "openid profile email",
-        nonce: 24857924857,
+        nonce: rn({min: 111111, max: 999999999, integer: true}),
         redirect_uri: "https://bipartisan.herokuapp.com/user/account",
-        state: 93847593847593845,
+        state: rn({min: 111111, max: 999999999, integer: true}),
         prompt: "select_account consent",
         display: "popup",
         login_hint: "sub",
