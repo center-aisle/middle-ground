@@ -24,10 +24,7 @@ const App: React.FC = () => {
           <Nav/>
           <Header/>
           <Body/>
-<<<<<<< HEAD
-=======
           <Questions1 completed={lol}/>
->>>>>>> master
           <Switch>
             {/* https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path */}
             <Route exact path='/' component={Splash} />

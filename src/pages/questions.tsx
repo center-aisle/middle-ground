@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import React from 'react';
-import {Carousel, Row,CardPanel, Col} from 'react-materialize';
-=======
 import React from "react";
 import { Carousel, Row, CardPanel, Col } from "react-materialize";
->>>>>>> master
 
 interface IPoliticalQuestions {
   id: string;

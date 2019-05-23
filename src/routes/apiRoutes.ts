@@ -7,13 +7,8 @@ import express from "express";
 import { forInStatement } from "@babel/types";
 const routes = express.Router();
 
-<<<<<<< HEAD
-
-// // Route to post (update) our form submission to mongoDB via mongoose
-=======
 //FIXME: Commented out to work on frontend.  Uncomment Catherine/Nicole
 // Route to post (update) our form submission to mongoDB via mongoose
->>>>>>> master
 // routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) => {
 // 	// update a user using req.body
 // 	User.updateOne(req.body) // --->> there's a problem here
@@ -59,10 +54,7 @@ routes.get("/user/account",
 	}
 );
 
-<<<<<<< HEAD
-=======
 //FIXME: Recomment later
->>>>>>> master
 // routes.get("/logout", (req, res) => {
 // 	console.log("SESSION: ", req.session);
 // 	req.session.destroy(() => res.redirect("/"));
