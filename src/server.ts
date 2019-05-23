@@ -1,4 +1,4 @@
-import "dotenv";
+// import { config } from "dotenv";
 import express from "express";
 import session from "express-session";
 import path from "path";
@@ -6,6 +6,8 @@ import mongoose from "mongoose";
 import { session as MongoStore } from "connect-mongo";
 import routes from "./routes/apiRoutes";
 // import Passport from "./config/passportStrategy";
+
+// config({ path: path.resolve(__dirname, "../.env") });
 
 const app = express(),
     PORT = process.env.PORT || 3001;
