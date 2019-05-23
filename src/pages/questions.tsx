@@ -57,6 +57,12 @@ export default class PoliticalQuestions extends React.Component<any, ComponentSt
     allQuestions: []
   };
 
+  //TODO: Look up using Redux
+  clickFunction(choice: string): void {
+      console.log('Clicked ', choice);
+
+  };
+
   componentDidMount(): void {
       setTimeout(() => {
           this.setState({
@@ -82,27 +88,24 @@ export default class PoliticalQuestions extends React.Component<any, ComponentSt
           {this.state.allQuestions.map(quest => (
             <div key={quest.id} className={quest.color}>
                 <h2>{quest.title}</h2>
-                    <Row>
-                        <Col m={6} s={12}>
-                            <a>
-                            <CardPanel className="teal waves-effect">
-                                <span className="white-text">
-                                    {quest.answerD}
-                                </span>
-                            </CardPanel>
-                            </a>
-                        </Col>
 
-                        <Col m={6} s={12}>
-                            <a>
-                            <CardPanel className="teal waves-effect">
-                                <span className="white-text">
-                                    {quest.answerR}
-                                </span>
-                            </CardPanel>
-                            </a>
-                        </Col>
-                    </Row>
+                <Row>
+                    <Col m={6} s={12}>
+                        <CardPanel className="teal waves-effect" onClick={(event: any) => this.clickFunction(quest.answerD)}>
+                            <span className="white-text">
+                                {quest.answerD}
+                            </span>
+                        </CardPanel>
+                    </Col>
+
+                    <Col m={6} s={12}>
+                        <CardPanel className="teal waves-effect" onClick={(event: any) => this.clickFunction(quest.answerR)}>
+                            <span className="white-text">
+                                {quest.answerR}
+                            </span>
+                        </CardPanel>
+                    </Col>
+                </Row>
             </div>
           ))}
         </Carousel>
