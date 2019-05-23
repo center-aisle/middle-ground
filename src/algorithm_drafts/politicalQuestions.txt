@@ -14,13 +14,6 @@ module.exports = [
             }
     },
     {
-        question1:
-            {
-                answerD: "The government should do more to help needy Americans, even if it means going deeper into debt",
-                answerR: "The government today can't afford to do much more to help the needy"
-            }
-    },
-    {
         question3:
             {
                 answerR: "The best way to ensure peace is through military strength",
