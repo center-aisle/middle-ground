@@ -1,4 +1,4 @@
-import "dotenv";
+import config from "dotenv";
 import express from "express";
 import session from "express-session";
 import path from "path";
@@ -29,7 +29,6 @@ app.use(Passport.initialize());
 app.use(Passport.session());
 
 // routes
-// FIXME:check these
 app.use(routes);
 
 // get home page

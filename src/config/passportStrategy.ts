@@ -1,10 +1,10 @@
+import config from "dotenv";
 import Passport from "passport";
-// import Strategy from "passport-openidconnect";
 import Strategy from "openid-client";
 import rn from "random-number";
 import User from "../models/User";
 
-Passport.use(new Strategy({
+Passport.use("oidc", new Strategy({
     client: "https://accounts.google.com/.well-known/openid-configuration",
     params: {
         client_id: process.env.OAUTH_ID,
@@ -17,7 +17,9 @@ Passport.use(new Strategy({
         display: "popup",
         login_hint: "sub",
         realm: "https://bipartisan.herokuapp.com/"
-    }
+    },
+    passReqToCallback: false,
+    usePKCE: false
 }, (tokenSet: any, userInfo: any, done: (arg0: null, arg1: any) => void) => {
     console.log("USERINFO: ", userInfo);
     console.log("TOKENSET: ", tokenSet);
