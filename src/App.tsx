@@ -24,7 +24,7 @@ const App: React.FC = () => {
           <Nav/>
           <Header/>
           <Body/>
-          <Questions1/>
+          <Questions1 completed={lol}/>
           <Switch>
             {/* https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path */}
             <Route exact path='/' component={Splash} />
@@ -43,5 +43,9 @@ const App: React.FC = () => {
     </Router>
   );
 };
+
+function lol(what: boolean) {
+  console.log("We are done!", what);
+}
 
 export default App;

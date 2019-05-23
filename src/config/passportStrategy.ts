@@ -68,6 +68,15 @@ Passport.use(new Strategy({
         return done(null, user);
    
     });
+//) => { //FIXME: Recomment in
+    // User.findOrCreate({ // this method might be a problem
+    //     openId: identifier,
+    //     firstName: profile.givenName,
+    //     lastName: profile.familyName,
+    //     email: profile.emails[0].value // takes first email if there's more than one
+    // }, (err: any, user: any) => {
+    //     done(err, user);
+    // });
 }));
 
 // start session
