@@ -39,7 +39,8 @@ routes.post("/auth/openidconnect", Passport.authenticate("oidc"));
 routes.get("/auth/openidconnect/return",
 	Passport.authenticate("oidc", {
 			session: true,
-			failureRedirect: "/user" 
+			failureRedirect: "/user" ,
+			failureFlash: "Invalid login, try again"
 		}).then( (req: any,
 			res: { redirect: (arg0: string) => void; }
 		) => {

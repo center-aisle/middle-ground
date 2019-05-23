@@ -1,13 +1,15 @@
-import config from "dotenv";
+import dotenv from "dotenv";
+import path from "path";
 import Passport from "passport";
 import Strategy from "openid-client";
 import rn from "random-number";
 import User from "../models/User";
 
-Passport.use("oidc", new Strategy({
-    client: "https://accounts.google.com/.well-known/openid-configuration",
-    params: {
-        client_id: process.env.OAUTH_ID,
+dotenv.config();
+
+const client = "https://accounts.google.com/.well-known/openid-configuration",
+    params = {
+        client_id: process.env.GOOGLE_ID,
         response_type: "code",
         scope: "openid profile email",
         nonce: rn({min: 111111, max: 999999999, integer: true}),
@@ -18,14 +20,25 @@ Passport.use("oidc", new Strategy({
         login_hint: "sub",
         realm: "https://bipartisan.herokuapp.com/"
     },
-    passReqToCallback: false,
-    usePKCE: false
-}, (tokenSet: any, userInfo: any, done: (arg0: null, arg1: any) => void) => {
+    passReqToCallback = false,
+    usePKCE = false;
+let sessionKey;
+
+const options = {
+    client,
+    params,
+    passReqToCallback,
+    sessionKey,
+    usePKCE
+};
+
+const verify = ( tokenSet: any, userInfo: any, done: (arg0: null, arg1: any) => void ) => {
     console.log("USERINFO: ", userInfo);
     console.log("TOKENSET: ", tokenSet);
     return done(null, tokenSet);
-}));
+};
 
+Passport.use("oidc", new Strategy( options, verify ));
 
 // (
 //     openid: any,
