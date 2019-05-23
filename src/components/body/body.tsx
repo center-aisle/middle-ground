@@ -3,33 +3,18 @@ import React from 'react';
 function Body() {
   return (
     <div className='container'>
-      <p>Answer some questions to find out where you fit on the political spectrum, and be</p>
-
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+    
 
       <div className='row'>
-    <div className='col s12 m7'>
+    <div className='col s12'>
       <div className='card'>
-        {/* <div className="card-image">
-          <img src="images/sample-1.jpg"/>
-          <span className="card-title">Card Title</span>
-        </div> */}
         <div className='card-content'>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div>
-        <div className='card-action'>
-          {/* <a data-href='#'>This is a link</a> */}
+          <p>You're here because you're ready to bring build a bridge between the severely divided sides. You'll answer some questions, then select some of your favorite activities, and finally be connected with your new best Frenemy(s)!</p>
         </div>
       </div>
     </div>
   </div>
 
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
 
   </div>
 
