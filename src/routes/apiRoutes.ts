@@ -1,12 +1,15 @@
 // import controller from "../controllers/usersController.ts";
 import "mongoose";
 import User from "../models/User";
-import Passport from "passport";
+import Passport from "../config/passportStrategy";
 import ensureLoggedIn from "connect-ensure-login";
 import express from "express";
 import { forInStatement } from "@babel/types";
 const routes = express.Router();
 
+
+// need a .get route to retrieve user's info
+// need a .put route to update user info with questionnaire answers
 //FIXME: Commented out to work on frontend.  Uncomment Catherine/Nicole
 // Route to post (update) our form submission to mongoDB via mongoose
 // routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) => {
@@ -29,12 +32,11 @@ const routes = express.Router();
  * DO NOT TOUCH
  ***********************************/ 
 
+// does the authenticating on hit
+routes.post("/user/account", Passport.authenticate("openidconnect"));
 
-routes.post("/auth/openidconnect", Passport.authenticate("openidconnect",
-	{scope: "openidconnect profile"}
-));
-
-routes.get("/auth/openidconnect/return",
+// automatically redirects to /user/account if success else stay on /user page
+routes.get("/user/account",
 	Passport.authenticate("openidconnect", {
 			session: true,
 			failureRedirect: "/user" 
@@ -46,6 +48,7 @@ routes.get("/auth/openidconnect/return",
 		})
 );
 
+// ensures that user is authenticated to access /user/account page
 routes.get("/user/account",
 	ensureLoggedIn("/user"),
 	(req, res) => {
@@ -54,22 +57,23 @@ routes.get("/user/account",
 	}
 );
 
-//FIXME: Recomment later
-// routes.get("/logout", (req, res) => {
-// 	console.log("SESSION: ", req.session);
-// 	req.session.destroy(() => res.redirect("/"));
-// });
+// destroys session on logout and redirects to home page "/"
+routes.get("/logout", (req, res) => {
+	console.log("LOGGING OUT SESSION: ", req.session);
+	req.logout;
+	req.session.destroy(() => res.redirect("/"));
+});
 
 export default routes;
 
 /*****************************
- * ALL ROUTES LISTED HERE FOR REFERENCE
+ * ALL LOGIN ROUTES LISTED HERE FOR REFERENCE
  * 
  * /user (real page)
  * /user/account (real page)
- * /logout
- * /submit
- * /auth/openidconnect
- * /auth/openidconnect/return
+ * /logout (redirect to home page)
+ * /submit (stays on /user/account page)
+ * /auth/openidconnect (api endpoint for post)
+ * /auth/openidconnect/return (api endpoint that redirects to /user/account page)
  * 
  *******************************/
