@@ -13,7 +13,8 @@ function Nav() {
   large
   style={{top: '50px'}}
 >
-<Button floating icon="info" className="blue" />
+<Button floating icon="info" className="blue" 
+/>
 <Button floating icon="pool" className="blue" />
 <Button floating icon="speaker_notes" className="blue" />
 <Button floating icon="person_pin_circle" className="blue" />

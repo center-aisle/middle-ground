@@ -1,7 +1,7 @@
 // import controller from "../controllers/usersController.ts";
 import "mongoose";
 import User from "../models/User";
-import Passport from "../config/passportStrategy";
+// import Passport from "../config/passportStrategy";
 import ensureLoggedIn from "connect-ensure-login";
 import express from "express";
 import { forInStatement } from "@babel/types";
@@ -33,20 +33,20 @@ const routes = express.Router();
  ***********************************/ 
 
 // does the authenticating on hit
-routes.post("/user/account", Passport.authenticate("openidconnect"));
+// routes.post("/user/account", Passport.authenticate("openidconnect"));
 
-// automatically redirects to /user/account if success else stay on /user page
-routes.get("/user/account",
-	Passport.authenticate("openidconnect", {
-			session: true,
-			failureRedirect: "/user" 
-		}).then( (req: any,
-			res: { redirect: (arg0: string) => void; }
-		) => {
-			console.log("SUCCESSFUL AUTHENTICATION NOW REDIRECTING");
-			res.redirect("/user/account");
-		})
-);
+// // automatically redirects to /user/account if success else stay on /user page
+// routes.get("/user/account",
+// 	Passport.authenticate("openidconnect", {
+// 			session: true,
+// 			failureRedirect: "/user" 
+// 		}).then( (req: any,
+// 			res: { redirect: (arg0: string) => void; }
+// 		) => {
+// 			console.log("SUCCESSFUL AUTHENTICATION NOW REDIRECTING");
+// 			res.redirect("/user/account");
+// 		})
+// );
 
 // ensures that user is authenticated to access /user/account page
 routes.get("/user/account",
@@ -58,11 +58,11 @@ routes.get("/user/account",
 );
 
 // destroys session on logout and redirects to home page "/"
-routes.get("/logout", (req, res) => {
-	console.log("LOGGING OUT SESSION: ", req.session);
-	req.logout;
-	req.session.destroy(() => res.redirect("/"));
-});
+// routes.get("/logout", (req, res) => {
+// 	console.log("LOGGING OUT SESSION: ", req.session);
+// 	req.logout;
+// 	req.session.destroy(() => res.redirect("/"));
+// });
 
 export default routes;
 
