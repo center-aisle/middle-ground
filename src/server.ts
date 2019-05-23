@@ -5,7 +5,7 @@ import path from "path";
 import mongoose from "mongoose";
 import { session as MongoStore } from "connect-mongo";
 import routes from "./routes/apiRoutes";
-import Passport from "./config/passportStrategy";
+// import Passport from "./config/passportStrategy";
 
 const app = express(),
     PORT = process.env.PORT || 3001;
@@ -25,8 +25,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true
  }));
-app.use(Passport.initialize());
-app.use(Passport.session());
+// app.use(Passport.initialize());
+// app.use(Passport.session());
 
 // routes
 // FIXME:check these
