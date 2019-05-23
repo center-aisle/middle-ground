@@ -5,7 +5,9 @@ interface IPoliticalQuestions {
   id: string;
   color: string;
   title: string;
-  question: string;
+  answerD: string;
+  answerR: string;
+  answerI?: string
 }
 
 interface ComponentState {
@@ -16,40 +18,49 @@ const allQuestionsFromServer: IPoliticalQuestions[] = [
   {
     id: "1",
     color: "red",
-    title: "First Panel",
-    question: `For a simpler card with less markup
-            , try using a card panel
-            which just has padding and a shadow effect`
+    title: "1st Question",
+    answerD: `The government should do more to help needy Americans, even if it means going deeper into debt`,
+    answerR:`The government today can't afford to do much more to help the needy`
   },
   {
     id: "2",
     color: "amber",
-    title: "2nd Panel",
-    question: `2 panel`
+    title: "2nd Question",
+    answerD: `Government often does a better job than people give it credit for`,
+    answerR:`Government is almost always wasteful and inefficient`
   },
   {
     id: "3",
     color: "green",
-    title: "3rd Panel",
-    question: `3 panel`
+    title: "3rd Question",
+    answerD: `Good diplomacy is the best way to ensure peace`,
+    answerR:`The best way to ensure peace is through military strength`
   },
   {
     id: "4",
     color: "blue",
-    title: "4th Panel",
-    question: `pikachu`
+    title: "4th Question",
+    answerD: `Racial discrimination is the main reason why many black people can't get ahead these days`,
+    answerR:`Blacks who can't get ahead in this country are mostly responsible for their own condition`
   },
   {
     id: "5",
     color: "orange",
-    title: "5th Panel",
-    question: `Dog`
+    title: "5th Question",
+    answerD: `Government regulation of business is necessary to protect the public interest`,
+    answerR:`Government regulation of business usually does more harm than good`
   }
 ];
 
 export default class PoliticalQuestions extends React.Component<any, ComponentState> {
   state: ComponentState = {
     allQuestions: []
+  };
+
+  //TODO: Look up using Redux
+  clickFunction(choice: string): void {
+      console.log('Clicked ', choice);
+
   };
 
   componentDidMount(): void {
@@ -77,17 +88,24 @@ export default class PoliticalQuestions extends React.Component<any, ComponentSt
           {this.state.allQuestions.map(quest => (
             <div key={quest.id} className={quest.color}>
                 <h2>{quest.title}</h2>
-                <p>
-                    <Row>
-                        <Col m={6} s={12}>
-                            <CardPanel className="teal">
-                                <span className="white-text">
-                                    {quest.question}
-                                </span>
-                            </CardPanel>
-                        </Col>
-                    </Row>
-                </p>
+
+                <Row>
+                    <Col m={6} s={12}>
+                        <CardPanel className="teal waves-effect" onClick={(event: any) => this.clickFunction(quest.answerD)}>
+                            <span className="white-text">
+                                {quest.answerD}
+                            </span>
+                        </CardPanel>
+                    </Col>
+
+                    <Col m={6} s={12}>
+                        <CardPanel className="teal waves-effect" onClick={(event: any) => this.clickFunction(quest.answerR)}>
+                            <span className="white-text">
+                                {quest.answerR}
+                            </span>
+                        </CardPanel>
+                    </Col>
+                </Row>
             </div>
           ))}
         </Carousel>
