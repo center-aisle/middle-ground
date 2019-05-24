@@ -4,6 +4,10 @@ body {
   flex-direction: column;
 }
 
+/* .container {
+  height: 100px;
+} */
+
 main {
   flex: 1 0 auto;
 }
