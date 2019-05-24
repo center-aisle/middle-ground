@@ -21,7 +21,7 @@ const App: React.FC = () => {
     <Router>
       <div className=''>
         <Wrapper>
-          <Nav/>
+          <Nav/> 
           <Header/>
           <Body/>
           <Questions1 completed={lol}/>
