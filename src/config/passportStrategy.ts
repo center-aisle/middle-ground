@@ -18,19 +18,12 @@ const params = {
         state: generators.state(),
         prompt: "select_account consent",
         display: "popup",
-        login_hint: "sub",
-        realm: "https://bipartisan.herokuapp.com/"
-    },
-    passReqToCallback = false,
-    usePKCE = false;
-let sessionKey;
+        login_hint: "sub"
+    };
 
 const options = {
     googleClient,
-    params,
-    passReqToCallback,
-    sessionKey,
-    usePKCE
+    params
 };
 
 const verify = ( tokenSet: any, userInfo: any, done: (arg0: null, arg1: any) => void ) => {
