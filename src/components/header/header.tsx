@@ -5,7 +5,7 @@ import './header.css';
 function Header() {
   return (
     <div className='main-container'>
-      <h1>Fremeny</h1>
+      <h1>Frenemy</h1>
     </div>
   );
 }
