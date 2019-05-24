@@ -8,15 +8,15 @@ function Nav() {
 <Button
   floating
   fab={{direction: 'bottom'}}
-  icon="home"
-  className="blue waves-effect"
+  icon='home'
+  className='blue waves-effect'
   large
   style={{top: '50px'}}>
 
-<Button floating icon="info" className="blue waves-effect"  />
-<Button floating icon="pool" className="blue waves-effect" />
-<Button floating icon="speaker_notes" className="blue waves-effect" />
-<Button floating icon="person_pin_circle" className="blue waves-effect" />
+<Button floating icon='info' className='blue waves-effect'  />
+<Button floating icon='pool' className='blue waves-effect' />
+<Button floating icon='speaker_notes' className='blue waves-effect' />
+<Button floating icon='person_pin_circle' className='blue waves-effect' />
 </Button>
   );
 }

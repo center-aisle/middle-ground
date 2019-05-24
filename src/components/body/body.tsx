@@ -3,7 +3,6 @@ import React from 'react';
 function Body() {
   return (
     <div className='container'>
-    
 
       <div className='row'>
     <div className='col s12'>
@@ -14,7 +13,6 @@ function Body() {
       </div>
     </div>
   </div>
-
 
   </div>
 
