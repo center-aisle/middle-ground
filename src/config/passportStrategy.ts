@@ -1,20 +1,21 @@
 import dotenv from "dotenv";
-import path from "path";
 import Passport from "passport";
-import Strategy from "openid-client";
-import rn from "random-number";
+import { Issuer, Strategy, generators } from "openid-client";
 import User from "../models/User";
 
 dotenv.config();
 
-const client = "https://accounts.google.com/.well-known/openid-configuration",
-    params = {
+const googleIssuer = new Issuer("https://accounts.google.com/.well-known/openid-configuration");
+const googleClient = googleIssuer.Client;
+
+const params = {
         client_id: process.env.GOOGLE_ID,
-        response_type: "code",
+        client_secret: process.env.GOOGLE_SECRET,
+        response_type: "code token id_token",
         scope: "openid profile email",
-        nonce: rn({min: 111111, max: 999999999, integer: true}),
+        nonce: generators.nonce(),
         redirect_uri: "https://bipartisan.herokuapp.com/user/account",
-        state: rn({min: 1111111, max: 9999999999, integer: true}),
+        state: generators.state(),
         prompt: "select_account consent",
         display: "popup",
         login_hint: "sub",
@@ -25,7 +26,7 @@ const client = "https://accounts.google.com/.well-known/openid-configuration",
 let sessionKey;
 
 const options = {
-    client,
+    googleClient,
     params,
     passReqToCallback,
     sessionKey,
