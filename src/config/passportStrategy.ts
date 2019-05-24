@@ -5,21 +5,23 @@ import User from "../models/User";
 
 dotenv.config();
 
-const googleIssuer = new Issuer("https://accounts.google.com/.well-known/openid-configuration");
-const googleClient = googleIssuer.Client;
+const googleClient = Issuer.discover("https://accounts.google.com/.well-known/openid-configuration")
+    .then((googleIssuer: { Client: any; }) => {
+        return googleIssuer.Client;
+    });
 
 const params = {
-        client_id: process.env.GOOGLE_ID,
-        client_secret: process.env.GOOGLE_SECRET,
-        response_type: "code token id_token",
-        scope: "openid profile email",
-        nonce: generators.nonce(),
-        redirect_uri: "https://bipartisan.herokuapp.com/user/account",
-        state: generators.state(),
-        prompt: "select_account consent",
-        display: "popup",
-        login_hint: "sub"
-    };
+    client_id: process.env.GOOGLE_ID,
+    client_secret: process.env.GOOGLE_SECRET,
+    response_type: "code token id_token",
+    scope: "openid profile email",
+    nonce: generators.nonce(),
+    redirect_uri: "https://bipartisan.herokuapp.com/user/account",
+    state: generators.state(),
+    prompt: "select_account consent",
+    display: "popup",
+    login_hint: "sub"
+};
 
 const options = {
     googleClient,
@@ -68,7 +70,7 @@ Passport.use("oidc", new Strategy( options, verify ));
 //     });
 // }));
 
-// start session
+// session stuff
 Passport.serializeUser((
     user: any,
     done: (
@@ -80,7 +82,6 @@ Passport.serializeUser((
     }
 );
 
-// end session
 Passport.deserializeUser((
     id: any,
     done: (
