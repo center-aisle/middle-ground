@@ -1,5 +1,5 @@
-import React from "react";
-import { Carousel, Row, CardPanel, Col } from "react-materialize";
+import React from 'react';
+import { Carousel, Row, CardPanel, Col } from 'react-materialize';
 
 interface IPoliticalQuestions {
   id: string;
@@ -7,7 +7,7 @@ interface IPoliticalQuestions {
   title: string;
   answerD: string;
   answerR: string;
-  answerI?: string
+  answerI?: string;
 }
 
 interface ComponentState {
@@ -16,58 +16,58 @@ interface ComponentState {
 
 const allQuestionsFromServer: IPoliticalQuestions[] = [
   {
-    id: "1",
-    color: "red",
-    title: "1st Question",
+    id: '1',
+    color: 'red',
+    title: '1st Question',
     answerD: `The government should do more to help needy Americans, even if it means going deeper into debt`,
-    answerR:`The government today can't afford to do much more to help the needy`
+    answerR: `The government today can't afford to do much more to help the needy`,
   },
   {
-    id: "2",
-    color: "amber",
-    title: "2nd Question",
+    id: '2',
+    color: 'amber',
+    title: '2nd Question',
     answerD: `Government often does a better job than people give it credit for`,
-    answerR:`Government is almost always wasteful and inefficient`
+    answerR: `Government is almost always wasteful and inefficient`,
   },
   {
-    id: "3",
-    color: "green",
-    title: "3rd Question",
+    id: '3',
+    color: 'green',
+    title: '3rd Question',
     answerD: `Good diplomacy is the best way to ensure peace`,
-    answerR:`The best way to ensure peace is through military strength`
+    answerR: `The best way to ensure peace is through military strength`,
   },
   {
-    id: "4",
-    color: "blue",
-    title: "4th Question",
+    id: '4',
+    color: 'blue',
+    title: '4th Question',
     answerD: `Racial discrimination is the main reason why many black people can't get ahead these days`,
-    answerR:`Blacks who can't get ahead in this country are mostly responsible for their own condition`
+    answerR: `Blacks who can't get ahead in this country are mostly responsible for their own condition`,
   },
   {
-    id: "5",
-    color: "orange",
-    title: "5th Question",
+    id: '5',
+    color: 'orange',
+    title: '5th Question',
     answerD: `Government regulation of business is necessary to protect the public interest`,
-    answerR:`Government regulation of business usually does more harm than good`
-  }
+    answerR: `Government regulation of business usually does more harm than good`,
+  },
 ];
 
 export default class PoliticalQuestions extends React.Component<any, ComponentState> {
   state: ComponentState = {
-    allQuestions: []
+    allQuestions: [],
   };
 
-  //TODO: Look up using Redux
+  // TODO: Look up using Redux
   clickFunction(choice: string): void {
       console.log('Clicked ', choice);
 
-  };
+  }
 
   componentDidMount(): void {
       setTimeout(() => {
           this.setState({
-              allQuestions: [...allQuestionsFromServer]
-          })
+              allQuestions: [...allQuestionsFromServer],
+          });
       }, 500);
   }
 
@@ -77,13 +77,13 @@ export default class PoliticalQuestions extends React.Component<any, ComponentSt
       <div>LOADING......</div>
     )
     : (
-        <div className="container">
+        <div className='container'>
         <button onClick={this._onComplete}>DONE!</button>
         <button onClick={this._saveStuff}>SAVE!</button>
         <button onClick={this._loadStuff}>LOAD!</button>
         <Carousel
           options={{ fullWidth: true, indicators: true }}
-          className="white-text center"
+          className='white-text center'
         >
           {this.state.allQuestions.map(quest => (
             <div key={quest.id} className={quest.color}>
@@ -91,16 +91,16 @@ export default class PoliticalQuestions extends React.Component<any, ComponentSt
 
                 <Row>
                     <Col m={6} s={12}>
-                        <CardPanel className="teal waves-effect" onClick={(event: any) => this.clickFunction(quest.answerD)}>
-                            <span className="white-text">
+                        <CardPanel className='teal waves-effect' onClick={(event: any) => this.clickFunction(quest.answerD)}>
+                            <span className='white-text'>
                                 {quest.answerD}
                             </span>
                         </CardPanel>
                     </Col>
 
                     <Col m={6} s={12}>
-                        <CardPanel className="teal waves-effect" onClick={(event: any) => this.clickFunction(quest.answerR)}>
-                            <span className="white-text">
+                        <CardPanel className='teal waves-effect' onClick={(event: any) => this.clickFunction(quest.answerR)}>
+                            <span className='white-text'>
                                 {quest.answerR}
                             </span>
                         </CardPanel>
@@ -118,15 +118,15 @@ export default class PoliticalQuestions extends React.Component<any, ComponentSt
     }
 
     private _saveStuff = (): void => {
-        localStorage.setItem("ok", JSON.stringify(allQuestionsFromServer));
+        localStorage.setItem('ok', JSON.stringify(allQuestionsFromServer));
     }
 
     private _loadStuff = (): void => {
-        const pika = localStorage.getItem("ok");
+        const pika = localStorage.getItem('ok');
         if (pika == null) {
-            console.log("Sadness no cookie");
+            console.log('Sadness no cookie');
         } else {
-            console.log("Yay we have cookies", JSON.parse(pika))
+            console.log('Yay we have cookies', JSON.parse(pika));
         }
     }
 }
