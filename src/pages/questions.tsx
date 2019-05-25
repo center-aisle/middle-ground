@@ -56,7 +56,7 @@ const allQuestionsFromServer: IPoliticalQuestions[] = [
 class PoliticalQuestionItem extends React.Component<any> {
 
     render(): JSX.Element {
-        const { quest, nextStep } = this.props;
+        const { quest } = this.props;
         return (
             <div key={quest.id} className={quest.color}>
                 <h2>{quest.title}</h2>
