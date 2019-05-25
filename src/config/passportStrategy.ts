@@ -6,15 +6,14 @@ import User from "../models/User";
 dotenv.config();
 
 let googleClient;
-async function discoverClient() {
+(async function discoverClient() {
     googleClient = await Issuer.discover("https://accounts.google.com/.well-known/openid-configuration")
         .then((googleIssuer: { Client: any; }) => {
             console.log("++++++++++++++++++++++++++++");
             console.log(googleIssuer.Client);
             return googleIssuer.Client;
     });
-};
-discoverClient();
+})();
 
 // const createIssuer = async () => {
 //     const issuer = await Issuer.discover("https://accounts.google.com/.well-known/openid-configuration");

@@ -1,17 +1,9 @@
 // import controller from "../controllers/usersController.ts";
-<<<<<<< HEAD
-import "mongoose";
+import 'mongoose';
 import User from "../models/User";
 import Passport from "../config/passportStrategy";
 import ensureLoggedIn from "connect-ensure-login";
-import express from "express";
-=======
-import 'mongoose';
-// import User from "../models/User";
-// import Passport from "../config/passportStrategy";
-// import ensureLoggedIn from "connect-ensure-login";
 import express from 'express';
->>>>>>> cee27e3b1eda666f41ce6d831f982d5b48183865
 // import { forInStatement } from "@babel/types";
 const routes = express.Router();
 

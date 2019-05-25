@@ -2,8 +2,9 @@ import dotenv from "dotenv";
 import express from 'express';
 import session from 'express-session';
 import path from 'path';
+import flash from 'connect-flash';
 import mongoose from 'mongoose';
-import { session as MongoStore } from 'connect-mongo';
+import MongoStore from 'connect-mongo';
 import routes from './routes/apiRoutes';
 import Passport from "./config/passportStrategy";
 
