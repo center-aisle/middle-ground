@@ -1,36 +1,54 @@
-import Passport from "passport";
-// import Strategy from "passport-openidconnect";
-import Strategy from "openid-client";
-import rn from "random-number";
-import User from "../models/User";
+import dotenv from 'dotenv';
+import Passport from 'passport';
+import { Issuer, Strategy, generators } from "openid-client";
+import User from '../models/User';
 
-Passport.use(new Strategy({
-    client: "https://accounts.google.com/.well-known/openid-configuration",
-    params: {
-        client_id: process.env.OAUTH_ID,
-        response_type: "code",
-        scope: "openid profile email",
-        nonce: rn({min: 111111, max: 999999999, integer: true}),
-        redirect_uri: "https://bipartisan.herokuapp.com/user/account",
-        state: rn({min: 1111111, max: 9999999999, integer: true}),
-        prompt: "select_account consent",
-        display: "popup",
-        login_hint: "sub",
-        realm: "https://bipartisan.herokuapp.com/"
-    }
-}, (tokenSet: any, userInfo: any, done: (arg0: null, arg1: any) => void) => {
-    console.log("USERINFO: ", userInfo);
-    console.log("TOKENSET: ", tokenSet);
-    return done(null, tokenSet);
-}));
+dotenv.config();
+
+// connect to google client
+Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
+    .then((googleIssuer: { issuer: any; metadata: any; Client: any; }) => {
+        console.log('Discovered issuer %s %O', googleIssuer.issuer, googleIssuer.metadata);
+        const client = new googleIssuer.Client({
+            client_id: process.env.GOOGLE_ID,
+            client_secret: process.env.GOOGLE_SECRET,
+            redirect_uris: ['https://bipartisan.herokuapp.com/user/account', 'https://bipartisan.herokuapp.com/user'],
+            response_types: ['code token id_token'],
+        });
+
+        const params = {
+            client_id: process.env.GOOGLE_ID,
+            response_type: 'code token id_token',
+            scope: 'openid profile email',
+            nonce: generators.nonce(),
+            redirect_uri: 'https://bipartisan.herokuapp.com/user/account',
+            state: generators.state(),
+            prompt: 'select_account',
+            display: 'popup',
+            login_hint: 'sub',
+        };
+        
+        const verify = ( tokenSet: any, userInfo: any, done: (arg0: null, arg1: any) => void ) => {
+            console.log('USERINFO: ', userInfo);
+            console.log('TOKENSET: ', tokenSet);
+            return done(null, tokenSet);
+        };
+        
+        const options = {
+            client,
+            params,
+        };
+        Passport.use('openid-client', new Strategy( options, verify ));
+    });
+
 
 
 // (
 //     openid: any,
-//     profile: { 
+//     profile: {
 //         givenName: any;
 //         familyName: any
-//     }, 
+//     },
 //     email: any,
 //     password: any,
 //     done: (
@@ -45,7 +63,7 @@ Passport.use(new Strategy({
 //         lastName: profile.familyName,
 //         email: email // takes first email if there's more than one
 //     }, (err: any, user: any) => {
-//         if (err) { 
+//         if (err) {
 //             done(err, user);
 //         };
 //         if (!user) {
@@ -55,34 +73,33 @@ Passport.use(new Strategy({
 //             done(null, false);
 //         };
 //         done(null, user);
-   
+
 //     });
 // }));
 
-// start session
+// session stuff
 Passport.serializeUser((
     user: any,
     done: (
         arg0: any,
-        arg1: any
+        arg1: any,
     ) => void) => {
-        console.log("SERIALIZED USER: ", user.id);
+        console.log('SERIALIZED USER: ', user.id);
         done(null, user.id);
-    }
+    },
 );
 
-// end session
 Passport.deserializeUser((
     id: any,
     done: (
         arg0: any,
-        arg1: any
+        arg1: any,
     ) => void) => {
         User.findById(id, (err: any, user: any) => {
-            console.log("DESERIALIZED USER: ", user);
+            console.log('DESERIALIZED USER: ', user);
             done(err, user);
         });
-    }
+    },
 );
 
 export default Passport;
