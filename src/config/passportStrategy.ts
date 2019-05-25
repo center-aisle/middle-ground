@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import Passport from 'passport';
 import { Issuer, Strategy, generators } from 'openid-client';
 import User from '../models/User';
-import findOrCreate from 'mongoose-findorcreate';
+// import findOrCreate from 'mongoose-findorcreate';
 
 dotenv.config();
 
@@ -34,9 +34,10 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
             console.log('id_token: ', id_token);
             console.log('expires_in: ', expires_in);
             console.log('token_type: ', token_type);
-            User.findOrCreate({ // this may cause a problem
+            (User as any).findOrCreate({
                 openId: id_token.sub,
-                name: id_token.name,
+                firstName: id_token.given_name,
+                lastName: id_token.family_name,
                 email: id_token.email,
             }, (err: any, user: any) => {
                 if (err) {
