@@ -4,12 +4,11 @@ import {Button} from 'react-materialize';
 
 function Nav() {
   return (
-
 <Button
   floating
   fab={{direction: 'bottom'}}
   icon='home'
-  className='blue waves-effect'
+  className='blue waves-effect '
   large
   style={{top: '50px'}}>
 
