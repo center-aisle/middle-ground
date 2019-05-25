@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 import Passport from 'passport';
 import { Issuer, Strategy, generators } from 'openid-client';
 import User from '../models/User';
-// import findOrCreate from 'mongoose-findorcreate';
 
 dotenv.config();
 
