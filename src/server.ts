@@ -4,9 +4,9 @@ import session from 'express-session';
 import path from 'path';
 import flash from 'connect-flash';
 import mongoose from 'mongoose';
-import MongoStore from 'connect-mongo';
+import connectMongo from 'connect-mongo';
 import routes from './routes/apiRoutes';
-import Passport from "./config/passportStrategy";
+import Passport from "passport";
 
 dotenv.config();
 
@@ -23,9 +23,10 @@ app.use(express.static((path.join(__dirname, 'public'))));
 app.use(flash());
 
 // sessions
+const MongoStore = connectMongo(session);
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    store: new MongoStore({ mongooseConnection: process.env.MONGODB_URI || "mongodb://localhost/users" }),
+    store: new MongoStore({ url: process.env.MONGODB_URI || "mongodb://localhost/users[0]" }),
     resave: false,
     saveUninitialized: true
  }));

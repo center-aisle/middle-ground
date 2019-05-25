@@ -5,15 +5,17 @@ import User from "../models/User";
 
 dotenv.config();
 
-let googleClient;
-(async function discoverClient() {
+let googleClient: any;
+async function discoverClient() {
     googleClient = await Issuer.discover("https://accounts.google.com/.well-known/openid-configuration")
         .then((googleIssuer: { Client: any; }) => {
-            console.log("++++++++++++++++++++++++++++");
+            console.log(googleIssuer);
             console.log(googleIssuer.Client);
             return googleIssuer.Client;
     });
-})();
+    console.log("++++++++++++++++++++++++++++");
+    console.log(googleClient);
+};
 
 // const createIssuer = async () => {
 //     const issuer = await Issuer.discover("https://accounts.google.com/.well-known/openid-configuration");
@@ -55,11 +57,6 @@ let googleClient;
 // let newIssuer = createClient("https://accounts.google.com/.well-known/openid-configuration");
 // googleClient = newIssuer.Client;
 // createClient("https://accounts.google.com/.well-known/openid-configuration");
-console.log("=====================");
-// console.log(googleIssuer);
-console.log("=====================");
-console.log(googleClient);
-console.log("=====================");
 
 
 
@@ -76,19 +73,26 @@ const params = {
     login_hint: "sub"
 };
 
-const options = {
-    googleClient,
-    params
-};
-
 const verify = ( tokenSet: any, userInfo: any, done: (arg0: null, arg1: any) => void ) => {
     console.log("USERINFO: ", userInfo);
     console.log("TOKENSET: ", tokenSet);
     return done(null, tokenSet);
 };
 
-Passport.use("oidc", new Strategy( options, verify ));
-
+discoverClient()
+    .then(() => {
+        console.log("=====================");
+        // console.log(googleIssuer);
+        console.log("=====================");
+        console.log(googleClient);
+        console.log("=====================");
+        const options = {
+            googleClient,
+            params
+        };
+        Passport.use("openid-client", new Strategy( options, verify ))
+    });
+  
 // (
 //     openid: any,
 //     profile: { 
