@@ -1,16 +1,15 @@
 // import controller from "../controllers/usersController.ts";
-import "mongoose";
+import 'mongoose';
 // import User from "../models/User";
 // import Passport from "../config/passportStrategy";
 // import ensureLoggedIn from "connect-ensure-login";
-import express from "express";
+import express from 'express';
 // import { forInStatement } from "@babel/types";
 const routes = express.Router();
 
-
 // need a .get route to retrieve user's info
 // need a .put route to update user info with questionnaire answers
-//FIXME: Commented out to work on frontend.  Uncomment Catherine/Nicole
+// FIXME: Commented out to work on frontend.  Uncomment Catherine/Nicole
 // Route to post (update) our form submission to mongoDB via mongoose
 // routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) => {
 // 	// update a user using req.body
@@ -25,12 +24,10 @@ const routes = express.Router();
 // 		});
 // });
 
-
-
 /*********************************
  * USER AUTHENTICATION BELOW
  * DO NOT TOUCH
- ***********************************/ 
+ ***********************************/
 
 // does the authenticating on hit
 // routes.post("/auth/openidconnect", Passport.authenticate("openidconnect"));
@@ -39,7 +36,7 @@ const routes = express.Router();
 // routes.get("/auth/openidconnect/return",
 // 	Passport.authenticate("openidconnect", {
 // 			session: true,
-// 			failureRedirect: "/user" 
+// 			failureRedirect: "/user"
 // 		}).then( (req: any,
 // 			res: { redirect: (arg0: string) => void; }
 // 		) => {
@@ -68,12 +65,12 @@ export default routes;
 
 /*****************************
  * ALL LOGIN ROUTES LISTED HERE FOR REFERENCE
- * 
+ *
  * /user (real page)
  * /user/account (real page)
  * /logout (redirect to home page)
  * /submit (stays on /user/account page)
  * /auth/openidconnect (api endpoint for post)
  * /auth/openidconnect/return (api endpoint that redirects to /user/account page)
- * 
+ *
  *******************************/

@@ -1,10 +1,10 @@
 // import { config } from "dotenv";
-import express from "express";
-import session from "express-session";
-import path from "path";
-import mongoose from "mongoose";
-import { session as MongoStore } from "connect-mongo";
-import routes from "./routes/apiRoutes";
+import express from 'express';
+import session from 'express-session';
+import path from 'path';
+import mongoose from 'mongoose';
+import { session as MongoStore } from 'connect-mongo';
+import routes from './routes/apiRoutes';
 // import Passport from "./config/passportStrategy";
 
 // config({ path: path.resolve(__dirname, "../.env") });
@@ -15,10 +15,10 @@ const app = express(),
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "dist")));
-};
-app.use(express.static((path.join(__dirname, "public"))));  
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'dist')));
+}
+app.use(express.static((path.join(__dirname, 'public'))));
 
 // sessions
 // app.use(session({
@@ -35,8 +35,8 @@ app.use(express.static((path.join(__dirname, "public"))));
 app.use(routes);
 
 // get home page
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/index.html"));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/users');
