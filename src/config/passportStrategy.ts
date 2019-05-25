@@ -5,60 +5,17 @@ import User from "../models/User";
 
 dotenv.config();
 
-let googleClient: any;
+var googleClient: any;
 async function discoverClient() {
     googleClient = await Issuer.discover("https://accounts.google.com/.well-known/openid-configuration")
         .then((googleIssuer: { Client: any; }) => {
-            console.log(googleIssuer);
-            console.log(googleIssuer.Client);
             return googleIssuer.Client;
+    }).catch((err: any) =>{
+        if (err) {
+            console.log(err);
+        }
     });
-    console.log("++++++++++++++++++++++++++++");
-    console.log(googleClient);
 };
-
-// const createIssuer = async () => {
-//     const issuer = await Issuer.discover("https://accounts.google.com/.well-known/openid-configuration");
-//     console.log("++++++++++++++++++++++++");
-//     console.log("ISSUER");
-//     console.log(issuer);
-//     return issuer.Client;
-// };
-
-// const googleClient = createIssuer();
-// const googleClient = googleIssuer.Client;
-
-
-// let googleIssuer;
-// const googleClient = Issuer.discover("https://accounts.google.com/.well-known/openid-configuration")
-//     .then((googleIssuer: { Client: any; }) => {
-//         return googleIssuer.Client;
-//     });
-
-// let googleIssuer: any;
-// let googleClient: any;
-// Issuer.discover("https://accounts.google.com/.well-known/openid-configuration")
-//     .then((newIssuer: { Client: any; }) => {
-//         const googleIssuer = new Issuer(newIssuer);
-//         console.log(googleIssuer);
-//         const googleClient = googleIssuer.Client;
-//         console.log(goog)
-//     });
-
-// const googleIssuer = Issuer.discover("https://accounts.google.com/.well-known/openid-configuration");
-// const googleClient = googleIssuer.Client;
-
-// let googleIssuer: any;
-// let googleClient: any;
-// const createClient = async (link: string) => {
-//     const googleIssuer = await Issuer.discover(link);
-//     return new Issuer(googleIssuer);
-// };
-// let newIssuer = createClient("https://accounts.google.com/.well-known/openid-configuration");
-// googleClient = newIssuer.Client;
-// createClient("https://accounts.google.com/.well-known/openid-configuration");
-
-
 
 const params = {
     client_id: process.env.GOOGLE_ID,
@@ -81,16 +38,16 @@ const verify = ( tokenSet: any, userInfo: any, done: (arg0: null, arg1: any) => 
 
 discoverClient()
     .then(() => {
-        console.log("=====================");
-        // console.log(googleIssuer);
-        console.log("=====================");
-        console.log(googleClient);
-        console.log("=====================");
+        console.log("GOOGLECLIENT: ", JSON.stringify(googleClient));
         const options = {
             googleClient,
             params
         };
         Passport.use("openid-client", new Strategy( options, verify ))
+    }).catch(err => {
+        if (err) {
+            console.log(err);
+        }
     });
   
 // (
