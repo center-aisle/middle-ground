@@ -11,7 +11,7 @@ const routes = express.Router();
 // need a .put route to update user info with questionnaire answers
 // FIXME: Commented out to work on frontend.  Uncomment Catherine/Nicole
 // Route to post (update) our form submission to mongoDB via mongoose
-// routes.put("/submit", (req: { body: any; }, res: { json: { (arg0: any): void; (arg0: any): void; }; }) => {
+// routes.put("/submit", (req, res) => {
 // 	// update a user using req.body
 // 	User.updateOne(req.body) // --->> there's a problem here
 // 		.then((dbUser: any) => {
@@ -23,6 +23,20 @@ const routes = express.Router();
 // 			if (err) throw err;
 // 		});
 // });
+
+routes.put("/userUpdate", (req, res) => {
+	User.findById(req.body)
+		.then((dbUser: any) => {
+			res.json(dbUser);
+		})
+		.catch((err: any) => {
+			if (err) throw err;
+		});
+});
+
+routes.get("/user:id", (req, res) => {
+	
+});
 
 /*********************************
  * USER AUTHENTICATION BELOW
