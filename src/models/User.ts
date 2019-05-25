@@ -1,8 +1,6 @@
 import { Schema, model } from 'mongoose';
 import findOrCreate from 'mongoose-findorcreate'; // need this for passport/login
 
-// Save a reference to the Schema constructor
-// const Schema = mongoose.Schema;
 
 // Uses the Schema constructor, create a new UserSchema object
 const userSchema = new Schema({
@@ -41,6 +39,10 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'personalScore',
     }],
+    frenemies: [{
+        type :Schema.Types.ObjectId,
+        ref: 'frenemies'
+    }]
 });
 
 userSchema.plugin(findOrCreate); // why is this not working
