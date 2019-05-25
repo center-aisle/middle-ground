@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel, Row, CardPanel, Col } from 'react-materialize';
+//let Carousel = require('react-responsive-carousel').Carousel;
 
 interface IPoliticalQuestions {
   id: string;
@@ -12,6 +13,7 @@ interface IPoliticalQuestions {
 
 interface ComponentState {
   allQuestions: IPoliticalQuestions[];
+  activeIndex: number;
 }
 
 const allQuestionsFromServer: IPoliticalQuestions[] = [
@@ -52,15 +54,26 @@ const allQuestionsFromServer: IPoliticalQuestions[] = [
   },
 ];
 
+//     document.addEventListener('DOMContentLoaded', function() {
+//     const elems = document.querySelectorAll('.carousel');
+//     const instances = M.Carousel.init(elems, options);
+//     });
+
+// const instance = M.Carousel.getInstance(elem);
+// instance.next();
+
 export default class PoliticalQuestions extends React.Component<any, ComponentState> {
   state: ComponentState = {
     allQuestions: [],
+    activeIndex: 0,
   };
+
 
   // TODO: Look up using Redux
   clickFunction(choice: string): void {
       console.log('Clicked ', choice);
-
+      console.log("active Index: " + this.state.activeIndex);
+      this.setState({activeIndex: this.state.activeIndex+1});
   }
 
   componentDidMount(): void {
@@ -71,29 +84,34 @@ export default class PoliticalQuestions extends React.Component<any, ComponentSt
       }, 500);
   }
 
+
+  
   render(): JSX.Element {
-    return (this.state.allQuestions.length === 0)
-    ? (
-      <div>LOADING......</div>
-    )
-    : (
-        <div className='container'>
+      return (this.state.allQuestions.length === 0)
+      ? (
+          <div>LOADING......</div>
+          )
+          : (
+              <div className='container'>
         <button onClick={this._onComplete}>DONE!</button>
         <button onClick={this._saveStuff}>SAVE!</button>
         <button onClick={this._loadStuff}>LOAD!</button>
-        <Carousel
-          options={{ fullWidth: true, indicators: true }}
-          className='white-text center'
-        >
-          {this.state.allQuestions.map(quest => (
-            <div key={quest.id} className={quest.color}>
-                <h2>{quest.title}</h2>
 
+        <Carousel id="carousel"
+          options={{ fullWidth: true, indicators: true, shift: this.state.activeIndex}}
+          className='white-text center' carouselId={this.state.activeIndex}
+        >
+          {
+              this.state.allQuestions.map((quest, index) => (
+            <div key={quest.id} className={quest.color}>
+            {/* {(this.state.activeIndex===index)?'active':''} >*/ }
+                <h2>{quest.title}</h2>
                 <Row>
                     <Col m={6} s={12}>
-                        <CardPanel className='teal waves-effect' onClick={(event: any) => this.clickFunction(quest.answerD)}>
+                        <CardPanel  className='teal waves-effect' onClick={(event: any) => this.clickFunction(quest.answerD)}
+                        >
                             <span className='white-text'>
-                                {quest.answerD}
+                            {quest.answerD}
                             </span>
                         </CardPanel>
                     </Col>
