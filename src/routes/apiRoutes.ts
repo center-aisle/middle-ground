@@ -1,4 +1,4 @@
-// import controller from "../controllers/usersController.ts";
+import "../controllers/usersController.ts";
 import 'mongoose';
 import User from '../models/User';
 import Passport from '../config/passportStrategy';
@@ -7,9 +7,6 @@ import express from 'express';
 // import { forInStatement } from "@babel/types";
 const routes = express.Router();
 
-// need a .get route to retrieve user's info
-// need a .put route to update user info with questionnaire answers
-// FIXME: Commented out to work on frontend.  Uncomment Catherine/Nicole
 // Route to post (update) our form submission to mongoDB via mongoose
 // routes.put("/submit", (req, res) => {
 // 	// update a user using req.body
@@ -24,6 +21,11 @@ const routes = express.Router();
 // 		});
 // });
 
+//this is going to be the route that finds the user within the database
+// routes.get("/user:id", (req, res) => {
+// });
+
+//This is going to be the route that finds and updates the user's information. Patch needed maybe?
 routes.put("/userUpdate", (req, res) => {
 	User.findById(req.body)
 		.then((dbUser: any) => {
@@ -32,10 +34,6 @@ routes.put("/userUpdate", (req, res) => {
 		.catch((err: any) => {
 			if (err) throw err;
 		});
-});
-
-routes.get("/user:id", (req, res) => {
-	
 });
 
 /*********************************
