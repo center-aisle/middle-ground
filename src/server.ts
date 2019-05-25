@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 import express from 'express';
 import session from 'express-session';
 import path from 'path';
@@ -6,7 +6,8 @@ import flash from 'connect-flash';
 import mongoose from 'mongoose';
 import connectMongo from 'connect-mongo';
 import routes from './routes/apiRoutes';
-import Passport from "passport";
+import Passport from './config/passportStrategy';
+// import { ClassMethod } from '@babel/types'; <<-- what's this for? we're not using babel as far as i'm aware but i could be wrong
 
 dotenv.config();
 
@@ -26,9 +27,9 @@ app.use(flash());
 const MongoStore = connectMongo(session);
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    store: new MongoStore({ url: process.env.MONGODB_URI || "mongodb://localhost/users[0]" }),
+    store: new MongoStore({ url: process.env.MONGODB_URI || 'mongodb://localhost/Users' }),
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
  }));
 app.use(Passport.initialize());
 app.use(Passport.session());
