@@ -12,13 +12,13 @@ import Passport from './config/passportStrategy';
 dotenv.config();
 
 const app = express(),
-    PORT = process.env.PORT || 3001;
+	PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'dist')));
+	app.use(express.static(path.join(__dirname, 'dist')));
 }
 app.use(express.static((path.join(__dirname, 'public'))));
 app.use(flash());
@@ -39,11 +39,12 @@ app.use(routes);
 
 // get home page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/users');
 
 app.listen(PORT, () => {
-    console.log('\uD83C\uDF0E  ==> API Server now listening on PORT ' + PORT + '!');
+	console.log('\uD83C\uDF0E  ==> API Server now listening on PORT ' + PORT + '!');
 });
+

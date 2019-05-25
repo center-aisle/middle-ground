@@ -32,6 +32,11 @@ const routes = express.Router();
 // does the authenticating on hit
 routes.post('/auth/openidconnect', Passport.authenticate('openid-client'));
 
+
+routes.post('/auth/openidconnect', Passport.authenticate('openid-client'));
+
+
+
 // automatically redirects to /user/account if success else stay on /user page
 routes.get('/auth/openidconnect/return',
 	Passport.authenticate('openid-client', {

@@ -17,35 +17,35 @@ import Wrapper from './components/wrapper/wrapper';
 import './App.css';
 
 const App: React.FC = () => {
-  return (
-    <Router>
-      <div className=''>
-        <Wrapper>
-          <Nav/>
-          <Header/>
-          <Body/>
-          {/* <Questions1 completed={lol}/> */}
-          <Switch>
-            {/* https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path */}
-            <Route exact path='/' component={Splash} />
-            <Route exact path='/user' component={User} />
-            <Route exact path='/user/account' component={Account} />
-            <Route exact path='/questions' component={Questions} completed={lol}/>
-            <Route exact path='/frenemy' component={Frenemy} />
-            <Route exact path='/about' component={About} />
-            <Route exact path='/contact' component={Contact} />
-            <Route component={NoMatch} />
-          </Switch>
+	return (
+		<Router>
+			<div className=''>
+				<Wrapper>
+					<Nav/>
+					<Header/>
+					<Body/>
+					{/* <Questions1 completed={lol}/> */}
+					<Switch>
+						{/* https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path */}
+						<Route exact path='/' component={Splash} />
+						<Route exact path='/user' component={User} />
+						<Route exact path='/user/account' component={Account} />
+						<Route exact path='/questions' component={Questions} completed={lol}/>
+						<Route exact path='/frenemy' component={Frenemy} />
+						<Route exact path='/about' component={About} />
+						<Route exact path='/contact' component={Contact} />
+						<Route component={NoMatch} />
+					</Switch>
 
-        </Wrapper>
-        <Footer/>
-      </div>
-    </Router>
-  );
+				</Wrapper>
+				<Footer/>
+			</div>
+		</Router>
+	);
 };
 
 function lol(what: boolean) {
-  console.log('We are done!', what);
+	console.log('We are done!', what);
 }
 
 export default App;
