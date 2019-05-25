@@ -1,23 +1,20 @@
 require("mongoose");
-export default require("../models/User.ts");
+const User = require("../models/User.ts")
 
 module.exports = {
-    findAll: function(req, res) {
-        db.find({})
-            .then(dbUsers => res.json(dbUsers))
-            .catch(err => res.status(422).json(err));
-    },
-    save: function(req, res) {
-        db.create(req.body)
-            .then(dbUsers => res.json(dbUsers))
-            .catch(err => res.status(422).json(err));
+    update: function(req, res) {
+        User.findByIdAndUpdate(req.params.UserId, req.body, {new: true}, (err, UserId) => {
+                if (err) return res.status(500).send(err);
+                return res.send(UserId)
+            });
     },
     findById: function(req, res) {
-        db.findById(req.params.id)
-            .then(dbUsers => res.json(dbUsers))
-            .catch(err => res.status(422).json(err));
+        User.findById(req.params.id, (err, dbUsers) => {
+            if (err) return res.status(422).send(err)
+            return res.send(dbUsers);
+            });
     }
-
-// change findall and save -> update and findOrCreate
-// Use arrow functions for e6
 };
+
+//update function in a get request in the api routes because finding a single ID in
+//findbyidandupdate in a put request in the api routes because updating an id
