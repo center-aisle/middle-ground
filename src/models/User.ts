@@ -7,12 +7,7 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    firstName: {
-        type: String,
-        trim: true,
-        required: true,
-    },
-    lastName: {
+    name: {
         type: String,
         trim: true,
         required: true,
@@ -39,9 +34,9 @@ const userSchema = new Schema({
         ref: 'personalScore',
     }],
     frenemies: [{
-        type :Schema.Types.ObjectId,
-        ref: 'frenemies'
-    }]
+        type : Schema.Types.ObjectId,
+        ref: 'frenemies',
+    }],
 });
 
 userSchema.plugin(findOrCreate); // why is this not working

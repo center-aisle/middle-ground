@@ -1,10 +1,9 @@
-import "../controllers/usersController.ts";
+import '../controllers/usersController';
 import 'mongoose';
 import User from '../models/User';
 import Passport from '../config/passportStrategy';
 import { ensureLoggedIn } from 'connect-ensure-login';
 import express from 'express';
-// import { forInStatement } from "@babel/types";
 const routes = express.Router();
 
 // Route to post (update) our form submission to mongoDB via mongoose
@@ -21,18 +20,18 @@ const routes = express.Router();
 // 		});
 // });
 
-//this is going to be the route that finds the user within the database
+// this is going to be the route that finds the user within the database
 // routes.get("/user:id", (req, res) => {
 // });
 
-//This is going to be the route that finds and updates the user's information. Patch needed maybe?
-routes.put("/userUpdate", (req, res) => {
+// This is going to be the route that finds and updates the user's information. Patch needed maybe?
+routes.put('/userUpdate', (req, res) => {
 	User.findById(req.body)
 		.then((dbUser: any) => {
 			res.json(dbUser);
 		})
 		.catch((err: any) => {
-			if (err) throw err;
+			if (err) { throw err; }
 		});
 });
 
