@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import Passport from 'passport';
-import { Issuer, Strategy, generators } from "openid-client";
+import { Issuer, Strategy, generators } from 'openid-client';
 import User from '../models/User';
 
 dotenv.config();
@@ -8,7 +8,7 @@ dotenv.config();
 // connect to google client
 Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
     .then((googleIssuer: { issuer: any; metadata: any; Client: any; }) => {
-        console.log('Discovered issuer %s %O', googleIssuer.issuer, googleIssuer.metadata);
+        // console.log('Discovered issuer %s %O', googleIssuer.issuer, googleIssuer.metadata);
         const client = new googleIssuer.Client({
             client_id: process.env.GOOGLE_ID,
             client_secret: process.env.GOOGLE_SECRET,
@@ -27,55 +27,39 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
             display: 'popup',
             login_hint: 'sub',
         };
-        
-        const verify = ( tokenSet: any, userInfo: any, done: (arg0: null, arg1: any) => void ) => {
-            console.log('USERINFO: ', userInfo);
-            console.log('TOKENSET: ', tokenSet);
-            return done(null, tokenSet);
+
+        const verify = ( access_token: any, id_token: any, expires_in: any, token_type: any, done: (arg0: null, arg1: any) => void ) => {
+            console.log('access_token: ', access_token);
+            console.log('id_token: ', id_token);
+            console.log('expires_in: ', expires_in);
+            console.log('token_type: ', token_type);
+            (User as any).findOrCreate({
+                openId: id_token.sub,
+                firstName: id_token.given_name,
+                lastName: id_token.family_name,
+                email: id_token.email,
+            }, (err: any, user: any) => {
+                if (err) {
+                    done(err, user);
+                }
+                if (!user) {
+                    done(null, false);
+                }
+                done(null, user);
+            });
+            return done(null, access_token);
         };
-        
+
         const options = {
             client,
             params,
         };
         Passport.use('openid-client', new Strategy( options, verify ));
+    }).catch((err: any) => {
+        if (err) {
+            console.log(err);
+        }
     });
-
-
-
-// (
-//     openid: any,
-//     profile: {
-//         givenName: any;
-//         familyName: any
-//     },
-//     email: any,
-//     password: any,
-//     done: (
-//         arg0: any,
-//         arg1: any
-//     ) => void
-// ) => {
-//     console.log("IDENTIFIER: ", openid);
-//     User.findOrCreate({ // this method might be a problem
-//         openId: openid,
-//         firstName: profile.givenName,
-//         lastName: profile.familyName,
-//         email: email // takes first email if there's more than one
-//     }, (err: any, user: any) => {
-//         if (err) {
-//             done(err, user);
-//         };
-//         if (!user) {
-//             done(null, false);
-//         };
-//         if (!user.validPassword(password)) {
-//             done(null, false);
-//         };
-//         done(null, user);
-
-//     });
-// }));
 
 // session stuff
 Passport.serializeUser((
@@ -98,7 +82,7 @@ Passport.deserializeUser((
         User.findById(id, (err: any, user: any) => {
             console.log('DESERIALIZED USER: ', user);
             done(err, user);
-        });
+            });
     },
 );
 
