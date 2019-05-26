@@ -18,29 +18,27 @@ import './App.css';
 const App: React.FC = () => {
     return (
         <Router>
-            <div className=''>
-                <Wrapper>
-                    <Nav />
-                    <Header />
-                    <Body />
-                    <Switch>
-                        {/* https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path */}
-                        <Route exact path='/' component={Splash} />
-                        <Route exact path='/user' component={User} />
-                        <Route exact path='/user/account' component={Account} />
-                        <Route
-                            exact
-                            path='/questions'
-                            render={(routeProps) => <Questions completed={lol} {...routeProps} />}
-                        />
-                        <Route exact path='/frenemy' component={Frenemy} />
-                        <Route exact path='/about' component={About} />
-                        <Route exact path='/contact' component={Contact} />
-                        <Route component={NoMatch} />
-                    </Switch>
-                </Wrapper>
+            <Wrapper>
+                <Nav />
+                <Header />
+                <Body />
+                <Switch>
+                    {/* https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path */}
+                    <Route exact path='/' component={Splash} />
+                    <Route exact path='/user' component={User} />
+                    <Route exact path='/user/account' component={Account} />
+                    <Route
+                        exact
+                        path='/questions'
+                        render={(routeProps) => <Questions completed={lol} {...routeProps} />}
+                    />
+                    <Route exact path='/frenemy' component={Frenemy} />
+                    <Route exact path='/about' component={About} />
+                    <Route exact path='/contact' component={Contact} />
+                    <Route component={NoMatch} />
+                </Switch>
                 <Footer />
-            </div>
+            </Wrapper>
         </Router>
     );
 };
