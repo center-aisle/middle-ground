@@ -1,4 +1,4 @@
-import '../controllers/usersController';
+import UserController from '../controllers/usersController';
 import 'mongoose';
 import User from '../models/User';
 import Passport from '../config/passportStrategy';
@@ -20,19 +20,47 @@ const routes = express.Router();
 // 		});
 // });
 
-// this is going to be the route that finds the user within the database
-// routes.get("/user:id", (req, res) => {
-// });
+//this is going to be the route that finds the user within the database
+routes.get("/users", (req, res) => {
+	res.status(200).json({
+		success: true,
+		data: "Hi Team!!!",
+	});
+});
 
-// This is going to be the route that finds and updates the user's information. Patch needed maybe?
-routes.put('/userUpdate', (req, res) => {
-	User.findById(req.body)
-		.then((dbUser: any) => {
-			res.json(dbUser);
-		})
-		.catch((err: any) => {
-			if (err) { throw err; }
+//this is going to be the route that finds the user within the database
+routes.get("/users/:id", async (req, res) => {
+	const userId: string = req.params.id || null;
+	try {
+		const dbUser: any = await UserController.findById(userId)
+		return res.status(200).json({
+			success: true,
+			data: dbUser
 		});
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			data: "User not found due to DB error"
+		});
+	}
+});
+
+//This is going to be the route that finds and updates the user's information. Patch needed maybe?
+routes.put("/users/:id", async (req, res) => {
+	const userId: string = req.params.id;
+	const updatedUser: any = req.body;
+	try {
+		const dbUser: any = await UserController.update(userId, updatedUser)
+		return res.status(200).json({
+			success: true,
+			data: dbUser
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			data: "User information could not be updated due to DB error"
+		});
+	}
 });
 
 /*********************************
