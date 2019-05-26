@@ -8,7 +8,10 @@ function Nav() {
 		window.location.href="/";
 	};
 	const onClickAccount = () => {
-		window.location.href="/user/account";
+		window.location.href="http://localhost:3001/auth/openidconnect";
+	};
+	const onClickLogOut = () => {
+		window.location.href="http://localhost:3001/logout";
 	};
 	const onClickAbout = () => {
 		window.location.href="/about";
@@ -31,6 +34,16 @@ function Nav() {
 				tooltip='About'
 				tooltipOptions={{position: 'left'}}
 				onClick={onClickAbout}
+			/>
+
+			{/* how to make this and the account button switch depending on if logged in? */}
+			<Button
+				floating
+				icon='power_settings_new'
+				className='blue waves-effect'
+				tooltip='Log out'
+				tooltipOptions={{position: 'left'}}
+				onClick={onClickLogOut}
 			/>
 
 			<Button
