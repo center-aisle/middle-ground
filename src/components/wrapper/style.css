@@ -1,7 +1,10 @@
 .wrapper {
     min-height: 100%;
-    padding-bottom: 100px;
     background-image:url("/src/images/psychedelic_pattern.png");
     background-repeat: repeat;
-  }
+}
+
+.container-fluid {
+    min-height: 100%;
+}
   
