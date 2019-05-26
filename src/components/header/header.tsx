@@ -4,7 +4,7 @@ import './header.css';
 function Header() {
 	return (
 		<div className='main-container'>
-			<h1><a href="/">Frenemy</a></h1>
+			<h1><a className='black-text' href='/'>Frenemy</a></h1>
 		</div>
 	);
 }
