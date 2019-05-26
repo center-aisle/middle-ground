@@ -1,9 +1,10 @@
-import UserController from '../controllers/usersController';
 import 'mongoose';
+import controller from '../controllers/usersController';
 import User from '../models/User';
 import Passport from '../config/passportStrategy';
 import { ensureLoggedIn } from 'connect-ensure-login';
 import express from 'express';
+
 const routes = express.Router();
 
 // Route to post (update) our form submission to mongoDB via mongoose
@@ -30,9 +31,9 @@ routes.get("/users", (req, res) => {
 
 //this is going to be the route that finds the user within the database
 routes.get("/users/:id", async (req, res) => {
-	const userId: string = req.params.id || null;
+	const openId: string = req.params.openId || null;
 	try {
-		const dbUser: any = await UserController.findById(userId)
+		const dbUser: any = await controller.findById(openId)
 		return res.status(200).json({
 			success: true,
 			data: dbUser
@@ -47,10 +48,10 @@ routes.get("/users/:id", async (req, res) => {
 
 //This is going to be the route that finds and updates the user's information. Patch needed maybe?
 routes.put("/users/:id", async (req, res) => {
-	const userId: string = req.params.id;
+	const openId: string = req.params.openId;
 	const updatedUser: any = req.body;
 	try {
-		const dbUser: any = await UserController.update(userId, updatedUser)
+		const dbUser: any = await controller.update(openId, updatedUser)
 		return res.status(200).json({
 			success: true,
 			data: dbUser
@@ -68,21 +69,21 @@ routes.put("/users/:id", async (req, res) => {
  * DO NOT TOUCH
  ***********************************/
 
-// does the authenticating on hit
-routes.get('/auth/openidconnect', Passport.authenticate('openid-client'));
+// post user info on login (see passportStrategy.ts)
+routes.post('/auth/openidconnect', Passport.authenticate('openid-client'));
 
 // automatically redirects to /user/account if success else stay on /user page
 routes.get('/auth/openidconnect/return',
 	Passport.authenticate('openid-client', {
 		session: true,
-		failureRedirect: '/user' ,
+		failureRedirect: 'http://localhost:3000/user' ,
 		failureFlash: 'Invalid login, try again',
 	}), (req: any,
 		    res: { redirect: (arg0: string) => void; },
 	) => {
-		console.log('SUCCESSFUL AUTHENTICATION NOW REDIRECTING');
 		req.json(req.user, req.access_token);
-		res.redirect('http://localhost:3000/user/account');
+		res.redirect('/user/account');
+		console.log('SUCCESSFUL AUTHENTICATION NOW REDIRECTING');
 	},
 );
 
@@ -92,14 +93,14 @@ routes.get('/user/account',
 	(req: any, res: any) => {
 		console.log('USER: ', req.user);
 		res.render('http://localhost:3000/user/account');
-	},
+	}
 );
 
-// destroys session on logout and redirects to home page "/"
+// destroys session on logout (including in db) and redirects to home page "/"
 routes.get('/logout', (req: any, res: any) => {
 	console.log('LOGGING OUT SESSION: ', req.session);
 	req.logout;
-	req.session.destroy(() => res.redirect('/'));
+	req.session.destroy(() => res.redirect('http://localhost:3000/'));
 });
 
 export default routes;

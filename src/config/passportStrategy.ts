@@ -90,12 +90,12 @@ Passport.serializeUser((
 );
 
 Passport.deserializeUser((
-    id: any,
+    openId: any,
     done: (
         arg0: any,
         arg1: any,
     ) => void) => {
-        User.findById(id, (err: any, user: any) => {
+        User.findById(openId, (err: any, user: any) => {
             console.log('DESERIALIZED USER: ', user);
             done(err, user);
             });

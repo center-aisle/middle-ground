@@ -26,7 +26,7 @@ app.use(flash());
 const MongoStore = connectMongo(session);
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    store: new MongoStore({ url: process.env.MONGODB_URI || 'mongodb://localhost/Users' }),
+    store: new MongoStore({ url: process.env.MONGODB_URI || 'mongodb://localhost/middleground' }),
     resave: false,
     saveUninitialized: true,
  }));
@@ -41,9 +41,9 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Users');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/middleground');
 
 app.listen(PORT, () => {
 	console.log('\uD83C\uDF0E  ==> API Server now listening on PORT ' + PORT + '!');
 });
-
+
