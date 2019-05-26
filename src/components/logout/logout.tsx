@@ -1,14 +1,14 @@
 import React from 'react';
 
-function Login() {
+function Logout() {
 	return (
 		<div className='container'>
             <div className='row'>
                 <div className='col s12 m7'>
                     <div className='card'>
                         <div className='card-content center'>
-                            <form action='http://localhost:3001/auth/openidconnect' method='post'>
-                                <button id='openidconnect_identifier'>Log in or create a new account using Google</button>
+                            <form action='http://localhost:3001/logout' method='get'>
+                                <button id='openidconnect_logout'>Logout</button>
                             </form>
                         </div>
 
@@ -27,4 +27,4 @@ function Login() {
 	);
 }
 
-export default Login;
+export default Logout;

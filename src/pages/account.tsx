@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from '../components/login/login';
+import Logout from '../components/logout/logout';
 
 function Wrapper() {
 	return (
 		<div className='main-container'>
-			<Login/>
+			<Logout/>
 			<p>This is the account</p>
 		</div>
 	);
