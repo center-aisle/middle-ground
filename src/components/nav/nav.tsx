@@ -5,18 +5,17 @@ import { Button } from 'react-materialize';
 function Nav() {
 
 	const onClickHome = () => {
-		window.location.href="/";
+		window.location.href = '/';
 	};
 	const onClickAccount = () => {
-		window.location.href="http://localhost:3001/auth/openidconnect";
+		window.location.href = 'http://localhost:3001/auth/openidconnect';
 	};
 	const onClickLogOut = () => {
-		window.location.href="http://localhost:3001/logout";
+		window.location.href = 'http://localhost:3001/logout';
 	};
 	const onClickAbout = () => {
-		window.location.href="/about";
+		window.location.href = '/about';
 	};
-
 
 	return (
 		<Button
