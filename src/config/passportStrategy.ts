@@ -7,14 +7,17 @@ dotenv.config();
 
 // connect to google client
 Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
+
     .then((googleIssuer: { issuer: any; metadata: any; Client: any; }) => {
         // console.log('Discovered issuer %s %O', googleIssuer.issuer, googleIssuer.metadata);
+
         const client = new googleIssuer.Client({
             client_id: process.env.GOOGLE_ID,
             client_secret: process.env.GOOGLE_SECRET,
             redirect_uris: ['https://bipartisan.herokuapp.com/user/account', 'https://bipartisan.herokuapp.com/user'],
             response_types: ['code token id_token'],
         });
+
         const params = {
             client_id: process.env.GOOGLE_ID,
             response_type: 'code token id_token',
@@ -26,6 +29,7 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
             display: 'popup',
             login_hint: 'sub',
         };
+
         const verify = async ( access_token: any, id_token: any, expires_in: any, token_type: any, done: (arg0: null, arg1: any) => void ) => {
             console.log('access_token: ', access_token);
             console.log('id_token: ', id_token);
@@ -55,11 +59,13 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
                     email: id_token.email,
                     picture: id_token.picture,
                 });
-            } catch (error) {
-                done(error, null);
+            } catch (err || !user) {
+                if (err) { done(err, null); };
+                if (!user) { done(null, false); };
             }
             return done(null, {user, access_token, id_token});
         };
+
         const passReqToCallback = false;
         const sessionKey = generators.random();
         const usePKCE = false;
@@ -70,7 +76,9 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
             sessionKey,
             usePKCE,
         };
+
         Passport.use('openid-client', new Strategy( options, verify ));
+
     }).catch((err: any) => {
         if (err) {
             console.log(err);
@@ -84,8 +92,8 @@ Passport.serializeUser((
         arg0: any,
         arg1: any,
     ) => void) => {
-        console.log('SERIALIZED USER: ', user.id);
-        done(null, user.id);
+        console.log('SERIALIZED USER: ', user.openId);
+        done(null, user.openId);
     },
 );
 
@@ -96,8 +104,8 @@ Passport.deserializeUser((
         arg1: any,
     ) => void) => {
         User.findById(openId, (err: any, user: any) => {
-            console.log('DESERIALIZED USER: ', user);
-            done(err, user);
+            console.log('DESERIALIZED USER: ', user.openId);
+            done(err, user.openId);
             });
     },
 );
