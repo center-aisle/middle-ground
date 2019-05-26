@@ -21,45 +21,45 @@ const routes = express.Router();
 // 		});
 // });
 
-//this is going to be the route that finds the user within the database
-routes.get("/users", (req, res) => {
+// this is going to be the route that finds the user within the database
+routes.get('/users', (req, res) => {
 	res.status(200).json({
 		success: true,
-		data: "Hi Team!!!",
+		data: 'Hi Team!!!',
 	});
 });
 
-//this is going to be the route that finds the user within the database
-routes.get("/users/:id", async (req, res) => {
+// this is going to be the route that finds the user within the database
+routes.get('/users/:id', async (req, res) => {
 	const openId: string = req.params.openId || null;
 	try {
-		const dbUser: any = await controller.findById(openId)
+		const dbUser: any = await controller.findById(openId);
 		return res.status(200).json({
 			success: true,
-			data: dbUser
+			data: dbUser,
 		});
 	} catch (error) {
 		return res.status(500).json({
 			success: false,
-			data: "User not found due to DB error"
+			data: 'User not found due to DB error',
 		});
 	}
 });
 
-//This is going to be the route that finds and updates the user's information. Patch needed maybe?
-routes.put("/users/:id", async (req, res) => {
+// This is going to be the route that finds and updates the user's information. Patch needed maybe?
+routes.put('/users/:id', async (req, res) => {
 	const openId: string = req.params.openId;
 	const updatedUser: any = req.body;
 	try {
-		const dbUser: any = await controller.update(openId, updatedUser)
+		const dbUser: any = await controller.update(openId, updatedUser);
 		return res.status(200).json({
 			success: true,
-			data: dbUser
+			data: dbUser,
 		});
 	} catch (error) {
 		return res.status(500).json({
 			success: false,
-			data: "User information could not be updated due to DB error"
+			data: 'User information could not be updated due to DB error',
 		});
 	}
 });
@@ -73,17 +73,15 @@ routes.put("/users/:id", async (req, res) => {
 routes.post('/auth/openidconnect', Passport.authenticate('openid-client'));
 
 // automatically redirects to /user/account if success else stay on /user page
-routes.get('/auth/openidconnect/return',
+routes.get('/auth/openidconnect',
 	Passport.authenticate('openid-client', {
 		session: true,
 		failureRedirect: 'http://localhost:3000/user' ,
 		failureFlash: 'Invalid login, try again',
-	}), (req: any,
-		    res: { redirect: (arg0: string) => void; },
-	) => {
-		req.json(req.user, req.access_token);
-		res.redirect('/user/account');
-		console.log('SUCCESSFUL AUTHENTICATION NOW REDIRECTING');
+	}),	(req, res) => {
+		res.json(req.user);
+		// res.redirect("/user/account");
+		console.log('SUCCESSFUL AUTHENTICATION');
 	},
 );
 
@@ -93,7 +91,7 @@ routes.get('/user/account',
 	(req: any, res: any) => {
 		console.log('USER: ', req.user);
 		res.render('http://localhost:3000/user/account');
-	}
+	},
 );
 
 // destroys session on logout (including in db) and redirects to home page "/"

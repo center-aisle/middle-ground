@@ -59,9 +59,8 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
                     email: id_token.email,
                     picture: id_token.picture,
                 });
-            } catch (err || !user) {
-                if (err) { done(err, null); };
-                if (!user) { done(null, false); };
+            } catch (err) {
+                done(err, null);
             }
             return done(null, {user, access_token, id_token});
         };
@@ -92,8 +91,8 @@ Passport.serializeUser((
         arg0: any,
         arg1: any,
     ) => void) => {
-        console.log('SERIALIZED USER: ', user.openId);
-        done(null, user.openId);
+        console.log('SERIALIZED USER: ', user);
+        done(null, user);
     },
 );
 
@@ -104,8 +103,8 @@ Passport.deserializeUser((
         arg1: any,
     ) => void) => {
         User.findById(openId, (err: any, user: any) => {
-            console.log('DESERIALIZED USER: ', user.openId);
-            done(err, user.openId);
+            console.log('DESERIALIZED USER: ', user);
+            done(err, user);
             });
     },
 );
