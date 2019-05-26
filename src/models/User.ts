@@ -2,20 +2,26 @@ import { Schema, model, Document, Model } from 'mongoose';
 import findOrCreate from 'mongoose-findorcreate'; // need this for passport/login
 
 export interface IUser extends Document {
+    // TBD
+};
+
+export interface IUserModel extends Model<IUser> {
     findOrCreate(param: {
         openId: string;
         firstName: string;
         lastName: string,
         email: string,
-    }): Promise<any>;
+        picture: string
+    }): Promise<IUser>;
     findOrCreate(param: {
         openId: string;
         firstName: string;
         lastName: string,
         email: string,
+        picture: string
     },
-    cb: (err: any, user: any) => void): void
-}
+    cb: (err: any, user: IUser) => void): void
+};
 
 // Uses the Schema constructor, create a new UserSchema object
 const userSchema = new Schema({
@@ -60,8 +66,8 @@ const userSchema = new Schema({
     }],
 });
 
-userSchema.plugin(findOrCreate); // why is this not working
+userSchema.plugin(findOrCreate);
 
-const User: Model<IUser> = model<IUser>('User', userSchema);
+const User: IUserModel = model<IUser, IUserModel>('User', userSchema);
 
 export default User;

@@ -7,7 +7,6 @@ import mongoose from 'mongoose';
 import connectMongo from 'connect-mongo';
 import routes from './routes/apiRoutes';
 import Passport from './config/passportStrategy';
-// import { ClassMethod } from '@babel/types'; <<-- what's this for? we're not using babel as far as i'm aware but i could be wrong
 
 dotenv.config();
 
@@ -47,4 +46,4 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/users');
 app.listen(PORT, () => {
 	console.log('\uD83C\uDF0E  ==> API Server now listening on PORT ' + PORT + '!');
 });
-
+

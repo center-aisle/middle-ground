@@ -3,7 +3,7 @@ import Login from '../components/login/login';
 
 interface DisplayUser {
 	id: string;
-	picture: string; // <- fcuk I forgot about this
+	picture: string;
 	name: string;
 	summary: string;
 }

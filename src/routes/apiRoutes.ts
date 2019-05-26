@@ -41,7 +41,7 @@ routes.put('/userUpdate', (req, res) => {
  ***********************************/
 
 // does the authenticating on hit
-routes.post('/auth/openidconnect', Passport.authenticate('openid-client'));
+routes.get('/auth/openidconnect', Passport.authenticate('openid-client'));
 
 // automatically redirects to /user/account if success else stay on /user page
 routes.get('/auth/openidconnect/return',
@@ -53,6 +53,7 @@ routes.get('/auth/openidconnect/return',
 		    res: { redirect: (arg0: string) => void; },
 	) => {
 		console.log('SUCCESSFUL AUTHENTICATION NOW REDIRECTING');
+		req.json(req.user, req.access_token);
 		res.redirect('/user/account');
 	},
 );
@@ -62,7 +63,7 @@ routes.get('/user/account',
 	ensureLoggedIn('/user'),
 	(req: any, res: any) => {
 		console.log('USER: ', req.user);
-		res.render('/user/account', { user: req.user });
+		res.render('/user/account' + req.access_token);
 	},
 );
 

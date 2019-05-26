@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import Passport from 'passport';
 import { Issuer, Strategy, generators } from 'openid-client';
-import User from '../models/User';
+import User, { IUser } from '../models/User';
 
 dotenv.config();
 
@@ -15,7 +15,6 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
             redirect_uris: ['https://bipartisan.herokuapp.com/user/account', 'https://bipartisan.herokuapp.com/user'],
             response_types: ['code token id_token'],
         });
-
         const params = {
             client_id: process.env.GOOGLE_ID,
             response_type: 'code token id_token',
@@ -27,38 +26,55 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
             display: 'popup',
             login_hint: 'sub',
         };
-
-        const verify = ( access_token: any, id_token: any, expires_in: any, token_type: any, done: (arg0: null, arg1: any) => void ) => {
+        const verify = async ( access_token: any, id_token: any, expires_in: any, token_type: any, done: (arg0: null, arg1: any) => void ) => {
             console.log('access_token: ', access_token);
             console.log('id_token: ', id_token);
             console.log('expires_in: ', expires_in);
             console.log('token_type: ', token_type);
-            (User as any).findOrCreate({
-                openId: id_token.sub,
-                firstName: id_token.given_name,
-                lastName: id_token.family_name,
-                email: id_token.email,
-            }, (err: any, user: any) => {
-                if (err) {
-                    done(err, user);
-                }
-                if (!user) {
-                    done(null, false);
-                }
-                done(null, user);
-            });
-            return done(null, access_token);
+            // User.findOrCreate({
+            //     openId: id_token.sub,
+            //     firstName: id_token.given_name,
+            //     lastName: id_token.family_name,
+            //     email: id_token.email,
+            //     picture: id_token.picture
+            // }, (err: any, user: any) => {
+            //     if (err) {
+            //         done(err, user);
+            //     }
+            //     if (!user) {
+            //         done(null, false);
+            //     }
+            //     done(null, user);
+            // });
+            let user: IUser | null = null;
+            try {
+                user = await User.findOrCreate({
+                    openId: id_token.sub,
+                    firstName: id_token.given_name,
+                    lastName: id_token.family_name,
+                    email: id_token.email,
+                    picture: id_token.picture
+                });
+            } catch (error) {
+                done(error, null);
+            };
+            return done(null, {user, access_token, id_token});
         };
-
+        let passReqToCallback = false;
+        let sessionKey = generators.random();
+        let usePKCE = false;
         const options = {
             client,
             params,
+            passReqToCallback,
+            sessionKey,
+            usePKCE
         };
         Passport.use('openid-client', new Strategy( options, verify ));
     }).catch((err: any) => {
         if (err) {
             console.log(err);
-        }
+        };
     });
 
 // session stuff
