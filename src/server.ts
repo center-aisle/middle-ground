@@ -19,7 +19,7 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1);
     session.cookie.secure = true;
-	   app.use(express.static(path.join(__dirname, 'dist')));
+	app.use(express.static(path.join(__dirname, 'dist')));
 }
 app.use(express.static((path.join(__dirname, 'public'))));
 app.use(flash());
@@ -50,4 +50,4 @@ mongoose.createConnection(process.env.MONGODB_URI || 'mongodb://localhost/middle
 app.listen(PORT, () => {
 	console.log('\uD83C\uDF0E  ==> API Server now listening on PORT ' + PORT + '!');
 });
-
+

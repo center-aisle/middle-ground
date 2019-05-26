@@ -8,7 +8,10 @@ function Login() {
                     <div className='card'>
                         <div className='card-content center'>
                             <form action='http://localhost:3001/auth/openidconnect' method='post'>
-                                <button id='openidconnect_identifier'>Log in or create a new account using Google</button>
+                                <label>Log in or create a new account to see your results and new frenemies!</label>
+                                <br/>
+                                <br/>
+                                <button id='openidconnect_identifier'>Magic portal</button>
                             </form>
                         </div>
 

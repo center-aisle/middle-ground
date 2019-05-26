@@ -1,23 +1,56 @@
 import React from 'react';
-import {Button} from 'react-materialize';
+import { Button } from 'react-materialize';
 // import './nav.css';
 
 function Nav() {
+
+	const onClickHome = () => {
+		window.location.href="/";
+	};
+	const onClickAccount = () => {
+		window.location.href="/user/account";
+	};
+	const onClickAbout = () => {
+		window.location.href="/about";
+	};
+
+
 	return (
+		<Button
+			floating
+			fab={{direction: 'bottom', hoverEnabled: true}}
+			icon='menu'
+			className='blue waves-effect'
+			large
+			style={{top: '50px'}}
+		>
+			<Button
+				floating
+				icon='info'
+				className='blue waves-effect'
+				tooltip='About'
+				tooltipOptions={{position: 'left'}}
+				onClick={onClickAbout}
+			/>
 
-<Button
-	floating
-	fab={{direction: 'bottom'}}
-	icon='home'
-	className='blue waves-effect'
-	large
-	style={{top: '50px'}}>
+			<Button
+				floating
+				icon='account_circle'
+				className='blue waves-effect'
+				tooltip='Log in or create new account'
+				tooltipOptions={{position: 'left'}}
+				onClick={onClickAccount}
+			/>
 
-<Button floating icon='info' className='blue waves-effect'  />
-<Button floating icon='pool' className='blue waves-effect' />
-<Button floating icon='speaker_notes' className='blue waves-effect' />
-<Button floating icon='person_pin_circle' className='blue waves-effect' />
-</Button>
+			<Button
+				floating
+				icon='home'
+				className='blue waves-effect'
+				tooltip='Home'
+				tooltipOptions={{position: 'left'}}
+				onClick={onClickHome}
+			/>
+		</Button>
 	);
 }
 
