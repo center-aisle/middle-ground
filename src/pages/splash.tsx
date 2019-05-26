@@ -1,11 +1,11 @@
 import React from 'react';
 
 function Wrapper() {
-  return (
-    <div className='main-container'>
+	return (
+		<div className='main-container'>
 
-    </div>
-  );
+		</div>
+	);
 }
 
 export default Wrapper;

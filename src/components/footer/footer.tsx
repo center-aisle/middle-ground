@@ -7,8 +7,8 @@ function Footer() {
     <div className='container'>
       <div className='row'>
         <div className='col l6 s12'>
-          <h4 className='white-text'>Fremeny</h4>
-          <p className='grey-text text-lighten-4'>  Find your new best fremeny!</p>
+          <h4 className='white-text'>Frenemy</h4>
+          <p className='grey-text text-lighten-4'>  Find your new best frenemy!</p>
         </div>
         <div className='col l4 offset-l2 s12'>
           <h5 className='white-text'>Links</h5>
@@ -26,7 +26,7 @@ function Footer() {
     </div>
   </footer>
 
-  );
+	);
 }
 
 export default Footer;

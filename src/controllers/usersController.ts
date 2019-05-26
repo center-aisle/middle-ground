@@ -1,20 +1,31 @@
-require("mongoose");
-const User = require("../models/User.ts")
+import 'mongoose';
+import User from '../models/User';
 
-module.exports = {
-    update: function(req, res) {
-        User.findByIdAndUpdate(req.params.UserId, req.body, {new: true}, (err, UserId) => {
-                if (err) return res.status(500).send(err);
-                return res.send(UserId)
-            });
+export const controller = {
+    async update(id: string, updatedUser: any): Promise<any> {
+        let dbUsers: any = null;
+        try {
+            dbUsers = await User.findByIdAndUpdate(id, updatedUser, {new: true}).exec();
+        } catch (error) {
+            // Something to do if it fails
+        }
+
+        return dbUsers;
     },
-    findById: function(req, res) {
-        User.findById(req.params.id, (err, dbUsers) => {
-            if (err) return res.status(422).send(err)
-            return res.send(dbUsers);
-            });
-    }
+
+    async findById(id: string): Promise<any> {
+        let dbUsers: any = null;
+        try {
+            dbUsers = await User.findById(id).exec();
+        } catch (error) {
+            // Something to do if it fails
+        }
+
+        return dbUsers;
+    },
 };
 
-//update function in a get request in the api routes because finding a single ID in
-//findbyidandupdate in a put request in the api routes because updating an id
+export default controller;
+
+// update function in a get request in the api routes because finding a single ID in
+// findbyidandupdate in a put request in the api routes because updating an id
