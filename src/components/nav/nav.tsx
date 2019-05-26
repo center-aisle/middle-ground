@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-materialize';
+import logInOutBtn from '../logInOutBtn/logInOutBtn';
 // import './nav.css';
 
 function Nav() {
@@ -7,15 +8,21 @@ function Nav() {
 	const onClickHome = () => {
 		window.location.href = '/';
 	};
-	const onClickAccount = () => {
-		window.location.href = 'http://localhost:3001/auth/openidconnect';
-	};
-	const onClickLogOut = () => {
-		window.location.href = 'http://localhost:3001/logout';
-	};
 	const onClickAbout = () => {
 		window.location.href = '/about';
 	};
+
+	const Auth = {
+        isLoggedIn: false,
+        logIn() {
+            this.isLoggedIn = true;
+            <Route path="/user/account" />
+        },
+        logOut() {
+            this.isLoggedIn = false;
+            <Route path="/404" />
+        }
+    };
 
 	return (
 		<Button
@@ -26,42 +33,42 @@ function Nav() {
 			large
 			style={{top: '50px'}}
 		>
-			<Button
-				floating
-				icon='info'
-				className='blue waves-effect'
-				tooltip='About'
-				tooltipOptions={{position: 'left'}}
-				onClick={onClickAbout}
-			/>
+		<Button
+			floating
+			icon='info'
+			className='blue waves-effect'
+			tooltip='About'
+			tooltipOptions={{position: 'left'}}
+			onClick={onClickAbout}
+		/>
 
-			{/* how to make this and the account button switch depending on if logged in? */}
-			<Button
-				floating
-				icon='power_settings_new'
-				className='blue waves-effect'
-				tooltip='Log out'
-				tooltipOptions={{position: 'left'}}
-				onClick={onClickLogOut}
-			/>
+				? ( <Button
+					floating
+					icon='power_settings_new'
+					className='blue waves-effect'
+					tooltip='Log out'
+					tooltipOptions={{position: 'left'}}
+					onClick={onClickLogOut}
+				/>
+			) : (
+				<Button
+					floating
+					icon='account_circle'
+					className='blue waves-effect'
+					tooltip='Log in or create new account'
+					tooltipOptions={{position: 'left'}}
+					onClick={onClickAccount}
+				/>
+			)
 
-			<Button
-				floating
-				icon='account_circle'
-				className='blue waves-effect'
-				tooltip='Log in or create new account'
-				tooltipOptions={{position: 'left'}}
-				onClick={onClickAccount}
-			/>
-
-			<Button
-				floating
-				icon='home'
-				className='blue waves-effect'
-				tooltip='Home'
-				tooltipOptions={{position: 'left'}}
-				onClick={onClickHome}
-			/>
+		<Button
+			floating
+			icon='home'
+			className='blue waves-effect'
+			tooltip='Home'
+			tooltipOptions={{position: 'left'}}
+			onClick={onClickHome}
+		/>
 		</Button>
 	);
 }
