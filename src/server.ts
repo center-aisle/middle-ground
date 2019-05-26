@@ -41,9 +41,9 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/users');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Users');
 
 app.listen(PORT, () => {
 	console.log('\uD83C\uDF0E  ==> API Server now listening on PORT ' + PORT + '!');
 });
-
+

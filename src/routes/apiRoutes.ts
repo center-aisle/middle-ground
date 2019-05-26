@@ -54,7 +54,7 @@ routes.get('/auth/openidconnect/return',
 	) => {
 		console.log('SUCCESSFUL AUTHENTICATION NOW REDIRECTING');
 		req.json(req.user, req.access_token);
-		res.redirect('/user/account');
+		res.redirect('http://localhost:3000/user/account');
 	},
 );
 
@@ -63,7 +63,7 @@ routes.get('/user/account',
 	ensureLoggedIn('/user'),
 	(req: any, res: any) => {
 		console.log('USER: ', req.user);
-		res.render('/user/account' + req.access_token);
+		res.render('http://localhost:3000/user/account');
 	},
 );
 

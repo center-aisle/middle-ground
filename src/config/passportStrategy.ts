@@ -53,28 +53,28 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
                     firstName: id_token.given_name,
                     lastName: id_token.family_name,
                     email: id_token.email,
-                    picture: id_token.picture
+                    picture: id_token.picture,
                 });
             } catch (error) {
                 done(error, null);
-            };
+            }
             return done(null, {user, access_token, id_token});
         };
-        let passReqToCallback = false;
-        let sessionKey = generators.random();
-        let usePKCE = false;
+        const passReqToCallback = false;
+        const sessionKey = generators.random();
+        const usePKCE = false;
         const options = {
             client,
             params,
             passReqToCallback,
             sessionKey,
-            usePKCE
+            usePKCE,
         };
         Passport.use('openid-client', new Strategy( options, verify ));
     }).catch((err: any) => {
         if (err) {
             console.log(err);
-        };
+        }
     });
 
 // session stuff

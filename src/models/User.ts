@@ -3,7 +3,7 @@ import findOrCreate from 'mongoose-findorcreate'; // need this for passport/logi
 
 export interface IUser extends Document {
     // TBD
-};
+}
 
 export interface IUserModel extends Model<IUser> {
     findOrCreate(param: {
@@ -20,8 +20,8 @@ export interface IUserModel extends Model<IUser> {
         email: string,
         picture: string
     },
-    cb: (err: any, user: IUser) => void): void
-};
+                 cb: (err: any, user: IUser) => void): void;
+}
 
 // Uses the Schema constructor, create a new UserSchema object
 const userSchema = new Schema({
