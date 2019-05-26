@@ -17,7 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.join(__dirname, 'dist')));
+    app.set('trust proxy', 1);
+    session.cookie.secure = true;
+	   app.use(express.static(path.join(__dirname, 'dist')));
 }
 app.use(express.static((path.join(__dirname, 'public'))));
 app.use(flash());
@@ -29,6 +31,7 @@ app.use(session({
     store: new MongoStore({ url: process.env.MONGODB_URI || 'mongodb://localhost/middleground' }),
     resave: false,
     saveUninitialized: true,
+    cookie: {},
  }));
 app.use(Passport.initialize());
 app.use(Passport.session());
@@ -41,7 +44,8 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/middleground');
+// createConnection because sessions opened a new connection above already
+mongoose.createConnection(process.env.MONGODB_URI || 'mongodb://localhost/middleground');
 
 app.listen(PORT, () => {
 	console.log('\uD83C\uDF0E  ==> API Server now listening on PORT ' + PORT + '!');
