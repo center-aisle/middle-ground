@@ -45,10 +45,12 @@
     "start": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\" \"react-scripts start\"",
     "server": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\"",
     "build": "tsc --noEmit false",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "production": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json",
+    "install": "cd client && npm install && npm run build && cd ..",
     "fix": "tslint --fix --project ."
   },
   "eslintConfig": {
