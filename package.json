@@ -50,6 +50,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json",
+    "install": "cd client && npm install && npm run build && cd ..",
     "fix": "tslint --fix --project ."
   },
   "eslintConfig": {
