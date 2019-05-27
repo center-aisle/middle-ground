@@ -21,6 +21,7 @@ footer {
     bottom: 0;
     width: 100%;
     padding: 0;
-    margin: 0;
+    margin: 0 0 -100px 0;
+    /* above margin is a hack to solve the white space problem but should figure out where it comes from */
     border: 0;
 }

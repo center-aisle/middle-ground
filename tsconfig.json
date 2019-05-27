@@ -30,6 +30,6 @@
     "node_modules"
   ],
   "store": {
-    "url": "mongodb://localhost/Users"
+    "url": "mongodb://localhost/middleground"
   }
 }
