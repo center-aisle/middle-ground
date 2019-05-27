@@ -49,7 +49,7 @@ const allQuestionsFromServer: IPoliticalQuestions[] = [
         color: 'orange',
         title: '5th Question',
         answerD: `Government regulation of business is necessary to protect the public interest`,
-        answerR: `Government regulation of business usually does more harm than good`,
+        answerR: `Government  regulation of business usually does more harm than good`,
     },
 ];
 
