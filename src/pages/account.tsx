@@ -1,10 +1,9 @@
 import React from 'react';
-import Login from '../components/login/login';
 
-function Wrapper() {
+function Wrapper(props: any) {
 	return (
 		<div className='main-container'>
-			<Login/>
+			{props}
 			<p>This is the account</p>
 		</div>
 	);
