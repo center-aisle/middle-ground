@@ -1,37 +1,53 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router,
-    Route,
-    Switch,
-    Link,
-    Redirect,
-    withRouter
-} from 'react-router-dom';
+import React from 'react';
 import { Button } from 'react-materialize';
+// import './nav.css';
 
-function logInOutBtn() {
+function Nav() {
 
-    const onClickLogIn = () => {
+	const onClickLogIn = () => {
 		window.location.href = 'http://localhost:3001/auth/openidconnect';
+		Auth.isLoggedIn = true;
 	};
 	const onClickLogOut = () => {
 		window.location.href = 'http://localhost:3001/logout';
+		Auth.isLoggedIn = false;
     };
 
-    const Auth = {
+	const Auth = {
         isLoggedIn: false,
         logIn() {
             this.isLoggedIn = true;
-            <Route path="/user/account" />
         },
         logOut() {
             this.isLoggedIn = false;
-            <Route path="/404" />
         }
-    };
-	return (
-        Auth.isLoggedIn 
-        ? (
-            <Button
+	};
+	
+	const loginBtn = 
+		<Button
+			floating
+			icon='account_circle'
+			className='blue waves-effect'
+			tooltip='Log in or create new account'
+			tooltipOptions={{position: 'left'}}
+			onClick={onClickLogIn}
+		/>
+	;
+
+	const logoutBtn = 
+		<Button
+			floating
+			icon='power_settings_new'
+			className='blue waves-effect'
+			tooltip='Log out'
+			tooltipOptions={{position: 'left'}}
+			onClick={onClickLogOut}
+		/>
+	;
+
+    Auth.isLoggedIn ?
+        (return (
+            < Button
                 floating
                 icon='power_settings_new'
                 className='blue waves-effect'
@@ -39,8 +55,9 @@ function logInOutBtn() {
                 tooltipOptions={{position: 'left'}}
                 onClick={onClickLogOut}
             />
-        ) : (
-            <Button
+        )) : (
+            return (
+                <Button
                 floating
                 icon='account_circle'
                 className='blue waves-effect'
@@ -48,8 +65,19 @@ function logInOutBtn() {
                 tooltipOptions={{position: 'left'}}
                 onClick={onClickLogIn}
             />
+            )
         )
-    )
-}
+}   
 
-export default logInOutBtn;
+export default Nav;
+
+// // In YourComponent.js
+// ...
+// import { NavHashLink as NavLink } from 'react-router-hash-link';
+// ...
+// // Use it just like a RRv4 <NavLink> (see RRv4 api for details):
+// <NavLink
+//   to="/some/path#with-hash-fragment"
+//   activeClassName="selected"
+//   // etc...
+// >Link to Hash Fragment</NavLink>

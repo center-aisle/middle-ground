@@ -1,7 +1,17 @@
 import React from 'react';
 import { Button } from 'react-materialize';
-import logInOutBtn from '../logInOutBtn/logInOutBtn';
 // import './nav.css';
+
+
+const Auth = {
+	isLoggedIn: false,
+	logIn() {
+		this.isLoggedIn = true;
+	},
+	logOut() {
+		this.isLoggedIn = false;
+	}
+};
 
 function Nav() {
 
@@ -11,65 +21,69 @@ function Nav() {
 	const onClickAbout = () => {
 		window.location.href = '/about';
 	};
-
-	const Auth = {
-        isLoggedIn: false,
-        logIn() {
-            this.isLoggedIn = true;
-            <Route path="/user/account" />
-        },
-        logOut() {
-            this.isLoggedIn = false;
-            <Route path="/404" />
-        }
+	const onClickLogIn = () => {
+		window.location.href = 'http://localhost:3001/auth/openidconnect';
+		Auth.isLoggedIn = true;
+	};
+	const onClickLogOut = () => {
+		window.location.href = 'http://localhost:3001/logout';
+		Auth.isLoggedIn = false;
     };
 
+
+
 	return (
-		<Button
-			floating
-			fab={{direction: 'bottom', hoverEnabled: true}}
-			icon='menu'
-			className='blue waves-effect'
-			large
-			style={{top: '50px'}}
-		>
-		<Button
-			floating
-			icon='info'
-			className='blue waves-effect'
-			tooltip='About'
-			tooltipOptions={{position: 'left'}}
-			onClick={onClickAbout}
-		/>
+		<div>
+			<Button
+				floating
+				fab={{direction: 'bottom', hoverEnabled: true}}
+				icon='menu'
+				className='blue waves-effect'
+				large
+				style={{top: '50px'}}
+			>
+			<Button
+				floating
+				icon='info'
+				className='blue waves-effect'
+				tooltip='About'
+				tooltipOptions={{position: 'left'}}
+				onClick={onClickAbout}
+			/>
 
-				? ( <Button
-					floating
-					icon='power_settings_new'
-					className='blue waves-effect'
-					tooltip='Log out'
-					tooltipOptions={{position: 'left'}}
-					onClick={onClickLogOut}
-				/>
-			) : (
-				<Button
-					floating
-					icon='account_circle'
-					className='blue waves-effect'
-					tooltip='Log in or create new account'
-					tooltipOptions={{position: 'left'}}
-					onClick={onClickAccount}
-				/>
-			)
+			{
+				Auth.isLoggedIn
+				? (
+					<Button
+						floating
+						icon='power_settings_new'
+						className='blue waves-effect'
+						tooltip='Log out'
+						tooltipOptions={{position: 'left'}}
+						onClick={onClickLogOut}
+					/>
+				) : (
+					<Button
+						floating
+						icon='account_circle'
+						className='blue waves-effect'
+						tooltip='Log in or create new account'
+						tooltipOptions={{position: 'left'}}
+						onClick={onClickLogIn}
+					/>
+				)
+			}
 
-		<Button
-			floating
-			icon='home'
-			className='blue waves-effect'
-			tooltip='Home'
-			tooltipOptions={{position: 'left'}}
-			onClick={onClickHome}
-		/>
-		</Button>
+			<Button
+				floating
+				icon='home'
+				className='blue waves-effect'
+				tooltip='Home'
+				tooltipOptions={{position: 'left'}}
+				onClick={onClickHome}
+			/>
+			</Button>
+		</div>
 	);
 }
 
