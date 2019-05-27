@@ -15,7 +15,7 @@ const Auth = {
 	}
 };
 
-function Nav(props: { state: { isLoggedIn: any; }; }) {
+function Nav() {
 
 	const onClickHome = () => {
 		window.location.href = '/';
@@ -58,7 +58,7 @@ function Nav(props: { state: { isLoggedIn: any; }; }) {
 			/>
 
 			{
-				props.state.isLoggedIn
+				Auth.isLoggedIn
 				? (
 					<Button
 						floating

@@ -77,14 +77,13 @@ class mustLogin extends Component {
 
 const App: React.FC = () => {
 
-    state = {
-        isLoggedIn: true
-    };
+    // const {isLoggedIn} = props;
+
 
     return (
         <Router>
             <Wrapper>
-                <Nav {...state} />
+                <Nav />
                 <Header />
                 <Body />
                 <Switch>
