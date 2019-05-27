@@ -97,6 +97,9 @@ routes.get('/user/account',
 	ensureLoggedIn('/user'),
 	(req: any, res: any) => {
 		res.send(req.user);
+		res.send(req.body.access_token);
+		console.log(req);
+		console.log(req.body);
 		console.log('USER: ', req.user);
 		res.render('http://localhost:3000/user/account');
 	},

@@ -1,4 +1,4 @@
-import React, { Component, ComponentClass } from 'react';
+import React from 'react';
 import { BrowserRouter as Router,
     Route,
     Switch,
@@ -8,6 +8,7 @@ import { BrowserRouter as Router,
 } from 'react-router-dom';
 import Splash from './pages/splash';
 import Account from './pages/account';
+import User from './pages/user';
 import Questions from './pages/questions';
 import Frenemy from './pages/frenemy';
 import About from './pages/about';
@@ -18,17 +19,12 @@ import Header from './components/header/header';
 import Nav from './components/nav/nav';
 import Body from './components/body/body';
 import Wrapper from './components/wrapper/wrapper';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import mustLogin from './pages/mustLogin';
+// import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+// import mustLogin from './pages/mustLogin';
 import './App.css';
-// import { FindOneAndUpdateOption } from 'mongodb';
 
 const App: React.FC = () => {
 
-<<<<<<< Updated upstream
-    // const {isLoggedIn} = props;
-=======
->>>>>>> Stashed changes
     return (
         <Router>
             <Wrapper>
@@ -41,8 +37,8 @@ const App: React.FC = () => {
 
                     <Route path='http://localhost:3001/auth/openidconnect' />
 
-                    <PrivateRoute exact path='/user/account' component={Account} />
-                    <Route component={mustLogin} />
+                    <Route exact path='/user/account' component={Account} />
+                    <Route component={User} />
 
                     <Route
                         path='/questions'
