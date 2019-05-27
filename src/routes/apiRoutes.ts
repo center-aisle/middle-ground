@@ -79,9 +79,16 @@ routes.get('/auth/openidconnect',
 		failureRedirect: 'http://localhost:3000/user' ,
 		failureFlash: 'Invalid login, try again',
 	}),	(req, res) => {
+		console.log(res);
+		console.log(req);
+		res.json(req.body.user);
+		res.json(req.body.id_token);
+		res.json(req.body.access_token);
 		res.json(req.user);
-		res.redirect("/user/account");
+		res.redirect('/user/account');
 		console.log('SUCCESSFUL AUTHENTICATION');
+		const token = req.body.access_token;
+		return token;
 	},
 );
 
@@ -89,6 +96,10 @@ routes.get('/auth/openidconnect',
 routes.get('/user/account',
 	ensureLoggedIn('/user'),
 	(req: any, res: any) => {
+		res.send(req.user);
+		res.send(req.body.access_token);
+		console.log(req);
+		console.log(req.body);
 		console.log('USER: ', req.user);
 		res.render('http://localhost:3000/user/account');
 	},

@@ -9,12 +9,11 @@ dotenv.config();
 Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
 
     .then((googleIssuer: { issuer: any; metadata: any; Client: any; }) => {
-        // console.log('Discovered issuer %s %O', googleIssuer.issuer, googleIssuer.metadata);
 
         const client = new googleIssuer.Client({
             client_id: process.env.GOOGLE_ID,
             client_secret: process.env.GOOGLE_SECRET,
-            redirect_uris: ['https://bipartisan.herokuapp.com/user/account', 'https://bipartisan.herokuapp.com/user'],
+            redirect_uris: ['https://bipartisan.herokuapp.com/user/account', 'http://localhost:3000/user/account'],
             response_types: ['code token id_token'],
         });
 
@@ -23,7 +22,7 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
             response_type: 'code token id_token',
             scope: 'openid profile email',
             nonce: generators.nonce(),
-            redirect_uri: 'https://bipartisan.herokuapp.com/user/account',
+            redirect_uri: 'http://localhost:3000/user/account',
             state: generators.state(),
             prompt: 'select_account',
             display: 'popup',
