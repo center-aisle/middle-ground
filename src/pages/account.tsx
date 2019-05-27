@@ -1,8 +1,9 @@
 import React from 'react';
 
-function Wrapper() {
+function Wrapper(props: any) {
 	return (
 		<div className='main-container'>
+			{props}
 			<p>This is the account</p>
 		</div>
 	);

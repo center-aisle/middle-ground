@@ -80,7 +80,7 @@ routes.get('/auth/openidconnect',
 		failureFlash: 'Invalid login, try again',
 	}),	(req, res) => {
 		res.json(req.user);
-		// res.redirect("/user/account");
+		res.redirect("/user/account");
 		console.log('SUCCESSFUL AUTHENTICATION');
 	},
 );

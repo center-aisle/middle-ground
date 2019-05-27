@@ -50,7 +50,7 @@ React.Component<any, ComponentState> {
 
 			<div className='row'>
 			<div className='col m1'></div>
-				<div className='col s12 m5'>
+				<div className='col s12 m10'>
 					<h2 className='header'>{match.name}</h2>
 
 						<div className='card horizontal'>

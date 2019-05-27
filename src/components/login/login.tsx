@@ -4,14 +4,19 @@ function Login() {
 	return (
 		<div className='container'>
             <div className='row'>
-                <div className='col s12 m7'>
+            <div className='col m2'></div>
+
+                <div className='col s12 m8'>
                     <div className='card'>
                         <div className='card-content center'>
-                            <form action='http://localhost:3001/auth/openidconnect' method='post'>
-                                <label>Log in or create a new account to see your results and new frenemies!</label>
-                                <br/>
-                                <br/>
-                                <button id='openidconnect_identifier'>Magic portal</button>
+                            {/* <a href="/auth/openidconnect/return">User account link</a> */}
+                            <form action='/auth/openidconnect/return' method='get'>
+                                <div>
+                                    <label>Log in or create a new account using Google</label><br/>
+                                    <input type='submit' name='openidconnect_identifier' value='Magic Portal'/>
+                                    <br/>
+                                    {/* <input type='submit' value='Sign In'/> */}
+                                </div>
                             </form>
                         </div>
 
@@ -20,7 +25,9 @@ function Login() {
                         </div>
                     </div>
                 </div>
-            </div>
+                <div className='col m2'></div>
+
+			</div>
             <br></br>
             <br></br>
             <br></br>
