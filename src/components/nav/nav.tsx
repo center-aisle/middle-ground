@@ -16,8 +16,6 @@ const Auth = {
 };
 
 function Nav() {
-<<<<<<< HEAD
-<<<<<<< HEAD
   return (
 <Button
   floating
