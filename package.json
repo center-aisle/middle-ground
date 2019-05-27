@@ -48,6 +48,7 @@
     "heroku-postbuild": "cd client && npm install && npm run build",
     "production": "react-scripts start",
     "test": "react-scripts test",
+    "install": "cd client && npm install && npm run build && cd ..",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "fix": "tslint --fix --project ."
