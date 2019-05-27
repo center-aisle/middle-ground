@@ -45,6 +45,7 @@
     "start": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\" \"react-scripts start\"",
     "server": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\"",
     "build": "tsc --noEmit false",
+    "production": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json",
