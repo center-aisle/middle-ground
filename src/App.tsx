@@ -18,66 +18,17 @@ import Header from './components/header/header';
 import Nav from './components/nav/nav';
 import Body from './components/body/body';
 import Wrapper from './components/wrapper/wrapper';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import mustLogin from './pages/mustLogin';
 import './App.css';
-import { FindOneAndUpdateOption } from 'mongodb';
-
-const Auth = {
-    isLoggedIn: false,
-    logIn() {
-        this.isLoggedIn = true;
-        window.location.href = "http://localhost:3001/auth/openidconnect";
-    },
-    logOut() {
-        this.isLoggedIn = false;
-        window.location.href = "/";
-    }
-};
-
-interface IRest {
-    component: any;
-    path: string;
-};
-
-function PrivateRoute({ component: Account, ...rest } : IRest) {
-    return (
-        <Route
-            {...rest}
-            render = { props =>
-                Auth.isLoggedIn ? (
-                    <Account {...props} />
-                ) : (
-                    <Redirect
-                        to = {{
-                            pathname: "/"
-                        }}
-                    />
-                )
-            }
-        />
-    );
-}
-
-class mustLogin extends Component {
-    state = { redirectToReferrer: false };
-  
-    login = () => {
-        Auth.logIn();
-    };
-  
-    render() {
-        return (
-            <div className="container">
-                <p>You must log in or create an account to view your results and frenemies</p>
-                <button onClick={this.login}>Log in or create account</button>
-            </div>
-        );
-    }
-}
-
+// import { FindOneAndUpdateOption } from 'mongodb';
 
 const App: React.FC = () => {
 
+<<<<<<< Updated upstream
     // const {isLoggedIn} = props;
+=======
+>>>>>>> Stashed changes
     return (
         <Router>
             <Wrapper>
@@ -88,18 +39,18 @@ const App: React.FC = () => {
                     {/* https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path */}
                     <Route exact path='/' component={Splash} />
 
-                    <Route exact path="http://localhost:3001/auth/openidconnect" />
+                    <Route path='http://localhost:3001/auth/openidconnect' />
 
-                    <PrivateRoute path="/user/account" component={Account} />
-                    <Route path="/" component={mustLogin} />
+                    <PrivateRoute exact path='/user/account' component={Account} />
+                    <Route component={mustLogin} />
 
                     <Route
-                        exact path='/questions'
+                        path='/questions'
                         render={(routeProps) => <Questions completed={lol} {...routeProps} />}
                     />
-                    <Route exact path='/frenemy' component={Frenemy} />
-                    <Route exact path='/about' component={About} />
-                    <Route exact path='/contact' component={Contact} />
+                    <Route path='/frenemy' component={Frenemy} />
+                    <Route path='/about' component={About} />
+                    <Route path='/contact' component={Contact} />
                     <Route component={NoMatch} />
                 </Switch>
                 <Footer />
