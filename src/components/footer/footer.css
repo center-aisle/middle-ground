@@ -1,12 +1,4 @@
 body {
-<<<<<<< HEAD
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  /* height: 100%; */
-}
-
-=======
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -16,29 +8,11 @@ body {
     height: 100px;
 } */
 
->>>>>>> master
 main {
     flex: 1 0 auto;
 }
 
 h4 {
-<<<<<<< HEAD
-  font-family: 'Pacifico', cursive;
-}
-
-#root {
-    height: 100%
-}
-
-.container {
-    max-width: 900px;
-    /* min-height: 100vh; */
-    position: relative;
-}
-
-.black-text:hover {
-  background-color: #2bbbad;
-=======
     font-family: 'Pacifico', cursive;
 }
 
@@ -50,5 +24,4 @@ footer {
     margin: 0 0 -100px 0;
     /* above margin is a hack to solve the white space problem but should figure out where it comes from */
     border: 0;
->>>>>>> master
 }
