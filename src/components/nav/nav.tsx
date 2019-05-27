@@ -3,8 +3,10 @@ import { Button } from 'react-materialize';
 // import './nav.css';
 
 
+// need to make the below part of state
+// or make nav accept props
 const Auth = {
-	isLoggedIn: false,
+	isLoggedIn: true,
 	logIn() {
 		this.isLoggedIn = true;
 	},
@@ -13,21 +15,25 @@ const Auth = {
 	}
 };
 
-function Nav() {
+function Nav(props: { state: { isLoggedIn: any; }; }) {
 
 	const onClickHome = () => {
 		window.location.href = '/';
+		console.log("let's go to the home page");
 	};
 	const onClickAbout = () => {
 		window.location.href = '/about';
+		console.log("let's go to the about page");
 	};
 	const onClickLogIn = () => {
 		window.location.href = 'http://localhost:3001/auth/openidconnect';
 		Auth.isLoggedIn = true;
+		console.log("let's log in or create a new account");
 	};
 	const onClickLogOut = () => {
 		window.location.href = 'http://localhost:3001/logout';
 		Auth.isLoggedIn = false;
+		console.log("let's log out");
     };
 
 
@@ -52,7 +58,7 @@ function Nav() {
 			/>
 
 			{
-				Auth.isLoggedIn
+				props.state.isLoggedIn
 				? (
 					<Button
 						floating
