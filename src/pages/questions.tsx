@@ -127,7 +127,7 @@ const allQuestionsFromServer: IPoliticalQuestions[] = [
         title: '16th Question',
         answerD: `In foreign policy, the U.S. should take into account the interests of its allies even if it means making compromises with them`,
         answerR: `In foreign policy, the U.S. should follow its own national interests even when its allies strongly disagree`,
-    },
+    }
 ];
 
 class PoliticalQuestionItem extends React.Component<any> {
