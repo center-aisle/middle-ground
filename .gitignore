@@ -9,6 +9,7 @@ package-lock.json
 
 # production
 /build
+/client
 /dist
 build/static/css/*.map
 build/static/js/*.map
