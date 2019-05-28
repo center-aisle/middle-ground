@@ -34,11 +34,11 @@ const App: React.FC = () => {
                 <Switch>
                     {/* https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path */}
                     <Route exact path='/' component={Splash} />
-
+{/* 
                     <Route path='http://localhost:3001/auth/openidconnect' />
 
                     <Route exact path='/user/account' component={Account} />
-                    <Route component={User} />
+                    <Route component={User} /> */}
 
                     <Route
                         path='/questions'
