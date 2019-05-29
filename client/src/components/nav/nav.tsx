@@ -24,10 +24,6 @@ function Nav() {
 		window.location.href = '/about';
 		console.log('let\'s go to the about page');
 	};
-	const onClickContact = () => {
-		window.location.href = '/contact';
-		console.log('let\'s go to the contact page');
-	};
 	const onClickLogIn = () => {
 		window.location.href = 'http://localhost:3001/auth/openidconnect';
 		//Auth.isLoggedIn = true;
@@ -56,14 +52,6 @@ function Nav() {
 				tooltip='About'
 				tooltipOptions={{position: 'left'}}
 				onClick={onClickAbout}
-			/>
-			<Button
-			floating
-			icon='person'
-			className='blue waves-effect'
-			tooltip='Contact'
-			tooltipOptions={{position: 'left'}}
-			onClick={onClickContact}
 			/>
 
 			{/* {

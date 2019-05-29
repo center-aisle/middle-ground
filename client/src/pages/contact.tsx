@@ -20,8 +20,11 @@ function Wrapper() {
                 <div className='col-md-5' id='person'>
                   <div className='feature'>
                     <h3>Bryan Kelley</h3>
-                    <p>Hi All! My name is Bryan and I was working on the frontend connectivity for the Frenemy web application. The frontend for this project utilizes React, Materialize, React-Materialize, Node, and JavaScript.  I am a big fan of the backend but wanted to gain some additional experience working on the frontend. If you are looking for a new full-stack developer to join your team, organization or project feel free to let me know via LinkedIn/GitHub/Email.</p>
-                    <br></br>
+                    <p>Hi All! My name is Bryan and I was working on the backend connectivity for the Harvest: Seasonal
+                      Cookbook web application. The backend for this project utilizes MySQL, Sequelize, Express, Node,
+                      and Javascript. It’s been a blast working on this project and I’ve been throughly enjoying the
+                      backend development process. If you are looking for a new backend developer to join your team,
+                      organization or project feel free to let me know via LinkedIn.</p>
                     <a href='mailto:bryanrkelley14@gmail.com' target='_blank' rel='noopener noreferrer'><button className='btn waves-effect waves-light'>E-mail<i className='material-icons left' title='Email Bryan Kelley'>mail</i></button></a>
 
                     <a href='https://github.com/bryanrkelley' target='_blank' rel='noopener noreferrer'><button className='btn waves-effect waves-light inDuration'>Github<i className='material-icons left'>code</i></button></a>
@@ -34,7 +37,6 @@ function Wrapper() {
                   <div className='feature'>
                     <h3>Nicole White</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi mollitia at blanditiis quos nisi soluta eaque officiis? Assumenda reiciendis mollitia, quos earum veritatis at quidem. Reiciendis incidunt ipsa minima alias?</p>
-                    <br></br>
                     <a href='mailto:nicoleewhitee@gmail.com' target='_blank' rel='noopener noreferrer'><button className='btn waves-effect waves-light'>E-mail<i className='material-icons left' title='Email Nicole White'>mail</i></button></a>
 
                     <a href='https://github.com/NW91' target='_blank' rel='noopener noreferrer'><button className='btn waves-effect waves-light inDuration'>Github<i className='material-icons left' title=''>code</i></button></a>
@@ -47,7 +49,6 @@ function Wrapper() {
                   <div className='feature'>
                     <h3>Naomi Woodruff</h3>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio magni saepe animi rem perspiciatis voluptatem molestias possimus soluta adipisci necessitatibus dolore, nobis doloremque totam quae asperiores nulla nemo officiis aliquid.</p>
-                    <br></br>
                     <a href='mailto:naomi.woodruff@gmail.com' target='_blank' rel='noopener noreferrer'><button className='btn waves-effect waves-light'>E-mail<i className='material-icons left' title='Email Naomi Woodruff'>mail</i></button></a>
 
                     <a href='https://github.com/naywood' target='_blank' rel='noopener noreferrer'><button className='btn waves-effect waves-light inDuration'>Github<i className='material-icons left' title=''>code</i></button></a>
@@ -59,8 +60,7 @@ function Wrapper() {
                 <div className='col-md-5' id='person'>
                   <div className='feature'>
                     <h3>Catherine Pham</h3>
-                    <p>I worked primarily on the back end of this app, including the user authentication. I also wrote the algorithms that match users based on both their political and personal characteristics. My analytical mind particularly enjoyed the latter. We decided to use TypeScript for this app, and I relished the challenge of learning something new while trying to make everything work.</p>
-                    <br></br>
+                    <p>general blurb about me</p>
                     <a href='mailto:cpham.cww@gmail.com' target='_blank' rel='noopener noreferrer'><button className='btn waves-effect waves-light'>E-mail<i className='material-icons left' title='Email Catherine Pham'>mail</i></button></a>
 
                     <a href='https://github.com/CrypticWoodWhite' target='_blank' rel='noopener noreferrer'><button className='btn waves-effect waves-light inDuration'>Github<i className='material-icons left' title=''>code</i></button></a>

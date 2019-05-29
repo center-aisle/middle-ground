@@ -16,12 +16,32 @@ h4 {
     font-family: 'Pacifico', cursive;
 }
 
-footer {
+/* footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     padding: 0;
     margin: 0 0 -100px 0;
-    /* above margin is a hack to solve the white space problem but should figure out where it comes from */
+    //above margin is a hack to solve the white space problem but should figure out where it comes from
     border: 0;
+
+
+
+    padding-right: 25px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 35px;
+    flex-shrink: 0;
+} */
+
+footer {
+    bottom: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0 0 -100px 0;
+    border: 0;
+    position: relative;
+    flex-shrink: 0;
 }
