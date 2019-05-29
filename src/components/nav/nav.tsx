@@ -4,16 +4,6 @@ import { Button } from 'react-materialize';
 
 
 function Nav() {
-  return (
-<Button
-  floating
-  fab={{direction: 'bottom'}}
-  icon='home'
-  className='blue waves-effect '
-  large
-  style={{top: '50px'}}>
-=======
-=======
 
 	// need to make the below part of state
 	// and/or make nav accept props
@@ -57,12 +47,6 @@ function Nav() {
 		console.log('let\'s log out');
     };
 
-<<<<<<< HEAD
-
-
->>>>>>> master
-=======
->>>>>>> master
 	return (
 		<div>
 			<Button
@@ -113,22 +97,6 @@ function Nav() {
 				)
 			} */}
 
-<<<<<<< HEAD
-<Button
-	floating
-	fab={{direction: 'bottom'}}
-	icon='home'
-	className='blue waves-effect'
-	large
-	style={{top: '50px'}}>
->>>>>>> master
-
-<Button floating icon='info' className='blue waves-effect'  />
-<Button floating icon='pool' className='blue waves-effect' />
-<Button floating icon='speaker_notes' className='blue waves-effect' />
-<Button floating icon='person_pin_circle' className='blue waves-effect' />
-</Button>
-=======
 			<Button
 				floating
 				icon='home'
@@ -137,13 +105,8 @@ function Nav() {
 				tooltipOptions={{position: 'left'}}
 				onClick={onClickHome}
 			/>
-<<<<<<< HEAD
-		</Button>
->>>>>>> master
-=======
 			</Button>
 		</div>
->>>>>>> master
 	);
 }
 
