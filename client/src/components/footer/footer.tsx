@@ -7,7 +7,7 @@ function Footer() {
 			<div className='container'>
 				<div className='row'>
 					<div className='col l6 s12'>
-						<h4 className='white-text'><a className='white-text' href="/">Frenemy</a></h4>
+						<h4 className='white-text'>Frenemy</h4>
 						<p className='grey-text text-lighten-4'>  Find your new best frenemy!</p>
 					</div>
 					<div className='col l4 offset-l2 s12'>

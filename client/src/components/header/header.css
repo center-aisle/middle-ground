@@ -1,0 +1,8 @@
+h1 {
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+}
+#header {
+    position: relative;
+    top: 0;
+}
