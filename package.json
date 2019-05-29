@@ -42,7 +42,7 @@
     "react-step-wizard": "^5.3.0"
   },
   "scripts": {
-    "start: dev": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\" \"react-scripts start\"",
+    "start": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\" \"react-scripts start\"",
     "server": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\"",
     "build": "tsc --noEmit false",
     "heroku-postbuild": "cd client && npm install && npm run build",

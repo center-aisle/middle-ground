@@ -20,11 +20,7 @@ function Wrapper() {
                 <div className='col-md-5' id='person'>
                   <div className='feature'>
                     <h3>Bryan Kelley</h3>
-                    <p>Hi All! My name is Bryan and I was working on the backend connectivity for the Harvest: Seasonal
-                      Cookbook web application. The backend for this project utilizes MySQL, Sequelize, Express, Node,
-                      and Javascript. It’s been a blast working on this project and I’ve been throughly enjoying the
-                      backend development process. If you are looking for a new backend developer to join your team,
-                      organization or project feel free to let me know via LinkedIn.</p>
+                    <p>Hi All! My name is Bryan and I was working on the frontend connectivity for the Frenemy web application. The frontend for this project utilizes React, Materialize, Reach-Materialize, Node, and JavaScript.  I am a big fan of the backend but wanted to gain some additional experience working on the frontend. If you are looking for a new full-stack developer to join your team, organization or project feel free to let me know via LinkedIn/GitHub/Email.</p>
                     <a href='mailto:bryanrkelley14@gmail.com' target='_blank' rel='noopener noreferrer'><button className='btn waves-effect waves-light'>E-mail<i className='material-icons left' title='Email Bryan Kelley'>mail</i></button></a>
 
                     <a href='https://github.com/bryanrkelley' target='_blank' rel='noopener noreferrer'><button className='btn waves-effect waves-light inDuration'>Github<i className='material-icons left'>code</i></button></a>
