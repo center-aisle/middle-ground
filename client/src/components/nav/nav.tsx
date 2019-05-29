@@ -24,26 +24,14 @@ function Nav() {
 		window.location.href = '/about';
 		console.log('let\'s go to the about page');
 	};
-	const onClickContact = () => {
-		window.location.href = '/contact';
-		console.log('let\'s go to the contact page');
-	};
 	const onClickLogIn = () => {
 		window.location.href = 'http://localhost:3001/auth/openidconnect';
-<<<<<<< HEAD
-		// Auth.isLoggedIn = true;
-=======
 		//Auth.isLoggedIn = true;
->>>>>>> 3e9bcca302831ae933b4c2a154e982cc1a77172d
 		console.log('let\'s log in or create a new account');
 	};
 	const onClickLogOut = () => {
 		window.location.href = 'http://localhost:3001/logout';
-<<<<<<< HEAD
-		// Auth.isLoggedIn = false;
-=======
 		//Auth.isLoggedIn = false;
->>>>>>> 3e9bcca302831ae933b4c2a154e982cc1a77172d
 		console.log('let\'s log out');
     };
 
@@ -64,14 +52,6 @@ function Nav() {
 				tooltip='About'
 				tooltipOptions={{position: 'left'}}
 				onClick={onClickAbout}
-			/>
-			<Button
-			floating
-			icon='person'
-			className='blue waves-effect'
-			tooltip='Contact'
-			tooltipOptions={{position: 'left'}}
-			onClick={onClickContact}
 			/>
 
 			{/* {
