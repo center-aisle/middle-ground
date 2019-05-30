@@ -3,11 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/connect-ensure-login": "^0.1.4",
+    "@types/connect-flash": "^0.0.34",
+    "@types/connect-mongo": "^0.0.42",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.1",
+    "@types/express-session": "^1.15.12",
     "@types/jest": "24.0.12",
     "@types/mongoose": "^5.5.3",
     "@types/node": "^12.0.2",
+    "@types/openid-client": "^3.1.1",
     "@types/passport": "^1.0.0",
     "@types/react": "^16.8.17",
     "@types/react-dom": "16.8.4",
@@ -32,6 +37,7 @@
     "openid-client": "^3.1.1",
     "passport": "^0.4.0",
     "path": "^0.12.7",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-materialize": "^3.3.1",
@@ -42,19 +48,17 @@
     "react-step-wizard": "^5.3.0"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\" \"react-scripts start\"",
-    "server": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\"",
-    "build": "react-scripts build",
+    "start": "concurrently --kill-others \"tsc -w --noEmit false\" \"npm run start-server\" \"npm run start-client\"",
+    "start-server": "nodemon build/server.js",
+    "start-client": "cd client && npm start",
+    "build": "tsc --downlevelIteration",
+    "watch": "tsc -w --noEmit false --downlevelIteration",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "production": "react-scripts start \" \"nodemon -r esm dist/server.js\"",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "test": "",
+    "eject": "",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "install": "cd client && npm install && npm run build && cd ..",
     "fix": "tslint --fix --project ."
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [

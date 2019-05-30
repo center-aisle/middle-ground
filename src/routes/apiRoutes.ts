@@ -1,7 +1,7 @@
 import 'mongoose';
 import controller from '../controllers/usersController';
 import User from '../models/User';
-import Passport from '../config/passportStrategy';
+// import Passport from '../config/passportStrategy';
 import { ensureLoggedIn } from 'connect-ensure-login';
 import express from 'express';
 
@@ -70,26 +70,26 @@ routes.put('/users/:id', async (req, res) => {
  ***********************************/
 
 // post user info on login (see passportStrategy.ts)
-routes.post('/auth/openidconnect', Passport.authenticate('openid-client'));
+// routes.post('/auth/openidconnect', Passport.authenticate('openid-client'));
 
 // automatically redirects to /user/account if success else stay on /user page
 routes.get('/auth/openidconnect',
-	Passport.authenticate('openid-client', {
-		session: true,
-		failureRedirect: 'http://localhost:3000/user' ,
-		failureFlash: 'Invalid login, try again',
-	}),	(req, res) => {
-		console.log(res);
-		console.log(req);
-		res.json(req.body.user);
-		res.json(req.body.id_token);
-		res.json(req.body.access_token);
-		res.json(req.user);
-		res.redirect('/user/account');
-		console.log('SUCCESSFUL AUTHENTICATION');
-		const token = req.body.access_token;
-		return token;
-	},
+	// Passport.authenticate('openid-client', {
+	// 	session: true,
+	// 	failureRedirect: 'http://localhost:3000/user' ,
+	// 	failureFlash: 'Invalid login, try again',
+	// }),	(req, res) => {
+	// 	console.log(res);
+	// 	console.log(req);
+	// 	res.json(req.body.user);
+	// 	res.json(req.body.id_token);
+	// 	res.json(req.body.access_token);
+	// 	res.json(req.user);
+	// 	res.redirect('/user/account');
+	// 	console.log('SUCCESSFUL AUTHENTICATION');
+	// 	const token = req.body.access_token;
+	// 	return token;
+	// },
 );
 
 // ensures that user is authenticated to access /user/account page

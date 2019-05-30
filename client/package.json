@@ -42,15 +42,12 @@
     "react-step-wizard": "^5.3.0"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\" \"react-scripts start\"",
-    "server": "concurrently --kill-others \"tsc -w --noEmit false\" \"nodemon -r esm dist/server.js\"",
-    "build": "tsc --noEmit false",
+    "start": "concurrently --kill-others \"tsc -w --noEmit false\" \"react-scripts start\"",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "production": "react-scripts start",
+    "build": "tsc --noEmit false && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json",
-    "install": "cd client && npm install && npm run build && cd ..",
     "fix": "tslint --fix --project ."
   },
   "eslintConfig": {
