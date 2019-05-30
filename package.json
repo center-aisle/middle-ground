@@ -59,7 +59,7 @@
     "start-server": "nodemon build/server.js",
     "start-client": "cd client && npm start",
     "build": "tsc --downlevelIteration",
-    "watch": "tsc -w --noEmit false --downlevelIteration",
+    "watch": "tsc --noEmit false --downlevelIteration",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "",
     "eject": "",
