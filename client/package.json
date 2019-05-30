@@ -30,6 +30,7 @@
     "mongo": "^0.1.0",
     "mongoose": "^5.5.11",
     "mongoose-findorcreate": "^3.0.0",
+    "nodemon": "^1.19.1",
     "openid-client": "^3.1.1",
     "passport": "^0.4.0",
     "path": "^0.12.7",
@@ -48,9 +49,9 @@
     "typescript": "^3.4.5"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"tsc -w --noEmit false\" \"react-scripts start\"",
+    "start": "concurrently --kill-others \"tsc\" \"react-scripts start\"",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "build": "tsc --noEmit false && react-scripts build",
+    "build": "tsc && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json",
