@@ -51,8 +51,8 @@ const App: React.FC = () => {
                     <Route path='/contact' component={Contact} />
                     <Route component={NoMatch} />
                 </Switch>
-                <Footer />
             </Wrapper>
+            <Footer />
         </Router>
     );
 };

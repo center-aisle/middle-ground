@@ -71,7 +71,8 @@ function Nav() {
                     tooltipOptions={{
                     position: 'left'
                 }}
-                    onClick={onClickFrenemy}/> {/* {
+                    onClick={onClickFrenemy}/> 
+                {/* {
 				Auth.isLoggedIn
 				? (
 					<Button
