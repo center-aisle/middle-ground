@@ -47,4 +47,14 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+ h3, span, p {
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Roboto', sans-serif;
+
+}
+h5{
+  text-align: center;
+
+}
     
