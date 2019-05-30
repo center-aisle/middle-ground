@@ -18,98 +18,98 @@ interface ComponentState {
 const allQuestionsFromServer : IPoliticalQuestions[] = [
     {
         id: '1',
-        color: 'red',
-        title: '1st Question',
+        color: 'teal',
+        title: 'Click which you agree with most...',
         answerD: `The government should do more to help needy Americans, even if it means going deeper into debt`,
         answerR: `The government today can't afford to do much more to help the needy`
     }, {
         id: '2',
-        color: 'blue',
-        title: '2nd Question',
+        color: 'teal',
+        title: 'Hmmmm...',
         answerD: `Government often does a better job than people give it credit for`,
         answerR: `Government is almost always wasteful and inefficient`
     }, {
         id: '3',
-        color: 'red',
-        title: '3rd Question',
+        color: 'teal',
+        title: 'Think about it...',
         answerD: `Good diplomacy is the best way to ensure peace`,
         answerR: `The best way to ensure peace is through military strength`
     }, {
         id: '4',
-        color: 'blue',
-        title: '4th Question',
+        color: 'teal',
+        title: 'Clicking is easy!',
         answerD: `Racial discrimination is the main reason why many racial minorities can't get ahead these days`,
         answerR: `Minorities who can't get ahead in this country are mostly responsible for their own condition`
     }, {
         id: '5',
-        color: 'red',
-        title: '5th Question',
+        color: 'teal',
+        title: 'What do you think?',
         answerD: `Government regulation of business is necessary to protect the public interest`,
         answerR: `Government regulation of business usually does more harm than good`
     }, {
         id: '6',
-        color: 'blue',
-        title: '6th Question',
+        color: 'teal',
+        title: 'One or the other',
         answerD: `Homosexuality should be accepted by society`,
         answerR: `Homosexuality should be discouraged by society`
     }, {
         id: '7',
-        color: 'red',
-        title: '7th Question',
+        color: 'teal',
+        title: 'You know what to do...',
         answerD: `Business corporations make too much profit`,
         answerR: `Most corporations make a fair and reasonable amount of profit`
     }, {
         id: '8',
-        color: 'blue',
-        title: '8th Question',
+        color: 'teal',
+        title: 'Woohoo, halfway there!',
         answerD: `Stricter environmental laws and regulations are worth the cost`,
         answerR: `Stricter environmental laws and regulations cost too many jobs and hurt the economy`
     }, {
         id: '9',
-        color: 'red',
-        title: '9th Question',
+        color: 'teal',
+        title: 'Keep going!',
         answerD: `Immigrants today strengthen our country because of their hard work and talents`,
         answerR: `Immigrants today are a burden on our country because they take our jobs, housing and health care`
     }, {
         id: '10',
-        color: 'blue',
-        title: '10th Question',
+        color: 'teal',
+        title: 'I like the way you click...',
         answerD: `Poor people have hard lives because government benefits don't go far enough to help them live decently`,
         answerR: `Poor people today have it easy because they can get government benefits without doing anything in return`
     }, {
         id: '11',
-        color: 'red',
-        title: '11th Question',
+        color: 'teal',
+        title: 'Just a few more!',
         answerD: `The economic system in this country unfairly favors powerful interests`,
         answerR: `The economic system in this country is generally fair to most Americans`
     }, {
         id: '12',
-        color: 'blue',
-        title: '12th Question',
+        color: 'teal',
+        title: 'How many have you answered?',
         answerD: `Our country needs to continue making changes to give African-Americans equal rights with white people`,
         answerR: `Our country has made the changes needed to give African-Americans equal rights with white people`
     }, {
         id: '13',
-        color: 'red',
-        title: '13th Question',
+        color: 'teal',
+        title: 'West or East?',
         answerD: `It's best for the future of our country to be active in world affairs`,
         answerR: `We should pay less attention to problems overseas and concentrate on problems here at home`
     }, {
         id: '14',
-        color: 'blue',
-        title: '14th Question',
+        color: 'teal',
+        title: 'Left or Right?',
         answerD: `Hard work and determination are no guarantee of success for most people`,
         answerR: `Most people who want to get ahead can make it if they're willing to work hard`
     }, {
         id: '15',
-        color: 'red',
-        title: '15th Question',
+        color: 'teal',
+        title: 'Ohhhh!',
         answerD: `There are still significant obstacles that make it harder for women to get ahead than men`,
         answerR: `The obstacles that once made it harder for women than men to get ahead are now largely gone`
     }, {
         id: '16',
-        color: 'blue',
-        title: '16th Question',
+        color: 'teal',
+        title: 'You did it all! Now for your spectrum selection....',
         answerD: `In foreign policy, the U.S. should take into account the interests of its allies even if it means making compromises with them`,
         answerR: `In foreign policy, the U.S. should follow its own national interests even when its allies strongly disagree`
     }
@@ -122,12 +122,15 @@ class PoliticalQuestionItem extends React.Component < any > {
     render() : JSX.Element {
         const {quest} = this.props;
         return (
-            <div key={quest.id} className={quest.color}>
-                <h2>{quest.title}</h2>
+            <div key={quest.id} className={quest.color} id="qBox" >
+                <Row></Row>
+                <h5 className= "white-text">{quest.title}</h5>
+                <Row></Row>
                 <Row>
-                    <Col m={6} s={12}>
+                    <Col m={2}></Col>
+                    <Col m={4} s={12}>
                         <CardPanel
-                            className='teal waves-effect'
+                            className='teal lighten-1 waves-effect'
                             id='userChoice'
                             onClick={() => this._selectedAnswer(quest.answerD)}>
                             <span className='white-text'>
@@ -135,10 +138,10 @@ class PoliticalQuestionItem extends React.Component < any > {
                             </span>
                         </CardPanel>
                     </Col>
-
-                    <Col m={6} s={12}>
+                    {/* <Col className="white-text">OR</Col> */}
+                    <Col m={4} s={12}>
                         <CardPanel
-                            className='teal waves-effect'
+                            className='teal lighten-1 waves-effect'
                             onClick={() => this._selectedAnswer(quest.answerR)}>
                             <span className='white-text'>
                                 {quest.answerR}
@@ -146,6 +149,9 @@ class PoliticalQuestionItem extends React.Component < any > {
                         </CardPanel>
                     </Col>
                 </Row>
+                <Row></Row>
+                <Row></Row>
+
             </div>
         );
     }
@@ -230,9 +236,9 @@ ComponentState > {
             )
             : (
                 <div className='container'>
-                    <button onClick={this._onComplete}>DONE!</button>
+                    {/* <button onClick={this._onComplete}>DONE!</button>
                     <button onClick={this._saveStuff}>SAVE!</button>
-                    <button onClick={this._loadStuff}>LOAD!</button>
+                    <button onClick={this._loadStuff}>LOAD!</button> */}
                     <StepWizard>
                         {/* //FIXME:
                         if (allQuestions < this.) */}
@@ -248,23 +254,23 @@ ComponentState > {
             );
     }
 
-    private _onComplete = () : void => {
-        this
-            .props
-            .completed(true);
-    }
+    // private _onComplete = () : void => {
+    //     this
+    //         .props
+    //         .completed(true);
+    // }
 
-    private _saveStuff = () : void => {
-        //localStorage.setItem('ok', JSON.stringify(allQuestionsFromServer));
-        //window.localStorage.setItem('choice', this.state.choice); 
-    }
+    // private _saveStuff = () : void => {
+    //     localStorage.setItem('ok', JSON.stringify(allQuestionsFromServer));
+    //     window.localStorage.setItem('choice', this.state.choice); 
+    // }
 
-    private _loadStuff = () : void => {
-        const storeMe = localStorage.getItem('choice');
-        if (storeMe == null) {
-            console.log('Sadness no cookie');
-        } else {
-            console.log('Yay we have cookies', JSON.parse(storeMe));
-        }
-    }
+    // private _loadStuff = () : void => {
+    //     const storeMe = localStorage.getItem('choice');
+    //     if (storeMe == null) {
+    //         console.log('Sadness no cookie');
+    //     } else {
+    //         console.log('Yay we have cookies', JSON.parse(storeMe));
+    //     }
+    // }
 }
