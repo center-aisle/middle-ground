@@ -55,11 +55,11 @@
     "typescript": "^3.4.5"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"tsc -w --noEmit false\" \"npm run start-server\" \"npm run start-client\"",
+    "start": "concurrently --kill-others \"tsc\" \"npm run start-server\" \"npm run start-client\"",
     "start-server": "nodemon build/server.js",
     "start-client": "cd client && npm start",
     "build": "tsc --downlevelIteration",
-    "watch": "tsc --noEmit false --downlevelIteration",
+    "watch": "tsc --downlevelIteration",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "",
     "eject": "",
