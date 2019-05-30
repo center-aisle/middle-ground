@@ -30,16 +30,15 @@ function Nav() {
         console.log('let\'s log out');
     };
     const onClickFrenemy = () => {
-        window.location.href = 'http://localhost:3000/frenemy';
+        window.location.href = '/frenemy';
         //Auth.isLoggedIn = false;
         console.log('let\'s look at frenemy(s)');
     };
     const onClickQuestions = () => {
-        window.location.href = 'http://localhost:3000/questions';
+        window.location.href = '/questions';
         //Auth.isLoggedIn = false;
         console.log('let\'s look at questions');
     };
-
 
     return (
         <div>
@@ -47,13 +46,13 @@ function Nav() {
                 floating
                 fab={{
                 direction: 'bottom',
-								hoverEnabled: true,
+                hoverEnabled: true
             }}
                 icon='menu'
                 className='teal darken-1 waves-effect'
                 large
                 style={{
-								top: '50px',
+                top: '50px'
             }}>
                 <Button
                     floating
@@ -63,8 +62,8 @@ function Nav() {
                     tooltipOptions={{
                     position: 'left'
                 }}
-                    onClick={onClickContact}/> 
-                    <Button
+                    onClick={onClickContact}/>
+                <Button
                     floating
                     icon='supervised_user_circle'
                     className='teal darken-1 waves-effect'
@@ -72,8 +71,7 @@ function Nav() {
                     tooltipOptions={{
                     position: 'left'
                 }}
-                    onClick={onClickFrenemy}/> 
-										{/* {
+                    onClick={onClickFrenemy}/> {/* {
 				Auth.isLoggedIn
 				? (
 					<Button
@@ -95,7 +93,7 @@ function Nav() {
 					/>
 				)
             } */}
-            <Button
+                <Button
                     floating
                     icon='live_help'
                     className='teal darken-1 waves-effect'
@@ -104,7 +102,7 @@ function Nav() {
                     position: 'left'
                 }}
                     onClick={onClickQuestions}/>
-             <Button
+                <Button
                     floating
                     icon='info'
                     className='teal darken-1 waves-effect'
