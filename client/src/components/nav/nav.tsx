@@ -63,7 +63,7 @@ function Nav() {
                     tooltipOptions={{
                     position: 'left'
                 }}
-                    onClick={onClickFrenemy}/> 
+                    onClick={onClickContact}/> 
                     <Button
                     floating
                     icon='supervised_user_circle'
@@ -72,7 +72,7 @@ function Nav() {
                     tooltipOptions={{
                     position: 'left'
                 }}
-                    onClick={onClickContact}/> 
+                    onClick={onClickFrenemy}/> 
 										{/* {
 				Auth.isLoggedIn
 				? (
