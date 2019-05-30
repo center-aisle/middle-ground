@@ -1,5 +1,6 @@
 {
   "name": "my-app",
+  "main": "dist/server.js",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -55,7 +56,7 @@
     "typescript": "^3.4.5"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"tsc\" \"npm run start-server\" \"npm run start-client\"",
+    "start": "concurrently --kill-others \"tsc\" \"npm run start-server\" \"npm run start-client\" \"npm run serve\"",
     "start-server": "nodemon build/server.js",
     "start-client": "cd client && npm start",
     "build": "tsc --downlevelIteration",
@@ -65,7 +66,12 @@
     "eject": "",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "install": "cd client && npm install && npm run build && cd ..",
-    "fix": "tslint --fix --project ."
+    "fix": "tslint --fix --project .",
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
+    "serve": "node dist/server.js",
+    "watch-node": "nodemon dist/server.js",
+    "watch-ts": "tsc -w"
   },
   "browserslist": {
     "production": [
