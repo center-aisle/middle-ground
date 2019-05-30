@@ -21,18 +21,18 @@ const allMatchesFromServer: displayMatches[] = [
 		id: "2",
 		picture: 'https://images.unsplash.com/photo-1495078065017-564723e7e3e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80',
 		name: 'Fergus Jones',
-		summary: 'I like running, yoga, and football.',
+		summary: `I'm a founder of a fortune 500 company and I LOVE to knit!`,
 	},
 	{
 		id: '3',
 		picture: 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
 		name: 'Damian Gimers',
-		summary: 'I like running, yoga, and football.',
+		summary: 'Huge theatre nerd here!  Hit me up and we can go for a hike or rock climbing?',
 	},
 	{
 		id: '4',
 		picture: 'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/k-s21-ae-5266.jpg?w=400&dpr=1&fit=default&crop=default&auto=format&fm=pjpg&q=75&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-1.1.1&s=a729ffcf7516767b60f5d953675c59c2',
-		name: 'Jane Doe',
+		name: 'Angela Done',
 		summary: 'I like running, yoga, and football.',
 	},
 ];

@@ -29,6 +29,17 @@ function Nav() {
         //Auth.isLoggedIn = false;
         console.log('let\'s log out');
     };
+    const onClickFrenemy = () => {
+        window.location.href = 'http://localhost:3000/frenemy';
+        //Auth.isLoggedIn = false;
+        console.log('let\'s look at frenemy(s)');
+    };
+    const onClickQuestions = () => {
+        window.location.href = 'http://localhost:3000/questions';
+        //Auth.isLoggedIn = false;
+        console.log('let\'s look at questions');
+    };
+
 
     return (
         <div>
@@ -46,15 +57,6 @@ function Nav() {
             }}>
                 <Button
                     floating
-                    icon='info'
-                    className='teal darken-1 waves-effect'
-                    tooltip='About'
-                    tooltipOptions={{
-                    position: 'left'
-                }}
-                    onClick={onClickAbout}/>
-                <Button
-                    floating
                     icon='person'
                     className='teal darken-1 waves-effect'
                     tooltip='Contact'
@@ -62,6 +64,15 @@ function Nav() {
                     position: 'left'
                 }}
                     onClick={onClickContact}/> 
+                    <Button
+                    floating
+                    icon='supervised_user_circle'
+                    className='teal darken-1 waves-effect'
+                    tooltip='Frenemy'
+                    tooltipOptions={{
+                    position: 'left'
+                }}
+                    onClick={onClickFrenemy}/> 
 										{/* {
 				Auth.isLoggedIn
 				? (
@@ -83,7 +94,25 @@ function Nav() {
 						onClick={onClickLogIn}
 					/>
 				)
-			} */}
+            } */}
+            <Button
+                    floating
+                    icon='live_help'
+                    className='teal darken-1 waves-effect'
+                    tooltip='Quiz'
+                    tooltipOptions={{
+                    position: 'left'
+                }}
+                    onClick={onClickQuestions}/>
+             <Button
+                    floating
+                    icon='info'
+                    className='teal darken-1 waves-effect'
+                    tooltip='About'
+                    tooltipOptions={{
+                    position: 'left'
+                }}
+                    onClick={onClickAbout}/>
                 <Button
                     floating
                     icon='home'
