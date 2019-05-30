@@ -5,7 +5,8 @@ import { BrowserRouter as Router,
     // Link,
     Redirect,
     // withRouter
-} from 'react-router-dom';
+} 
+from 'react-router-dom';
 import Splash from './pages/splash';
 import Account from './pages/account';
 import User from './pages/user';
@@ -46,6 +47,7 @@ const App: React.FC = () => {
                     />
                     <Route path='/frenemy' component={Frenemy} />
                     <Route path='/about' component={About} />
+                    <Route path='/account' component={Account} />
                     <Route path='/contact' component={Contact} />
                     <Route component={NoMatch} />
                 </Switch>
