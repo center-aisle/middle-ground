@@ -55,17 +55,22 @@
     "typescript": "^3.4.5"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"tsc -w --noEmit false\" \"npm run start-server\" \"npm run start-client\"",
+    "start": "concurrently --kill-others \"npm run watch\" \"npm run start-server\" \"npm run start-client\"",
     "start-server": "nodemon build/server.js",
     "start-client": "cd client && npm start",
-    "build": "tsc --downlevelIteration",
-    "watch": "tsc -w --noEmit false --downlevelIteration",
+    "build": "tsc --downlevelIteration && npm run build-client",
+    "build-client": "cd client && npm run build && cd ..",
+    "watch": "tsc -w --downlevelIteration",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "",
     "eject": "",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "install": "cd client && npm install && npm run build && cd ..",
-    "fix": "tslint --fix --project ."
+    "fix": "tslint --fix --project .",
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
+    "watch-node": "nodemon dist/server.js",
+    "watch-ts": "tsc -w"
   },
   "browserslist": {
     "production": [
