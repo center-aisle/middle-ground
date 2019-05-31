@@ -49,9 +49,10 @@
     "typescript": "^3.4.5"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"tsc\" \"react-scripts start\"",
+    "start": "concurrently --kill-others \"npm run watch\" \"react-scripts start\"",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "build": "tsc && react-scripts build",
+    "watch": "tsc -w",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json",
