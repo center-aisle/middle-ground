@@ -4,8 +4,7 @@ import {Textarea, TextInput, Select, Row, Col} from 'react-materialize';
 function Account() {
     return (
         <div className='container'>
-            <Row>
-                <Col>
+           
             <h5>Create your user account; make sure to select some activities...</h5>
             <TextInput label="First Name"/>
             <TextInput email validate label="Email"/>
@@ -71,8 +70,7 @@ function Account() {
                     Swimming
                 </option>
             </Select>
-            </Col>
-            </Row>
+            
         </div>
     );
 }
