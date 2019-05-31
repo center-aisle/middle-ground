@@ -15,18 +15,17 @@ const app = express(),
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-console.log('lkjsdflksjdf')
 if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1);
   // session.cookie.secure = true;
   //  app.use(express.static(path.join(__dirname, 'build')));
-  console.log(path.join(__dirname, "client/build"));
-  app.use(express.static(path.join(__dirname,"client/build")));
+  console.log(path.join(__dirname, 'client/build'));
+  app.use(express.static(path.join(__dirname, 'client/build')));
 
 }
 // test
-console.log(path.join(__dirname, "../client/build"));
-app.use(express.static(path.join(__dirname,"../client/build")));
+console.log(path.join(__dirname, '../client/build'));
+app.use(express.static(path.join(__dirname, '../client/build')));
 // test end
 
 // app.use(express.static((path.join(__dirname, 'public'))));
@@ -54,8 +53,8 @@ app.get('*', (req, res) => {
 
 // createConnection because sessions opened a new connection above already
 mongoose.createConnection(
-  process.env.MONGODB_URI || "mongodb://localhost/middleground",
-  { useNewUrlParser: true }
+  process.env.MONGODB_URI || 'mongodb://localhost/middleground',
+  { useNewUrlParser: true },
 );
 
 app.listen(PORT, () => {

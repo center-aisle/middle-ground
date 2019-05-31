@@ -57,14 +57,14 @@ React.Component<any, ComponentState> {
 			<div>Loading your Frenemies!</div>
 		)
 		: (
-			<div className='main-container'>
+			<div className='container'>
 						<div className='row'>
 
 				{this.state.allMatches.map(match => (
 					<div key={match.id}>
 
 			{/* <div className='col m1'></div> */}
-				<div className='col s6 m6'>
+				<div className='col s12 m6'>
 					<h2 className='header'>{match.name}</h2>
 
 						<div className='card horizontal'>

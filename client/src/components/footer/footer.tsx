@@ -3,7 +3,7 @@ import './footer.css';
 
 function Footer() {
 	return (
-		<footer className='page-footer teal darken-1'>
+		<footer className='page-footer green darken-1 '>
 			<div className='container'>
 				<div className='row'>
 					<div className='col l6 s12'>

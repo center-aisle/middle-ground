@@ -30,16 +30,20 @@ function Nav() {
         console.log('let\'s log out');
     };
     const onClickFrenemy = () => {
-        window.location.href = 'http://localhost:3000/frenemy';
+        window.location.href = '/frenemy';
         //Auth.isLoggedIn = false;
         console.log('let\'s look at frenemy(s)');
     };
     const onClickQuestions = () => {
-        window.location.href = 'http://localhost:3000/questions';
+        window.location.href = '/questions';
         //Auth.isLoggedIn = false;
         console.log('let\'s look at questions');
     };
-
+    const onClickAccount = () => {
+        window.location.href = '/account';
+        //Auth.isLoggedIn = false;
+        console.log('let\'s look at questions');
+    };
 
     return (
         <div>
@@ -47,39 +51,39 @@ function Nav() {
                 floating
                 fab={{
                 direction: 'bottom',
-								hoverEnabled: true,
+                hoverEnabled: true
             }}
                 icon='menu'
-                className='teal darken-1 waves-effect'
+                className='green lighten-1 waves-effect'
                 large
                 style={{
-								top: '50px',
+                top: '50px'
             }}>
                 <Button
                     floating
                     icon='person'
-                    className='teal darken-1 waves-effect'
+                    className='green lighten-1 lighten-1waves-effect'
                     tooltip='Contact'
                     tooltipOptions={{
                     position: 'left'
                 }}
-                    onClick={onClickContact}/> 
-                    <Button
+                    onClick={onClickContact}/>
+                <Button
                     floating
                     icon='supervised_user_circle'
-                    className='teal darken-1 waves-effect'
+                    className='green lighten-1 lighten-1waves-effect'
                     tooltip='Frenemy'
                     tooltipOptions={{
                     position: 'left'
                 }}
                     onClick={onClickFrenemy}/> 
-										{/* {
+                {/* {
 				Auth.isLoggedIn
 				? (
 					<Button
 						floating
 						icon='power_settings_new'
-						className='teal darken-1 waves-effect'
+						className='green lighten-1lighten-1waves-effect'
 						tooltip='Log out'
 						tooltipOptions={{position: 'left'}}
 						onClick={onClickLogOut}
@@ -88,26 +92,35 @@ function Nav() {
 					<Button
 						floating
 						icon='account_circle'
-						className='teal darken-1 waves-effect'
+						className='green lighten-1lighten-1waves-effect'
 						tooltip='Log in or create new account'
 						tooltipOptions={{position: 'left'}}
 						onClick={onClickLogIn}
 					/>
 				)
             } */}
-            <Button
+                <Button
+                    floating
+                    icon='account_circle'
+                    className='green lighten-1 lighten-1waves-effect'
+                    tooltip='Account'
+                    tooltipOptions={{
+                    position: 'left'
+                }}
+                    onClick={onClickAccount}/>
+                <Button
                     floating
                     icon='live_help'
-                    className='teal darken-1 waves-effect'
+                    className='green lighten-1 lighten-1waves-effect'
                     tooltip='Quiz'
                     tooltipOptions={{
                     position: 'left'
                 }}
                     onClick={onClickQuestions}/>
-             <Button
+                <Button
                     floating
                     icon='info'
-                    className='teal darken-1 waves-effect'
+                    className='green lighten-1 lighten-1waves-effect'
                     tooltip='About'
                     tooltipOptions={{
                     position: 'left'
@@ -116,7 +129,7 @@ function Nav() {
                 <Button
                     floating
                     icon='home'
-                    className='teal darken-1 waves-effect'
+                    className='green lighten-1 lighten-1waves-effect'
                     tooltip='Home'
                     tooltipOptions={{
                     position: 'left'
