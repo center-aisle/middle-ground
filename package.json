@@ -53,7 +53,7 @@
     "react-step-wizard": "^5.3.0",
     "source-map-loader": "^0.2.4",
     "tslint": "^5.16.0",
-    "typescript": "^3.4.5"
+    "typescript": "3.4.5"
   },
   "scripts": {
     "start": "concurrently --kill-others \"npm run watch\" \"npm run start-server\" \"npm run start-client\"",
