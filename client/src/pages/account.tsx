@@ -5,7 +5,7 @@ function Account() {
     return (
         <div className='container'>
             <Row>
-                <Col m={12}>
+                <Col>
             <h5>Create your user account; make sure to select some activities...</h5>
             <TextInput label="First Name"/>
             <TextInput email validate label="Email"/>
