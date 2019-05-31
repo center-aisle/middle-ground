@@ -49,7 +49,7 @@ function Nav() {
                 hoverEnabled: true
             }}
                 icon='menu'
-                className='green waves-effect'
+                className='green lighten-1 waves-effect'
                 large
                 style={{
                 top: '50px'
@@ -57,7 +57,7 @@ function Nav() {
                 <Button
                     floating
                     icon='person'
-                    className='green waves-effect'
+                    className='green lighten-1 lighten-1waves-effect'
                     tooltip='Contact'
                     tooltipOptions={{
                     position: 'left'
@@ -66,7 +66,7 @@ function Nav() {
                 <Button
                     floating
                     icon='supervised_user_circle'
-                    className='green waves-effect'
+                    className='green lighten-1 lighten-1waves-effect'
                     tooltip='Frenemy'
                     tooltipOptions={{
                     position: 'left'
@@ -78,7 +78,7 @@ function Nav() {
 					<Button
 						floating
 						icon='power_settings_new'
-						className='green waves-effect'
+						className='green lighten-1lighten-1waves-effect'
 						tooltip='Log out'
 						tooltipOptions={{position: 'left'}}
 						onClick={onClickLogOut}
@@ -87,7 +87,7 @@ function Nav() {
 					<Button
 						floating
 						icon='account_circle'
-						className='green waves-effect'
+						className='green lighten-1lighten-1waves-effect'
 						tooltip='Log in or create new account'
 						tooltipOptions={{position: 'left'}}
 						onClick={onClickLogIn}
@@ -97,7 +97,7 @@ function Nav() {
                 <Button
                     floating
                     icon='live_help'
-                    className='green waves-effect'
+                    className='green lighten-1 lighten-1waves-effect'
                     tooltip='Quiz'
                     tooltipOptions={{
                     position: 'left'
@@ -106,7 +106,7 @@ function Nav() {
                 <Button
                     floating
                     icon='info'
-                    className='green waves-effect'
+                    className='green lighten-1 lighten-1waves-effect'
                     tooltip='About'
                     tooltipOptions={{
                     position: 'left'
@@ -115,7 +115,7 @@ function Nav() {
                 <Button
                     floating
                     icon='home'
-                    className='green waves-effect'
+                    className='green lighten-1 lighten-1waves-effect'
                     tooltip='Home'
                     tooltipOptions={{
                     position: 'left'

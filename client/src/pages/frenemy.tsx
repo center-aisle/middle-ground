@@ -57,7 +57,7 @@ React.Component<any, ComponentState> {
 			<div>Loading your Frenemies!</div>
 		)
 		: (
-			<div className='main-container'>
+			<div className='container'>
 						<div className='row'>
 
 				{this.state.allMatches.map(match => (
