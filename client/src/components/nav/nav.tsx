@@ -30,12 +30,17 @@ function Nav() {
         console.log('let\'s log out');
     };
     const onClickFrenemy = () => {
-        window.location.href = '/frenemy';
+        window.location.href = 'http://localhost:3001/frenemy';
         //Auth.isLoggedIn = false;
         console.log('let\'s look at frenemy(s)');
     };
     const onClickQuestions = () => {
-        window.location.href = '/questions';
+        window.location.href = 'http://localhost:3001/questions';
+        //Auth.isLoggedIn = false;
+        console.log('let\'s look at questions');
+    };
+    const onClickAccount = () => {
+        window.location.href = 'http://localhost:3001/pages/account';
         //Auth.isLoggedIn = false;
         console.log('let\'s look at questions');
     };
@@ -94,6 +99,15 @@ function Nav() {
 					/>
 				)
             } */}
+                <Button
+                    floating
+                    icon='account_circle'
+                    className='green lighten-1 lighten-1waves-effect'
+                    tooltip='Account'
+                    tooltipOptions={{
+                    position: 'left'
+                }}
+                    onClick={onClickQuestions}/>
                 <Button
                     floating
                     icon='live_help'
