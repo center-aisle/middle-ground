@@ -30,17 +30,17 @@ function Nav() {
         console.log('let\'s log out');
     };
     const onClickFrenemy = () => {
-        window.location.href = 'http://localhost:3001/frenemy';
+        window.location.href = '/frenemy';
         //Auth.isLoggedIn = false;
         console.log('let\'s look at frenemy(s)');
     };
     const onClickQuestions = () => {
-        window.location.href = 'http://localhost:3001/questions';
+        window.location.href = '/questions';
         //Auth.isLoggedIn = false;
         console.log('let\'s look at questions');
     };
     const onClickAccount = () => {
-        window.location.href = 'http://localhost:3001/pages/account';
+        window.location.href = '/account';
         //Auth.isLoggedIn = false;
         console.log('let\'s look at questions');
     };
@@ -107,7 +107,7 @@ function Nav() {
                     tooltipOptions={{
                     position: 'left'
                 }}
-                    onClick={onClickQuestions}/>
+                    onClick={onClickAccount}/>
                 <Button
                     floating
                     icon='live_help'
