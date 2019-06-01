@@ -59,3 +59,6 @@ h5{
 
 }
     
+::placeholder, input, .input-field>label, .input-field>input:focus, .input {
+  color: green;
+}

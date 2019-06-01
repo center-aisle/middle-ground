@@ -6,12 +6,12 @@ function Account() {
         <div className='container'>
             {/* <Row>
                 <Col s12 m6> */}
+                    
                     <h5>Create your user account; make sure to select some activities...</h5>
-                    <TextInput label="First Name"/>
+                    <TextInput placeholder="First Name"/>
                     <TextInput email validate label="Email"/>
                     <Textarea placeholder="Tell us about you!"/>
 
-                    <label>Home Activities</label>
                     <Select multiple>
                         <option value="" disabled selected>
                             Select Home Activities
@@ -26,7 +26,6 @@ function Account() {
                             baking
                         </option>
                     </Select>
-                    <label>Music Activities</label>
                     <Select multiple>
                         <option value="" disabled selected>
                             Select Music
@@ -41,7 +40,6 @@ function Account() {
                             Classic Rock
                         </option>
                     </Select>
-                    <label>Outdoor Activities</label>
                     <Select multiple>
                         <option value="" disabled selected>
                             Select Outdoor Activities
@@ -56,7 +54,6 @@ function Account() {
                             Kayaking
                         </option>
                     </Select>
-                    <label>Sport Activities</label>
                     <Select multiple>
                         <option value="" disabled selected>
                             Select Sport Activities
