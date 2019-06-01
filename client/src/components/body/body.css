@@ -1,5 +1,8 @@
-.slider .slides {
-    background-color:rgba(67, 160, 71);
-    margin: 0;
-    height: 200px;
+#firstSlide {
+    background-color:rgba(255, 255, 255, 0.3);
 }
+
+.image {
+    opacity: 0.5;
+  }
+
