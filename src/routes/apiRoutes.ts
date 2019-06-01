@@ -63,25 +63,15 @@ routes.get('/auth/openid-client/callback',
 		session: true,
 		failureRedirect: '/questions' ,
 		failureFlash: 'Invalid login, try again',
-	}),	(req, res) => {
+	}),	(req, res, done) => {
 		const user = req.user;
-		const account = req.account;
-		const access_token = req.access_token;
-		const id_token = req.id_token;
 
-		account.userId = user.id;
-    	account.save(err => {
-      		if (err) {
-				res.send("error saving account");
-				return self.error(err);
-			}
-    	});
 		console.log(user);
 		console.log(user.id);
 		if (req.isAuthenticated) {
 			res.redirect('/user/account');
 			console.log('SUCCESSFUL AUTHENTICATION');
-			return done(null, {user, account, access_token, id_token});	
+			return done(user);	
 		} else {
 			res.redirect("/");
 		}

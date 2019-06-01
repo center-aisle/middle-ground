@@ -33,12 +33,12 @@ const sessionOptions = {
 	saveUninitialized: true,
 	cookie: { secure: false }
 };
-app.use(session(sessionOptions));
 if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1);
     sessionOptions.cookie.secure = true;
     app.use(express.static(path.join(__dirname, 'client/build')));
 }
+app.use(session(sessionOptions));
 
 app.use(Passport.initialize());
 app.use(Passport.session());

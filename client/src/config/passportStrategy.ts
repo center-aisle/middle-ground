@@ -8,7 +8,7 @@ dotenv.config();
 // connect to google client
 Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
 
-    .then((googleIssuer: { issuer: any; metadata: any; Client: any; }) => {
+    .then(googleIssuer => {
 
         const client = new googleIssuer.Client({
             client_id: process.env.GOOGLE_ID,
@@ -29,35 +29,23 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
             login_hint: 'sub',
         };
 
-        const verify = async ( access_token: any, id_token: any, expires_in: any, token_type: any, done: (arg0: null, arg1: any) => void ) => {
+        const verify = async ( tokenset: any, userinfo: any, done: (arg0: null, arg1: any) => void ) => {
+            console.log('tokenset: ', tokenset);
+            const access_token = tokenset.access_token;
             console.log('access_token: ', access_token);
+            const id_token = tokenset.id_token;
             console.log('id_token: ', id_token);
-            console.log('expires_in: ', expires_in);
-            console.log('token_type: ', token_type);
-            User.findOrCreate({
-                openId: id_token.sub,
-                firstName: id_token.given_name,
-                lastName: id_token.family_name,
-                email: id_token.email,
-                picture: id_token.picture
-            }, (err: any, user: any) => {
-                if (err) {
-                    done(err, user);
-                }
-                if (!user) {
-                    done(null, false);
-                }
-                done(null, user);
-            });
+            console.log('userinfo: ', userinfo);
+
             let user: IUser | null = null;
             try {
                 user = await User.findOrCreate({
-                    openId: id_token.sub,
-                    firstName: id_token.given_name,
-                    lastName: id_token.family_name,
-                    email: id_token.email,
-                    picture: id_token.picture,
-                });
+                    openId: tokenset.claims.sub,
+                    firstName: tokenset.claims.given_name,
+                    lastName: tokenset.claims.family_name,
+                    email: tokenset.claims.email,
+                    picture: tokenset.claims.picture
+                    });
             } catch (err) {
                 done(err, null);
             }
