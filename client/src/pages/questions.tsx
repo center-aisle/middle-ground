@@ -5,8 +5,9 @@ interface IPoliticalQuestions {
     id : string;
     color : string;
     title : string;
-    answerD : string;
-    answerR : string;
+    answerD? : string;
+    answerR? : string;
+    buttonLog? : string
 }
 
 interface ComponentState {
@@ -85,7 +86,7 @@ const allQuestionsFromServer : IPoliticalQuestions[] = [
     }, {
         id: '12',
         color: 'green darken-1',
-        title: 'How many have you answered?',
+        title: 'Are we there yet?',
         answerD: `Our country needs to continue making changes to give African-Americans equal rights with white people`,
         answerR: `Our country has made the changes needed to give African-Americans equal rights with white people`
     }, {
@@ -111,15 +112,15 @@ const allQuestionsFromServer : IPoliticalQuestions[] = [
         color: 'green darken-1',
         title: 'You did it all! Now for your spectrum selection....',
         answerD: `In foreign policy, the U.S. should take into account the interests of its allies even if it means making compromises with them`,
-        answerR: `In foreign policy, the U.S. should follow its own national interests even when its allies strongly disagree`
+        answerR: `In foreign policy, the U.S. should follow its own national interests even when its allies strongly disagree`,
+        buttonLog: `Log in to make your account and see your new best Frenemy!`
     },
-    {
-        id: '17',
-        color: 'green darken-1',
-        title: 'Log in to view your results!',
-        answerD: `LOG IN`,
-        answerR: ``
-    }
+    // {
+    //     id: '17',
+    //     color: 'green darken-1',
+    //     title: 'Log in to view your results!',
+    //     buttonLog: `Log in to make your account and see your new best Frenemy!`
+    // }
 ];
 
 class PoliticalQuestionItem extends React.Component < any > {
@@ -128,6 +129,26 @@ class PoliticalQuestionItem extends React.Component < any > {
     
     render() : JSX.Element {
         const {quest} = this.props;
+
+        //FIXME:
+        // if (quest.id === 16) {
+        //     return (
+        // <Row>
+        //     <Col m={3}></Col>
+        //     <Col m={6} s={12}>
+        //         <CardPanel
+        //             className='green lighten-1 waves-effect'
+        //             id='userChoice'>
+        //             <span className='white-text'>
+        //                 {quest.buttonLog}
+        //             </span>
+        //         </CardPanel>
+        //     </Col>
+        //     <Col m={3}></Col>
+        // </Row>
+        //     )
+        // }  
+
         return (
             <div key={quest.id} className={quest.color} id="qBox" >
                 <Row></Row>
@@ -156,9 +177,10 @@ class PoliticalQuestionItem extends React.Component < any > {
                         </CardPanel>
                     </Col>
                 </Row>
+                    <br/>
+                   <h5 className= "white-text">Question {quest.id} of 16</h5>
                 <Row></Row>
                 <Row></Row>
-
             </div>
         );
     }
@@ -168,8 +190,7 @@ class PoliticalQuestionItem extends React.Component < any > {
         localStorage.setItem('ok', JSON.stringify(choice));
         this
             .props
-            .nextStep();
-            
+            .nextStep();            
         //FIXME:
         // for (const [index, value] of allQuestionsFromServer.entries()) {
         //     choice.push(<li key={index}>{value}</li>)
@@ -247,14 +268,14 @@ ComponentState > {
                     <button onClick={this._saveStuff}>SAVE!</button>
                     <button onClick={this._loadStuff}>LOAD!</button> */}
                     <StepWizard>
-                        {/* //FIXME:
-                        if (allQuestions < this.) */}
                             {this
                             .state
                             .allQuestions
                             .map((quest, index) => (<PoliticalQuestionItem key={index} quest={quest}/>))}
-                        {/* else {
 
+                            {/* //FIXME: */}
+                        {/* if (step = 17) {
+                            <button>`Me`</button>
                         }; */}
                     </StepWizard>
                 </div>
