@@ -8,7 +8,7 @@ dotenv.config();
 // connect to google client
 Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
 
-    .then((googleIssuer: { issuer: any; metadata: any; Client: any; }) => {
+    .then(googleIssuer => {
 
         const client = new googleIssuer.Client({
             client_id: process.env.GOOGLE_ID,
@@ -49,7 +49,7 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
                 }
                 done(null, user);
             });
-            let user: IUser | null = null;
+            window.user: IUser | null = null;
             try {
                 user = await User.findOrCreate({
                     openId: id_token.sub,

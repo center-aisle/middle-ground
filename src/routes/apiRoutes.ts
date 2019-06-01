@@ -7,7 +7,7 @@ import express from 'express';
 const routes = express.Router();
 
 // route that finds all users in the database
-routes.get('/users', (req, res) => {
+routes.get('/api/users', (req, res) => {
 	res.status(200).json({
 		success: true,
 		data: 'Hi Team!!!',
@@ -15,7 +15,7 @@ routes.get('/users', (req, res) => {
 });
 
 // route that finds one user within the database
-routes.get('/users/:id', async (req, res) => {
+routes.get('/api/users/:id', async (req, res) => {
 	const openId: string = req.params.openId || null;
 	try {
 		const dbUser: any = await controller.findById(openId);
@@ -32,7 +32,7 @@ routes.get('/users/:id', async (req, res) => {
 });
 
 // route that finds and updates the user's information. Patch needed maybe?
-routes.put('/users/:id', async (req, res) => {
+routes.put('/api/users/:id', async (req, res) => {
 	const openId: string = req.params.openId;
 	const updatedUser: any = req.body;
 	try {
@@ -55,7 +55,7 @@ routes.put('/users/:id', async (req, res) => {
  ***********************************/
 
 // sends user to login (see passportStrategy.ts)
-routes.get('/auth/openid-client', Passport.authenticate('openid-client'));
+routes.post('/auth/openid-client', Passport.authenticate('openid-client'));
 
 // automatically redirects to /user/account if success else stay on /user page
 routes.get('/auth/openid-client/callback',
@@ -64,10 +64,10 @@ routes.get('/auth/openid-client/callback',
 		failureRedirect: '/questions' ,
 		failureFlash: 'Invalid login, try again',
 	}),	(req, res) => {
-		user = req.user;
-		account = req.account;
-		access_token = req.access_token;
-		id_token = req.id_token;
+		const user = req.user;
+		const account = req.account;
+		const access_token = req.access_token;
+		const id_token = req.id_token;
 
 		account.userId = user.id;
     	account.save(err => {
@@ -107,7 +107,7 @@ routes.get('/user/account',
 routes.get('/logout', (req: any, res: any) => {
 	console.log('LOGGING OUT SESSION: ', req.session);
 	req.logout;
-	req.session.destroy(() => res.redirect('http://localhost:3000/'));
+	req.session.destroy(() => res.redirect('/'));
 });
 
 export default routes;
