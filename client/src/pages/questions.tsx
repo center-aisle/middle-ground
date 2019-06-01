@@ -112,6 +112,13 @@ const allQuestionsFromServer : IPoliticalQuestions[] = [
         title: 'You did it all! Now for your spectrum selection....',
         answerD: `In foreign policy, the U.S. should take into account the interests of its allies even if it means making compromises with them`,
         answerR: `In foreign policy, the U.S. should follow its own national interests even when its allies strongly disagree`
+    },
+    {
+        id: '17',
+        color: 'green darken-1',
+        title: 'Log in to view your results!',
+        answerD: `LOG IN`,
+        answerR: ``
     }
 ];
 
