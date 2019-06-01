@@ -1,13 +1,13 @@
 import axios from "axios";
 
 export default {
-    findOrCreate: function() {
+    findOrCreate: () => {
         return axios.findOrCreate("http://localhost:3001/auth/openidconnect");
     },
-    updateUser: function(openId) {
+    updateUser: openId => {
         return axios.post("/users", openId);
     },
-    getUser: function(openId) {
+    getUser: openId => {
         return axios.get("/users", openId);
     }
 };

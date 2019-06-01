@@ -3,10 +3,11 @@ import express from 'express';
 import session from 'express-session';
 import path from 'path';
 import flash from 'connect-flash';
+import cors from 'cors';
 import mongoose from 'mongoose';
 import connectMongo from 'connect-mongo';
 import routes from './routes/apiRoutes';
-// import Passport from './config/passportStrategy';
+import Passport from './config/passportStrategy';
 
 dotenv.config();
 
@@ -15,33 +16,34 @@ const app = express(),
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-if (process.env.NODE_ENV === 'production') {
-  app.set('trust proxy', 1);
-  // session.cookie.secure = true;
-  //  app.use(express.static(path.join(__dirname, 'build')));
-  console.log(path.join(__dirname, 'client/build'));
-  app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(cors());
 
-}
 // test
 console.log(path.join(__dirname, '../client/build'));
 app.use(express.static(path.join(__dirname, '../client/build')));
 // test end
 
-// app.use(express.static((path.join(__dirname, 'public'))));
-app.use(flash());
 
 // sessions
 const MongoStore = connectMongo(session);
-// app.use(session({
-//     secret: process.env.SESSION_SECRET,
-//     store: new MongoStore({ url: process.env.MONGODB_URI || 'mongodb://localhost/middleground' }),
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {},
-//  }));
-// app.use(Passport.initialize());
-// app.use(Passport.session());
+const sessionOptions = {
+	secret: process.env.SESSION_SECRET,
+	store: MongoStore,
+	resave: false,
+	saveUninitialized: true,
+	cookie: { secure: false }
+};
+app.use(session(sessionOptions));
+if (process.env.NODE_ENV === 'production') {
+    app.set('trust proxy', 1);
+    sessionOptions.cookie.secure = true;
+    app.use(express.static(path.join(__dirname, 'client/build')));
+}
+
+app.use(Passport.initialize());
+app.use(Passport.session());
+
+app.use(flash());
 
 // routes
 app.use(routes);
@@ -53,8 +55,8 @@ app.get('*', (req, res) => {
 
 // createConnection because sessions opened a new connection above already
 mongoose.createConnection(
-  process.env.MONGODB_URI || 'mongodb://localhost/middleground',
-  { useNewUrlParser: true },
+    process.env.MONGODB_URI || 'mongodb://localhost/middleground',
+    { useNewUrlParser: true },
 );
 
 app.listen(PORT, () => {
