@@ -274,7 +274,7 @@ ComponentState > {
                             .map((quest, index) => (<PoliticalQuestionItem key={index} quest={quest}/>))}
 
                             {/* //FIXME: */}
-                        {/* if (step = 17) {
+                        {/* if (index + 1 === this.state.allQuestions.length) {
                             <button>`Me`</button>
                         }; */}
                     </StepWizard>
