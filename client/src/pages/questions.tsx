@@ -124,10 +124,10 @@ const allQuestionsFromServer : IPoliticalQuestions[] = [
     // // }
 ];
 
-// type MyProps = { };
-// type MyState = { value: string };
+type MyProps = { readonly: any };
+type MyState = { value: string };
 // class App extends React.Component<MyProps, MyState>
-class PoliticalQuestionItem extends React.Component < any > {
+class PoliticalQuestionItem extends React.Component < MyProps, MyState > {
 
     // choice = [];
 
