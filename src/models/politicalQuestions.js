@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const politicalQuestionsSchema = new Schema({
@@ -16,9 +16,9 @@ const politicalQuestionsSchema = new Schema({
     buttonLog: String
 });
 
-const Frenemy = mongoose.model("Frenemy", politicalQuestionsSchema);
+const PoliticalQuestions = mongoose.model("PoliticalQuestions", politicalQuestionsSchema);
 
-module.exports = Frenemy;
+module.exports = PoliticalQuestions;
 
 // const politicalQuestionsSchema = new Schema ({     questionOne: {
 // type: String,         required: true,         default: "answerD"     },

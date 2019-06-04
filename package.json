@@ -73,7 +73,7 @@
     "build-ts": "tsc",
     "postinstall": "npm run build-ts",
     "watch-node": "nodemon dist/server.js",
-    "seed": "node src/scripts/seedDB.tsx",
+    "seed": "node src/scripts/seedsDB.js",
     "watch-ts": "tsc -w"
   },
   "browserslist": {
