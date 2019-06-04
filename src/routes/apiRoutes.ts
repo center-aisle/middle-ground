@@ -83,9 +83,6 @@ routes.get('/user/account',
 	(req: any, res: any) => {
 		console.log("IS AUTHENTICATED?: ", req.isAuthenticated);
 		if (req.isAuthenticated) {
-			res.send(user);
-			res.send(access_token);
-			console.log('USER: ', req.user);
 			res.redirect('/user/account');
 		} else {
 			res.redirect('/');
