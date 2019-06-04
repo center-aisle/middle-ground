@@ -20,7 +20,7 @@ export interface IUserModel extends Model<IUser> {
         email: string,
         picture: string
     },
-                 cb: (err: any, user: IUser) => void): void;
+    cb: (err: any, user: IUser) => void): void;
 }
 
 // Uses the Schema constructor, create a new UserSchema object

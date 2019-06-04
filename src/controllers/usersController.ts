@@ -2,27 +2,43 @@ import 'mongoose';
 import User from '../models/User';
 
 export const controller = {
-    async update(id: string, updatedUser: any): Promise<any> {
+    async update(openId: string, updatedUser: any): Promise<any> {
         let dbUsers: any = null;
         try {
-            dbUsers = await User.findByIdAndUpdate(id, updatedUser, {new: true}).exec();
+            dbUsers = await User.findByIdAndUpdate(openId, updatedUser, {new: true}).exec();
         } catch (error) {
-            // Something to do if it fails
+            console.error(error);
         }
 
         return dbUsers;
     },
 
-    async findById(id: string): Promise<any> {
+    async findById(openId: string): Promise<any> {
         let dbUsers: any = null;
         try {
-            dbUsers = await User.findById(id).exec();
+            dbUsers = await User.findById(openId).exec();
         } catch (error) {
-            // Something to do if it fails
+            console.error(error);
         }
 
         return dbUsers;
     },
+
+    async findOrCreate(openId: string, firstName: string, lastName: string, email: string, picture: string): Promise<any> {
+        let dbUsers: any = null;
+        try {
+            dbUsers = await User.findOrCreate({
+                openId,
+                firstName,
+                lastName,
+                email,
+                picture
+            }).exec();
+        } catch (error) {
+            console.error(error);
+        }
+        return dbUsers;
+    }
 };
 
 export default controller;
