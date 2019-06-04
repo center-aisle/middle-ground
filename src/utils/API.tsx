@@ -9,5 +9,9 @@ export default {
     },
     getUser: openId => {
         return axios.get("/users", openId);
-    }
+    },
+      // Gets all political questions
+    getPoliticalQuestions: function() {
+    return axios.get("/api/politicalQuestions");
+  }
 };
