@@ -1,7 +1,7 @@
 import 'mongoose';
 import User from '../models/User';
 
-export const controller = {
+export const users = {
     async update(openId: string, updatedUser: any): Promise<any> {
         let dbUsers: any = null;
         try {
@@ -41,7 +41,7 @@ export const controller = {
     }
 };
 
-export default controller;
+export default users;
 
 // update function in a get request in the api routes because finding a single ID in
 // findbyidandupdate in a put request in the api routes because updating an id

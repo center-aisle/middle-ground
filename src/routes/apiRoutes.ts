@@ -1,5 +1,5 @@
 import 'mongoose';
-import controller from '../controllers/usersController';
+import users from '../controllers/users';
 import User from '../models/User';
 import Passport from '../config/passportStrategy';
 import express from 'express';
@@ -19,7 +19,7 @@ routes.get('/api/users', (req, res) => {
 routes.get('/api/users/:id', async (req, res) => {
 	const openId: string = req.params.openId || null;
 	try {
-		const dbUser: any = await controller.findById(openId);
+		const dbUser: any = await users.findById(openId);
 		return res.status(200).json({
 			success: true,
 			data: dbUser,
@@ -37,7 +37,7 @@ routes.put('/api/users/:id', async (req, res) => {
 	const openId: string = req.params.openId;
 	const updatedUser: any = req.body;
 	try {
-		const dbUser: any = await controller.update(openId, updatedUser);
+		const dbUser: any = await users.update(openId, updatedUser);
 		return res.status(200).json({
 			success: true,
 			data: dbUser,
