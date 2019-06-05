@@ -17,7 +17,30 @@ interface ComponentState {
     selectedAnswer: PoliticalQuestionItem["_selectedAnswer"][];
 }
 
-const allQuestionsFromServer : IPoliticalQuestions[] = [
+class allQuestionsFromServer extends React.Component < any > {
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            savedPoliticalQuestions: []
+        }
+    }
+
+    componentDidMount() {
+        API.getPoliticalQuestions().then(
+            (response) => {
+                console.log("This is the SAVED DATA", response);
+                this.setState({savedPoliticalQuestions: response.data});
+            }
+        ).catch(
+            (err) => {
+                console.log(err);
+            }
+        );
+    }
+}
+
+// const allQuestionsFromServer : IPoliticalQuestions[] = [
     // {
     //     id: '1',
     //     color: 'green darken-1',
@@ -122,15 +145,13 @@ const allQuestionsFromServer : IPoliticalQuestions[] = [
     // //     title: 'Log in to view your results!',
     // //     buttonLog: `Log in to make your account and see your new best Frenemy!`
     // // }
-];
+//];
 
-type MyProps = { readonly: any };
-type MyState = { value: string };
+// type MyProps = {  };
+// type MyState = { value: string };
 // class App extends React.Component<MyProps, MyState>
-class PoliticalQuestionItem extends React.Component < MyProps, MyState > {
-
-    // choice = [];
-
+class PoliticalQuestionItem extends React.Component < any > {
+    
     constructor(props: any) {
         super(props);
         this.state = {
@@ -150,10 +171,13 @@ class PoliticalQuestionItem extends React.Component < MyProps, MyState > {
             }
         );
     }
+
+    // choice = [];
     
     render() : JSX.Element {
+        //console.log('HERE', )
         const {quest} = this.props;
-        //const quest= this.state.savedPoliticalQuestions;
+        //const {quest}= API;
 
         //FIXME:
         // if (quest.id === 16) {
@@ -173,7 +197,6 @@ class PoliticalQuestionItem extends React.Component < MyProps, MyState > {
         // </Row>
         //     )
         // }  
-
         return (
             <div key={quest.id} className={quest.color} id="qBox" >
                 <Row></Row>
@@ -281,6 +304,26 @@ ComponentState > {
                 allQuestions: [...allQuestionsFromServer]
             });
         }, 500);}
+
+    // constructor(props: any) {
+    //     super(props);
+    //     this.state = {
+    //         savedPoliticalQuestions: []
+    //     }
+    // }
+
+    // componentDidMount() {
+    //     API.getPoliticalQuestions().then(
+    //         (response) => {
+    //             console.log("This is the SAVED DATA", response);
+    //             this.setState({savedPoliticalQuestions: response.data});
+    //         }
+    //     ).catch(
+    //         (err) => {
+    //             console.log(err);
+    //         }
+    //     );
+    // }
 
     render() : JSX.Element {
         return this.state.allQuestions.length === 0
