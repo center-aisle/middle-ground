@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export default {
-	// findOrCreate: () => {
-	// 	return axios.findOrCreate("/auth/openidconnect");
-	// },
+	createUser: () => {
+		return axios.post("/auth/openidconnect"); // this might be a problem later
+	},
 	updateUser: (openId: any) => {
 		return axios.post("/api/users", openId);
 	},
