@@ -3,6 +3,7 @@ import controller from '../controllers/usersController';
 import User from '../models/User';
 import Passport from '../config/passportStrategy';
 import express from 'express';
+import { access } from 'fs';
 
 const routes = express.Router();
 
@@ -65,13 +66,15 @@ routes.get('/auth/openid-client/callback',
 		failureFlash: 'Invalid login, try again',
 	}),	(req, res, done) => {
 		const user = req.user;
+		const access_token = req.body.access_token;
+		const id_token = req.body.id_token;
 
 		console.log(user);
 		console.log(user.id);
 		if (req.isAuthenticated) {
 			res.redirect('/user/account');
 			console.log('SUCCESSFUL AUTHENTICATION');
-			return done(user);	
+			return done({user, access_token, id_token});	
 		} else {
 			res.redirect("/");
 		}
