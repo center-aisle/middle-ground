@@ -1,39 +1,25 @@
 import 'mongoose';
-import controller from '../controllers/usersController';
+import users from '../controllers/users';
 import User from '../models/User';
-// import Passport from '../config/passportStrategy';
-import { ensureLoggedIn } from 'connect-ensure-login';
+import Passport from '../config/passportStrategy';
 import express from 'express';
+import { access } from 'fs';
 
 const routes = express.Router();
 
-// Route to post (update) our form submission to mongoDB via mongoose
-// routes.put("/submit", (req, res) => {
-// 	// update a user using req.body
-// 	User.updateOne(req.body) // --->> there's a problem here
-// 		.then((dbUser: any) => {
-// 			// If saved successfully, send the the new User document to the client
-// 			res.json(dbUser);
-// 		})
-// 		.catch((err: any) => {
-// 			// If an error occurs, send the error to the client
-// 			if (err) throw err;
-// 		});
-// });
-
-// this is going to be the route that finds the user within the database
-routes.get('/users', (req, res) => {
+// route that finds all users in the database
+routes.get('/api/users', (req, res) => {
 	res.status(200).json({
 		success: true,
 		data: 'Hi Team!!!',
 	});
 });
 
-// this is going to be the route that finds the user within the database
-routes.get('/users/:id', async (req, res) => {
+// route that finds one user within the database
+routes.get('/api/users/:id', async (req, res) => {
 	const openId: string = req.params.openId || null;
 	try {
-		const dbUser: any = await controller.findById(openId);
+		const dbUser: any = await users.findById(openId);
 		return res.status(200).json({
 			success: true,
 			data: dbUser,
@@ -46,12 +32,12 @@ routes.get('/users/:id', async (req, res) => {
 	}
 });
 
-// This is going to be the route that finds and updates the user's information. Patch needed maybe?
-routes.put('/users/:id', async (req, res) => {
+// route that finds and updates the user's information. Patch needed maybe?
+routes.put('/api/users/:id', async (req, res) => {
 	const openId: string = req.params.openId;
 	const updatedUser: any = req.body;
 	try {
-		const dbUser: any = await controller.update(openId, updatedUser);
+		const dbUser: any = await users.update(openId, updatedUser);
 		return res.status(200).json({
 			success: true,
 			data: dbUser,
@@ -69,39 +55,41 @@ routes.put('/users/:id', async (req, res) => {
  * DO NOT TOUCH
  ***********************************/
 
-// post user info on login (see passportStrategy.ts)
-// routes.post('/auth/openidconnect', Passport.authenticate('openid-client'));
+// sends user to login (see passportStrategy.ts)
+routes.post('/auth/openid-client', Passport.authenticate('openid-client'));
 
 // automatically redirects to /user/account if success else stay on /user page
-routes.get('/auth/openidconnect',
-	// Passport.authenticate('openid-client', {
-	// 	session: true,
-	// 	failureRedirect: 'http://localhost:3000/user' ,
-	// 	failureFlash: 'Invalid login, try again',
-	// }),	(req, res) => {
-	// 	console.log(res);
-	// 	console.log(req);
-	// 	res.json(req.body.user);
-	// 	res.json(req.body.id_token);
-	// 	res.json(req.body.access_token);
-	// 	res.json(req.user);
-	// 	res.redirect('/user/account');
-	// 	console.log('SUCCESSFUL AUTHENTICATION');
-	// 	const token = req.body.access_token;
-	// 	return token;
-	// },
+routes.get('/auth/openid-client/callback',
+	Passport.authenticate('openid-client', {
+		session: true,
+		failureRedirect: '/questions' ,
+		failureFlash: 'Invalid login, try again',
+	}),	(req, res, done) => {
+		const user = req.user;
+		const access_token = req.body.access_token;
+		const id_token = req.body.id_token;
+
+		console.log(user);
+		console.log(user.id);
+		if (req.isAuthenticated) {
+			res.redirect('/user/account');
+			console.log('SUCCESSFUL AUTHENTICATION');
+			return done({user, access_token, id_token});	
+		} else {
+			res.redirect("/");
+		}
+	}
 );
 
 // ensures that user is authenticated to access /user/account page
 routes.get('/user/account',
-	ensureLoggedIn('/user'),
 	(req: any, res: any) => {
-		res.send(req.user);
-		res.send(req.body.access_token);
-		console.log(req);
-		console.log(req.body);
-		console.log('USER: ', req.user);
-		res.render('http://localhost:3000/user/account');
+		console.log("IS AUTHENTICATED?: ", req.isAuthenticated);
+		if (req.isAuthenticated) {
+			res.redirect('/user/account');
+		} else {
+			res.redirect('/');
+		}
 	},
 );
 
@@ -109,7 +97,7 @@ routes.get('/user/account',
 routes.get('/logout', (req: any, res: any) => {
 	console.log('LOGGING OUT SESSION: ', req.session);
 	req.logout;
-	req.session.destroy(() => res.redirect('http://localhost:3000/'));
+	req.session.destroy(() => res.redirect('/'));
 });
 
 export default routes;

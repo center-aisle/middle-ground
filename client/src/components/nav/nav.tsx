@@ -4,9 +4,16 @@ import {Button} from 'react-materialize';
 
 function Nav() {
 
-    // need to make the below part of state and/or make nav accept props const Auth
-    // = { 	isLoggedIn: true, 	logIn() { 		this.isLoggedIn = true; 	}, 	logOut() {
-    // 		this.isLoggedIn = false; 	}, };
+    // need to make the below part of state and/or make nav accept props
+    let Auth = { 
+        isLoggedIn: true,
+     	logIn() {
+            this.isLoggedIn = true;
+        },
+        logOut() {
+    		this.isLoggedIn = false;
+        },
+    };
     const onClickHome = () => {
         window.location.href = '/';
         console.log('let\'s go to the home page');
@@ -20,29 +27,29 @@ function Nav() {
         console.log('let\'s go to the contact page');
     };
     const onClickLogIn = () => {
-        window.location.href = 'http://localhost:3001/auth/openidconnect';
-        //Auth.isLoggedIn = true;
+        window.location.href = 'http://localhost:3001/auth/openid-client/callback';
+        Auth.isLoggedIn = true;
         console.log('let\'s log in or create a new account');
     };
     const onClickLogOut = () => {
-        window.location.href = 'http://localhost:3001/logout';
-        //Auth.isLoggedIn = false;
+        window.location.href = '/logout';
+        Auth.isLoggedIn = false;
         console.log('let\'s log out');
     };
-    const onClickFrenemy = () => {
-        window.location.href = '/frenemy';
-        //Auth.isLoggedIn = false;
-        console.log('let\'s look at frenemy(s)');
-    };
+    // const onClickFrenemy = () => {
+    //     window.location.href = '/frenemy';
+    //     Auth.isLoggedIn = false;
+    //     console.log('let\'s look at frenemy(s)');
+    // };
     const onClickQuestions = () => {
         window.location.href = '/questions';
-        //Auth.isLoggedIn = false;
+        Auth.isLoggedIn = false;
         console.log('let\'s look at questions');
     };
     const onClickAccount = () => {
-        window.location.href = '/account';
-        //Auth.isLoggedIn = false;
-        console.log('let\'s look at questions');
+        window.location.href = '/user/account';
+        Auth.isLoggedIn = false;
+        console.log('let\'s look at your account');
     };
 
     return (
@@ -50,91 +57,98 @@ function Nav() {
             <Button
                 floating
                 fab={{
-                direction: 'bottom',
-                hoverEnabled: true
-            }}
+                    direction: 'bottom',
+                    hoverEnabled: true
+                }}
                 icon='menu'
                 className='green lighten-1 waves-effect'
                 large
                 style={{
-                top: '50px'
-            }}>
+                    top: '50px'
+                }}
+            >
                 <Button
                     floating
                     icon='person'
                     className='green lighten-1 lighten-1waves-effect'
                     tooltip='Contact'
                     tooltipOptions={{
-                    position: 'left'
-                }}
-                    onClick={onClickContact}/>
-                <Button
+                        position: 'left'
+                    }}
+                    onClick={onClickContact}
+                />
+                {/* <Button
                     floating
                     icon='supervised_user_circle'
                     className='green lighten-1 lighten-1waves-effect'
                     tooltip='Frenemy'
                     tooltipOptions={{
-                    position: 'left'
-                }}
-                    onClick={onClickFrenemy}/> 
-                {/* {
-				Auth.isLoggedIn
-				? (
-					<Button
-						floating
-						icon='power_settings_new'
-						className='green lighten-1lighten-1waves-effect'
-						tooltip='Log out'
-						tooltipOptions={{position: 'left'}}
-						onClick={onClickLogOut}
-					/>
-				) : (
-					<Button
-						floating
-						icon='account_circle'
-						className='green lighten-1lighten-1waves-effect'
-						tooltip='Log in or create new account'
-						tooltipOptions={{position: 'left'}}
-						onClick={onClickLogIn}
-					/>
-				)
-            } */}
+                        position: 'left'
+                    }}
+                    onClick={onClickFrenemy}
+                />  */}
+                {
+                    Auth.isLoggedIn
+                    ? (
+                        <Button
+                            floating
+                            icon='power_settings_new'
+                            className='green lighten-1lighten-1waves-effect'
+                            tooltip='Log out'
+                            tooltipOptions={{position: 'left'}}
+                            onClick={onClickLogOut}
+                        />
+                    ) : (
+                        <Button
+                            floating
+                            icon='account_circle'
+                            className='green lighten-1lighten-1waves-effect'
+                            tooltip='Log in or create new account'
+                            tooltipOptions={{position: 'left'}}
+                            onClick={onClickLogIn}
+                        />
+                    )
+                }
                 <Button
                     floating
                     icon='account_circle'
                     className='green lighten-1 lighten-1waves-effect'
                     tooltip='Account'
                     tooltipOptions={{
-                    position: 'left'
-                }}
-                    onClick={onClickAccount}/>
+                        position: 'left'
+                    }}
+                    onClick={onClickAccount}
+                />
                 <Button
                     floating
                     icon='live_help'
                     className='green lighten-1 lighten-1waves-effect'
                     tooltip='Quiz'
                     tooltipOptions={{
-                    position: 'left'
-                }}
-                    onClick={onClickQuestions}/>
+                        position: 'left'
+                    }}
+                    onClick={onClickQuestions}
+                />
                 <Button
                     floating
                     icon='info'
                     className='green lighten-1 lighten-1waves-effect'
                     tooltip='About'
                     tooltipOptions={{
-                    position: 'left'
-                }}
-                    onClick={onClickAbout}/>
+                        position: 'left'
+                    }}
+                    onClick={onClickAbout}
+                />
                 <Button
                     floating
                     icon='home'
                     className='green lighten-1 lighten-1waves-effect'
                     tooltip='Home'
                     tooltipOptions={{
-                    position: 'left'
-                }}
-                    onClick={onClickHome}/>
+                        position: 'left'
+                    }}
+                    onClick={onClickHome}
+                />
             </Button>
         </div>
     );
