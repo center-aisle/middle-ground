@@ -1,7 +1,6 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+import { Schema, model, Document, Model } from 'mongoose';
 
-const politicalQuestionsSchema = new Schema({
+const politicalQuestionSchema = new Schema({
     id: String,
     color: String,
     title: String,
@@ -16,9 +15,9 @@ const politicalQuestionsSchema = new Schema({
     buttonLog: String
 });
 
-const PoliticalQuestion = mongoose.model("PoliticalQuestions", politicalQuestionsSchema);
+const PoliticalQuestion = model("PoliticalQuestion", politicalQuestionSchema);
 
-module.exports = PoliticalQuestion;
+export default PoliticalQuestion;
 
 // const politicalQuestionsSchema = new Schema ({     questionOne: {
 // type: String,         required: true,         default: "answerD"     },
