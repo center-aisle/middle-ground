@@ -1,6 +1,8 @@
 import 'mongoose';
 import users from '../controllers/users';
 import User from '../models/User';
+import politicalQuestions from '../controllers/politicalQuestions';
+import PoliticalQuestion from '../models/PoliticalQuestion';
 import Passport from '../config/passportStrategy';
 import express from 'express';
 import { access } from 'fs';
@@ -33,11 +35,10 @@ routes.get('/api/users/:id', async (req, res) => {
 });
 
 // route that finds and updates the user's information. Patch needed maybe?
-routes.put('/api/users/:id', async (req, res) => {
-	const openId: string = req.params.openId;
-	const updatedUser: any = req.body;
+routes.get('/api/users/:id', async (req, res) => {
+	const openId: string = req.params.openId || null;
 	try {
-		const dbUser: any = await users.update(openId, updatedUser);
+		const dbUser: any = await users.findById(openId);
 		return res.status(200).json({
 			success: true,
 			data: dbUser,
@@ -45,10 +46,65 @@ routes.put('/api/users/:id', async (req, res) => {
 	} catch (error) {
 		return res.status(500).json({
 			success: false,
-			data: 'User information could not be updated due to DB error',
+			data: 'User not found due to DB error',
 		});
 	}
 });
+
+/********************************
+* POLITICAL AND PERSONAL QUESTIONS
+********************************/
+
+routes.get('/api/politicalQuestions', async (req, res) => {
+	res.status(200).json({
+		success: true,
+		data: res,
+	});
+});
+
+routes.get('/api/politicalQuestions/:id', async (req, res) => {
+	const questionId: string = req.params.id || null;
+	try {
+		const dbQuestion: any = await politicalQuestions.findById(questionId);
+		return res.status(200).json({
+			success: true,
+			data: dbQuestion,
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			data: 'Question not found due to DB error',
+		});
+	}
+});
+
+// routes.get('/api/home', async (req, res) => {
+// 	res.status(200).json({
+// 		success: true,
+// 		data: res,
+// 	});
+// });
+
+// routes.get('/api/music', async (req, res) => {
+// 	res.status(200).json({
+// 		success: true,
+// 		data: res,
+// 	});
+// });
+
+// routes.get('/api/outdoors', async (req, res) => {
+// 	res.status(200).json({
+// 		success: true,
+// 		data: res,
+// 	});
+// });
+
+// routes.get('/api/sports', async (req, res) => {
+// 	res.status(200).json({
+// 		success: true,
+// 		data: res,
+// 	});
+// });
 
 /*********************************
  * USER AUTHENTICATION BELOW

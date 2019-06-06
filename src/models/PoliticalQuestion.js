@@ -16,9 +16,9 @@ const politicalQuestionsSchema = new Schema({
     buttonLog: String
 });
 
-const PoliticalQuestions = mongoose.model("PoliticalQuestions", politicalQuestionsSchema);
+const PoliticalQuestion = mongoose.model("PoliticalQuestions", politicalQuestionsSchema);
 
-module.exports = PoliticalQuestions;
+module.exports = PoliticalQuestion;
 
 // const politicalQuestionsSchema = new Schema ({     questionOne: {
 // type: String,         required: true,         default: "answerD"     },
