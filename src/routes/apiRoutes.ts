@@ -56,6 +56,7 @@ routes.get('/api/users/:id', async (req, res) => {
 ********************************/
 
 routes.get('/api/politicalQuestions', async (req, res) => {
+	console.log(res);
 	res.status(200).json({
 		success: true,
 		data: res,
@@ -63,6 +64,7 @@ routes.get('/api/politicalQuestions', async (req, res) => {
 });
 
 routes.get('/api/politicalQuestions/:id', async (req, res) => {
+	console.log(res);
 	const questionId: string = req.params.id || null;
 	try {
 		const dbQuestion: any = await politicalQuestions.findById(questionId);
@@ -78,33 +80,39 @@ routes.get('/api/politicalQuestions/:id', async (req, res) => {
 	}
 });
 
-// routes.get('/api/home', async (req, res) => {
-// 	res.status(200).json({
-// 		success: true,
-// 		data: res,
-// 	});
-// });
+// following personal routes may need to be edited
 
-// routes.get('/api/music', async (req, res) => {
-// 	res.status(200).json({
-// 		success: true,
-// 		data: res,
-// 	});
-// });
+routes.get('/api/home', async (req, res) => {
+	console.log(res);
+	res.status(200).json({
+		success: true,
+		data: res,
+	});
+});
 
-// routes.get('/api/outdoors', async (req, res) => {
-// 	res.status(200).json({
-// 		success: true,
-// 		data: res,
-// 	});
-// });
+routes.get('/api/music', async (req, res) => {
+	console.log(res);
+	res.status(200).json({
+		success: true,
+		data: res,
+	});
+});
 
-// routes.get('/api/sports', async (req, res) => {
-// 	res.status(200).json({
-// 		success: true,
-// 		data: res,
-// 	});
-// });
+routes.get('/api/outdoors', async (req, res) => {
+	console.log(res);
+	res.status(200).json({
+		success: true,
+		data: res,
+	});
+});
+
+routes.get('/api/sports', async (req, res) => {
+	console.log(res);
+	res.status(200).json({
+		success: true,
+		data: res,
+	});
+});
 
 /*********************************
  * USER AUTHENTICATION BELOW
