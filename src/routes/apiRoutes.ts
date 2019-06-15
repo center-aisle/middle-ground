@@ -80,7 +80,7 @@ routes.get('/api/politicalQuestions/:id', async (req, res) => {
 	}
 });
 
-// following personal routes may need to be edited
+// following personal routes will need to be edited
 
 routes.get('/api/home', async (req, res) => {
 	console.log(res);
@@ -138,17 +138,17 @@ routes.get('/auth/openid-client/callback',
 		if (req.isAuthenticated) {
 			res.redirect('/user/account');
 			console.log('SUCCESSFUL AUTHENTICATION');
-			return done({user, access_token, id_token});	
+			return done({user, access_token, id_token});
 		} else {
-			res.redirect("/");
+			res.redirect('/');
 		}
-	}
+	},
 );
 
 // ensures that user is authenticated to access /user/account page
 routes.get('/user/account',
 	(req: any, res: any) => {
-		console.log("IS AUTHENTICATED?: ", req.isAuthenticated);
+		console.log('IS AUTHENTICATED?: ', req.isAuthenticated);
 		if (req.isAuthenticated) {
 			res.redirect('/user/account');
 		} else {

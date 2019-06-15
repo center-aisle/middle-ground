@@ -23,15 +23,14 @@ console.log(path.join(__dirname, '../client/build'));
 app.use(express.static(path.join(__dirname, '../client/build')));
 // test end
 
-
 // sessions
 const MongoStore = connectMongo(session);
-const sessionOptions = {
+const sessionOptions : any = {
 	secret: process.env.SESSION_SECRET,
 	store: MongoStore,
 	resave: false,
 	saveUninitialized: true,
-	cookie: { secure: false }
+	cookie: { secure: false },
 };
 if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1);

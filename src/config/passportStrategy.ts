@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import Passport from 'passport';
-import { Issuer, Strategy, generators } from 'openid-client';
+import Strategy, { Issuer, generators } from 'openid-client';
 import User, { IUser } from '../models/User';
 
 dotenv.config();
@@ -44,7 +44,7 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
                     firstName: tokenset.claims.given_name,
                     lastName: tokenset.claims.family_name,
                     email: tokenset.claims.email,
-                    picture: tokenset.claims.picture
+                    picture: tokenset.claims.picture,
                     });
             } catch (err) {
                 done(err, null);
@@ -62,6 +62,8 @@ Issuer.discover('https://accounts.google.com/.well-known/openid-configuration')
             sessionKey,
             usePKCE,
         };
+
+        let Strategy: any;
 
         Passport.use('openid-client', new Strategy( options, verify ));
 

@@ -21,6 +21,7 @@ export interface IUserModel extends Model<IUser> {
         picture: string
     },
     cb: (err: any, user: IUser) => void): void;
+    exec: (type: void) => void;
 }
 
 // Uses the Schema constructor, create a new UserSchema object

@@ -6,16 +6,16 @@ const politicalQuestionSchema = new Schema({
     title: String,
     answerD: {
         type: String,
-        required: true
+        required: true,
     },
     answerR: {
         type: String,
-        required: true
+        required: true,
     },
-    buttonLog: String
+    buttonLog: String,
 });
 
-const PoliticalQuestion = model("PoliticalQuestion", politicalQuestionSchema);
+const PoliticalQuestion = model('PoliticalQuestion', politicalQuestionSchema);
 
 export default PoliticalQuestion;
 
