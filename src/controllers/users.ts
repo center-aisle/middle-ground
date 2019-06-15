@@ -1,5 +1,6 @@
 import 'mongoose';
 import User from '../models/User';
+import { exec } from 'child_process';
 
 const users = {
     async update(openId: string, updatedUser: any): Promise<any> {
@@ -31,7 +32,8 @@ const users = {
                 lastName,
                 email,
                 picture
-            }).exec();
+            }); // why can I not have .exec() here?!?!?!?!
+            console.log("DBUSERS FINDORCREATE: ", dbUsers);
         } catch (error) {
             console.error(error);
         };
