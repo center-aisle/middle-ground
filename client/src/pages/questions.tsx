@@ -17,30 +17,54 @@ interface ComponentState {
     selectedAnswer: PoliticalQuestionItem["_selectedAnswer"][];
 }
 
-class allQuestionsFromServer extends React.Component < any > {
+// class allQuestionsFromServer extends React.Component < any > {
 
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            savedPoliticalQuestions: []
-        }
-    }
+//     constructor(props: any) {
+//         super(props);
+//         this.state = {
+//             savedPoliticalQuestions: []
+//         }
+//     }
 
-    componentDidMount() {
-        API.getPoliticalQuestions().then(
-            (response) => {
-                console.log("This is the SAVED DATA", response);
-                this.setState({savedPoliticalQuestions: response.data});
-            }
-        ).catch(
-            (err) => {
-                console.log(err);
-            }
-        );
-    }
-}
+//     componentDidMount() {
+//         API.getPoliticalQuestions().then(
+//             (response) => {
+//                 console.log("This is the SAVED DATA", response);
+//                 this.setState({savedPoliticalQuestions: response.data});
+//             }
+//         ).catch(
+//             (err) => {
+//                 console.log(err);
+//             }
+//         );
+//     }
+// }
 
-// const allQuestionsFromServer : IPoliticalQuestions[] = [
+ const allQuestionsFromServer : IPoliticalQuestions[] = [
+
+    //     constructor(props: any) {
+    //     super(props);
+    //     this.state = {
+    //         savedPoliticalQuestions: []
+    //     }
+    // }
+
+    // componentDidMount() {
+    //     API.getPoliticalQuestions().then(
+    //         (response) => {
+    //             console.log("This is the SAVED DATA", response);
+    //             this.setState({savedPoliticalQuestions: response.data});
+    //         }
+    //     ).catch(
+    //         (err) => {
+    //             console.log(err);
+    //         }
+    //     );
+    // }
+
+
+
+
     // {
     //     id: '1',
     //     color: 'green darken-1',
@@ -145,7 +169,11 @@ class allQuestionsFromServer extends React.Component < any > {
     // //     title: 'Log in to view your results!',
     // //     buttonLog: `Log in to make your account and see your new best Frenemy!`
     // // }
-//];
+];
+
+
+// type State = Readonly<typeof allQuestionsFromServer>;
+// readonly state: State = allQuestionsFromServer;
 
 // type MyProps = {  };
 // type MyState = { value: string };
@@ -175,7 +203,6 @@ class PoliticalQuestionItem extends React.Component < any > {
     // choice = [];
     
     render() : JSX.Element {
-        //console.log('HERE', )
         const {quest} = this.props;
         //const {quest}= API;
 
@@ -326,6 +353,7 @@ ComponentState > {
     // }
 
     render() : JSX.Element {
+        console.log('HERE', this.props)
         return this.state.allQuestions.length === 0
             ? (
                 <div>LOADING......</div>

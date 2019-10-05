@@ -2,6 +2,10 @@
 
 In a divisive time when so many people seem to be on opposite ends of the spectrum, it comes high time for a middle ground to be reached and genuine connections to be made. Thus the idea of Frenemies was born. Simply enter in a little personal information, take a 16 question survey, and fill out some activites which interest you most. Then all your answers will cycle into our algorithm and from there our database will match you with some other people who you share common interests with yet slightly different political views for bridging a gap.
 
+## Check it out
+
+[Frenemy](https://bipartisan.herokuapp.com/)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
