@@ -2,6 +2,7 @@ import 'mongoose';
 import PersonalQuestion from '../models/PersonalQuestion';
 
 export const personalQuestions = {
+    // findbyid needs to be edited because nested "questions"
     async findById(id: string): Promise<any> {
         let dbQuestion: any = null;
         try {

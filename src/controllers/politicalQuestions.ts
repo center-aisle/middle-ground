@@ -21,7 +21,7 @@ export const politicalQuestions = {
             console.error(error);
         }
         return dbQuestions;
-    }
+    },
 };
 
 export default politicalQuestions;

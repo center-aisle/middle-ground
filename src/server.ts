@@ -23,15 +23,21 @@ console.log(path.join(__dirname, '../client/build'));
 app.use(express.static(path.join(__dirname, '../client/build')));
 // test end
 
-
+// createConnection because sessions opened a new connection above already
+const connection = mongoose.createConnection(
+    process.env.MONGODB_URI || 'mongodb://localhost/middleground',
+    { useNewUrlParser: true },
+);
 // sessions
 const MongoStore = connectMongo(session);
-const sessionOptions = {
+const sessionOptions : any = {
 	secret: process.env.SESSION_SECRET,
-	store: MongoStore,
+	store: new MongoStore({
+		mongooseConnection: connection
+	}),
 	resave: false,
 	saveUninitialized: true,
-	cookie: { secure: false }
+	cookie: { secure: false },
 };
 if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1);
@@ -52,12 +58,6 @@ app.use(routes);
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-
-// createConnection because sessions opened a new connection above already
-mongoose.createConnection(
-    process.env.MONGODB_URI || 'mongodb://localhost/middleground',
-    { useNewUrlParser: true },
-);
 
 app.listen(PORT, () => {
 	console.log('\uD83C\uDF0E  ==> API Server now listening on PORT ' + PORT + '!');
