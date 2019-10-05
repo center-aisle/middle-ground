@@ -17,7 +17,54 @@ interface ComponentState {
     selectedAnswer: PoliticalQuestionItem["_selectedAnswer"][];
 }
 
-const allQuestionsFromServer : IPoliticalQuestions[] = [
+// class allQuestionsFromServer extends React.Component < any > {
+
+//     constructor(props: any) {
+//         super(props);
+//         this.state = {
+//             savedPoliticalQuestions: []
+//         }
+//     }
+
+//     componentDidMount() {
+//         API.getPoliticalQuestions().then(
+//             (response) => {
+//                 console.log("This is the SAVED DATA", response);
+//                 this.setState({savedPoliticalQuestions: response.data});
+//             }
+//         ).catch(
+//             (err) => {
+//                 console.log(err);
+//             }
+//         );
+//     }
+// }
+
+ const allQuestionsFromServer : IPoliticalQuestions[] = [
+
+    //     constructor(props: any) {
+    //     super(props);
+    //     this.state = {
+    //         savedPoliticalQuestions: []
+    //     }
+    // }
+
+    // componentDidMount() {
+    //     API.getPoliticalQuestions().then(
+    //         (response) => {
+    //             console.log("This is the SAVED DATA", response);
+    //             this.setState({savedPoliticalQuestions: response.data});
+    //         }
+    //     ).catch(
+    //         (err) => {
+    //             console.log(err);
+    //         }
+    //     );
+    // }
+
+
+
+
     // {
     //     id: '1',
     //     color: 'green darken-1',
@@ -124,13 +171,15 @@ const allQuestionsFromServer : IPoliticalQuestions[] = [
     // // }
 ];
 
-// type MyProps = { };
+
+// type State = Readonly<typeof allQuestionsFromServer>;
+// readonly state: State = allQuestionsFromServer;
+
+// type MyProps = {  };
 // type MyState = { value: string };
 // class App extends React.Component<MyProps, MyState>
 class PoliticalQuestionItem extends React.Component < any > {
-
-    // choice = [];
-
+    
     constructor(props: any) {
         super(props);
         this.state = {
@@ -150,10 +199,12 @@ class PoliticalQuestionItem extends React.Component < any > {
             }
         );
     }
+
+    // choice = [];
     
     render() : JSX.Element {
         const {quest} = this.props;
-        //const quest= this.state.savedPoliticalQuestions;
+        //const {quest}= API;
 
         //FIXME:
         // if (quest.id === 16) {
@@ -173,7 +224,6 @@ class PoliticalQuestionItem extends React.Component < any > {
         // </Row>
         //     )
         // }  
-
         return (
             <div key={quest.id} className={quest.color} id="qBox" >
                 <Row></Row>
@@ -276,11 +326,43 @@ export default class PoliticalQuestions extends React.Component < any,
             });
         };
 
-        componentDidMount() : void {setTimeout(() => {
-                this.setState({
-                    allQuestions: [...allQuestionsFromServer]
-                });
-            }, 500);}
+    // constructor(props: any) {
+    //     super(props);
+    //     this.state = {
+    //         savedPoliticalQuestions: []
+    //     }
+    // }
+
+    // componentDidMount() {
+    //     API.getPoliticalQuestions().then(
+    //         (response) => {
+    //             console.log("This is the SAVED DATA", response);
+    //             this.setState({savedPoliticalQuestions: response.data});
+    //         }
+    //     ).catch(
+    //         (err) => {
+    //             console.log(err);
+    //         }
+    //     );
+    // }
+
+    render() : JSX.Element {
+        console.log('HERE', this.props)
+        return this.state.allQuestions.length === 0
+            ? (
+                <div>LOADING......</div>
+            )
+            : (
+                <div className='container'>
+                    {/* <button onClick={this._onComplete}>DONE!</button>
+                    <button onClick={this._saveStuff}>SAVE!</button>
+                    <button onClick={this._loadStuff}>LOAD!</button> */}
+                    <StepWizard>
+                            {this
+                            .state
+                            .allQuestions
+                            .map((quest, index) => (<PoliticalQuestionItem key={index} quest={quest}/>))}
+=======
 
         render() : JSX.Element {
             return this.state.allQuestions.length === 0
