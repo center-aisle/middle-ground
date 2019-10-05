@@ -189,7 +189,7 @@ class PoliticalQuestionItem extends React.Component < any > {
 
     componentDidMount() {
         API.getPoliticalQuestions().then(
-            (response) => {
+            response => {
                 console.log("This is the SAVED DATA", response);
                 this.setState({savedPoliticalQuestions: response.data});
             }
@@ -275,62 +275,56 @@ class PoliticalQuestionItem extends React.Component < any > {
 }
 
 export default class PoliticalQuestions extends React.Component < any,
-ComponentState > {
-    state : ComponentState = {
-        allQuestions: [],
-        activeIndex: 0,
-        selectedAnswer: [],
-    };
-
-    politicalType: string = "";
-    politicalScore: number = 0;
-
-    politicalParty = () => {
-        const numQuestions = 16;
-        let scoreD = 0;
-        let scoreParty = 0;
-        //let currentUser = {};
-        let allUsers : any[] = [];
-        let matchingPoliticalUsers = [];
-
-        let scoreDoverQ = (scoreD + scoreParty) / numQuestions;
-        // let scoreR = numQuestions - scoreD; let scoreRoverQ = (scoreR +
-        // scoreParty)/numQuestions;
-
-        if (scoreDoverQ <= 0.125) {
-            this.politicalType = "solid liberal";
-            this.politicalScore = -2;
-        } else if (0.125 < scoreDoverQ && scoreDoverQ <= 0.375) {
-            this.politicalType = "liberal";
-            this.politicalScore = -1;
-        } else if (0.375 < scoreDoverQ && scoreDoverQ <= 0.5625) {
-            this.politicalType = "centrist";
-            this.politicalScore = 0;
-        } else if (0.5625 < scoreDoverQ && scoreDoverQ <= 0.8126) {
-            this.politicalType = "conservative";
-            this.politicalScore = 1;
-        } else if (scoreDoverQ > 0.8126) {
-            this.politicalType = "core conservative";
-            this.politicalScore = 2;
-        } else {
-            const err = new Error("Error with political calculations!");
-            console.log(err);
+    ComponentState > {
+        state : ComponentState = {
+            allQuestions: [],
+            activeIndex: 0,
+            selectedAnswer: [],
         };
 
-        // finding users with matching inverse political score
-        allUsers.forEach(currentValue => {
-            if (currentValue.politicalScore === -(this.politicalScore)) {
-            // if (currentValue.politicalScore === -(currentUser.politicalScore)) {
-                matchingPoliticalUsers.push(currentValue);
-            }
-        });
-    };
+        politicalType: string = "";
+        politicalScore: number = 0;
 
-    componentDidMount() : void {setTimeout(() => {
-            this.setState({
-                allQuestions: [...allQuestionsFromServer]
+        politicalParty = () => {
+            const numQuestions = 16;
+            let scoreD = 0;
+            let scoreParty = 0;
+            //let currentUser = {};
+            let allUsers : any[] = [];
+            let matchingPoliticalUsers = [];
+
+            let scoreDoverQ = (scoreD + scoreParty) / numQuestions;
+            // let scoreR = numQuestions - scoreD; let scoreRoverQ = (scoreR +
+            // scoreParty)/numQuestions;
+
+            if (scoreDoverQ <= 0.125) {
+                this.politicalType = "solid liberal";
+                this.politicalScore = -2;
+            } else if (0.125 < scoreDoverQ && scoreDoverQ <= 0.375) {
+                this.politicalType = "liberal";
+                this.politicalScore = -1;
+            } else if (0.375 < scoreDoverQ && scoreDoverQ <= 0.5625) {
+                this.politicalType = "centrist";
+                this.politicalScore = 0;
+            } else if (0.5625 < scoreDoverQ && scoreDoverQ <= 0.8126) {
+                this.politicalType = "conservative";
+                this.politicalScore = 1;
+            } else if (scoreDoverQ > 0.8126) {
+                this.politicalType = "core conservative";
+                this.politicalScore = 2;
+            } else {
+                const err = new Error("Error with political calculations!");
+                console.log(err);
+            };
+
+            // finding users with matching inverse political score
+            allUsers.forEach(currentValue => {
+                if (currentValue.politicalScore === -(this.politicalScore)) {
+                // if (currentValue.politicalScore === -(currentUser.politicalScore)) {
+                    matchingPoliticalUsers.push(currentValue);
+                }
             });
-        }, 500);}
+        };
 
     // constructor(props: any) {
     //     super(props);
@@ -368,33 +362,50 @@ ComponentState > {
                             .state
                             .allQuestions
                             .map((quest, index) => (<PoliticalQuestionItem key={index} quest={quest}/>))}
+=======
 
-                            {/* //FIXME: */}
-                        {/* if (index + 1 === this.state.allQuestions.length) {
-                            <button>`Me`</button>
-                        }; */}
-                    </StepWizard>
-                </div>
-            );
-    }
+        render() : JSX.Element {
+            return this.state.allQuestions.length === 0
+                ? (
+                    <div>LOADING......</div>
+                )
+                : (
+                    <div className='container'>
+                        {/* <button onClick={this._onComplete}>DONE!</button>
+                        <button onClick={this._saveStuff}>SAVE!</button>
+                        <button onClick={this._loadStuff}>LOAD!</button> */}
+                        <StepWizard>
+                                {this
+                                .state
+                                .allQuestions
+                                .map((quest, index) => (<PoliticalQuestionItem key={index} quest={quest}/>))}
 
-    // private _onComplete = () : void => {
-    //     this
-    //         .props
-    //         .completed(true);
-    // }
+                                {/* //FIXME: */}
+                            {/* if (index + 1 === this.state.allQuestions.length) {
+                                <button>`Me`</button>
+                            }; */}
+                        </StepWizard>
+                    </div>
+                );
+        }
 
-    // private _saveStuff = () : void => {
-    //     localStorage.setItem('ok', JSON.stringify(allQuestionsFromServer));
-    //     window.localStorage.setItem('choice', this.state.choice); 
-    // }
+        // private _onComplete = () : void => {
+        //     this
+        //         .props
+        //         .completed(true);
+        // }
 
-    // private _loadStuff = () : void => {
-    //     const storeMe = localStorage.getItem('choice');
-    //     if (storeMe == null) {
-    //         console.log('Sadness no cookie');
-    //     } else {
-    //         console.log('Yay we have cookies', JSON.parse(storeMe));
-    //     }
-    // }
+        // private _saveStuff = () : void => {
+        //     localStorage.setItem('ok', JSON.stringify(allQuestionsFromServer));
+        //     window.localStorage.setItem('choice', this.state.choice); 
+        // }
+
+        // private _loadStuff = () : void => {
+        //     const storeMe = localStorage.getItem('choice');
+        //     if (storeMe == null) {
+        //         console.log('Sadness no cookie');
+        //     } else {
+        //         console.log('Yay we have cookies', JSON.parse(storeMe));
+        //     }
+        // }
 }

@@ -3,26 +3,26 @@ const Schema = mongoose.Schema;
 
 const personalScoreSchema = new Schema ({
     outdoors: [{
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
-        ref: "outdoorsSchema"
+        ref: "Outdoor"
     }],
     home: [{
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
-        ref: "homeSchema"
+        ref: "Home"
     }],
     sports: [{
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
-        ref: "sportSchema"
+        ref: "Sport"
     }],
     music: [{
         type: Schema.Types.ObjectId,
         required: true,
-        ref: "musicSchema"
+        ref: "Music"
     }]
 });
 
-const personalScore = mongoose.model("personalScore", personalScoreSchema)
-export default personalScore;
+const PersonalScore = mongoose.model("personalScore", personalScoreSchema)
+export default PersonalScore;

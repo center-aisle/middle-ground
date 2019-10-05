@@ -49,5 +49,5 @@ const Schema = mongoose.Schema;
         }
     });
 
-const Outdoors = mongoose.model("Outdoors", outdoorsSchema)
-export default Outdoors;
+const Outdoor = mongoose.model("Outdoor", outdoorsSchema)
+export default Outdoor;

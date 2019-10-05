@@ -7,5 +7,5 @@ const frenemiesSchema = new Schema ({
     }]
 });
 
-const frenemies = mongoose.model("frenemies", frenemiesSchema)
-export default frenemies;
+const Frenemy = mongoose.model("frenemies", frenemiesSchema)
+export default Frenemy;

@@ -1,7 +1,7 @@
 import 'mongoose';
 import User from '../models/User';
 
-export const users = {
+const users = {
     async update(openId: string, updatedUser: any): Promise<any> {
         let dbUsers: any = null;
         try {
@@ -9,7 +9,6 @@ export const users = {
         } catch (error) {
             console.error(error);
         }
-
         return dbUsers;
     },
 
@@ -20,7 +19,6 @@ export const users = {
         } catch (error) {
             console.error(error);
         }
-
         return dbUsers;
     },
 
