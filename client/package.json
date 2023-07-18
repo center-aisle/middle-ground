@@ -30,7 +30,7 @@
     "materialize-css": "^1.0.0",
     "method-override": "^3.0.0",
     "mongo": "^0.1.0",
-    "mongoose": "^5.5.11",
+    "mongoose": "^5.13.20",
     "mongoose-findorcreate": "^3.0.0",
     "nodemon": "^1.19.1",
     "openid-client": "^3.1.1",
